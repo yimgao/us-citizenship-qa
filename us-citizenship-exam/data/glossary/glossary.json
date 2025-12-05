@@ -1,0 +1,2290 @@
+[
+  {
+    "id": "glossary-1",
+    "term": {
+      "en": "Constitution",
+      "zh": "宪法",
+      "es": "Constitución"
+    },
+    "definitions": {
+      "en": "The supreme law of the United States that establishes the framework of the federal government and guarantees certain basic rights.",
+      "zh": "美国的最高法律，确立了联邦政府的框架并保障某些基本权利。",
+      "es": "La ley suprema de los Estados Unidos que establece el marco del gobierno federal y garantiza ciertos derechos básicos."
+    }
+  },
+  {
+    "id": "glossary-2",
+    "term": {
+      "en": "Amendment",
+      "zh": "修正案",
+      "es": "Enmienda"
+    },
+    "definitions": {
+      "en": "A change or addition to the Constitution. There are currently 27 amendments.",
+      "zh": "对宪法的修改或补充。目前共有27条修正案。",
+      "es": "Un cambio o adición a la Constitución. Actualmente hay 27 enmiendas."
+    }
+  },
+  {
+    "id": "glossary-3",
+    "term": {
+      "en": "Bill of Rights",
+      "zh": "权利法案",
+      "es": "Carta de Derechos"
+    },
+    "definitions": {
+      "en": "The first ten amendments to the Constitution, which guarantee fundamental rights and freedoms.",
+      "zh": "宪法的前十条修正案，保障基本权利和自由。",
+      "es": "Las primeras diez enmiendas a la Constitución, que garantizan derechos y libertades fundamentales."
+    }
+  },
+  {
+    "id": "glossary-4",
+    "term": {
+      "en": "Congress",
+      "zh": "国会",
+      "es": "Congreso"
+    },
+    "definitions": {
+      "en": "The legislative branch of the U.S. federal government, consisting of the House of Representatives and the Senate.",
+      "zh": "美国联邦政府的立法部门，由众议院和参议院组成。",
+      "es": "La rama legislativa del gobierno federal de EE. UU., compuesta por la Cámara de Representantes y el Senado."
+    }
+  },
+  {
+    "id": "glossary-5",
+    "term": {
+      "en": "Supreme Court",
+      "zh": "最高法院",
+      "es": "Corte Suprema"
+    },
+    "definitions": {
+      "en": "The highest court in the United States, which interprets the Constitution and federal laws.",
+      "zh": "美国的最高法院，负责解释宪法和联邦法律。",
+      "es": "El tribunal más alto de los Estados Unidos, que interpreta la Constitución y las leyes federales."
+    }
+  },
+  {
+    "id": "glossary-6",
+    "term": {
+      "en": "President",
+      "zh": "总统",
+      "es": "Presidente"
+    },
+    "definitions": {
+      "en": "The head of the executive branch of the U.S. federal government, elected every four years. Commander in Chief of the military.",
+      "zh": "美国联邦政府行政部门的首脑，每四年选举一次。也是军队的总司令。",
+      "es": "El jefe de la rama ejecutiva del gobierno federal de EE. UU., elegido cada cuatro años. Comandante en Jefe de las fuerzas armadas."
+    }
+  },
+  {
+    "id": "glossary-7",
+    "term": {
+      "en": "Vice President",
+      "zh": "副总统",
+      "es": "Vicepresidente"
+    },
+    "definitions": {
+      "en": "The second-highest executive officer of the U.S. government, who presides over the Senate and takes over if the President cannot serve.",
+      "zh": "美国政府的第二高行政官员，主持参议院，若总统无法履职则继任。",
+      "es": "El segundo funcionario ejecutivo más alto del gobierno de EE. UU., que preside el Senado y asume el cargo si el Presidente no puede servir."
+    }
+  },
+  {
+    "id": "glossary-8",
+    "term": {
+      "en": "Senate",
+      "zh": "参议院",
+      "es": "Senado"
+    },
+    "definitions": {
+      "en": "The upper house of the U.S. Congress, with 100 members (2 from each state). Senators are elected for 6 years.",
+      "zh": "美国国会的上议院，有100名成员（每州2名）。参议员任期为6年。",
+      "es": "La cámara alta del Congreso de EE. UU., con 100 miembros (2 de cada estado). Los senadores son elegidos por 6 años."
+    }
+  },
+  {
+    "id": "glossary-9",
+    "term": {
+      "en": "House of Representatives",
+      "zh": "众议院",
+      "es": "Cámara de Representantes"
+    },
+    "definitions": {
+      "en": "The lower house of the U.S. Congress, with 435 members based on population. Representatives are elected for 2 years.",
+      "zh": "美国国会的下议院，有435名成员，根据人口分配。众议员任期为2年。",
+      "es": "La cámara baja del Congreso de EE. UU., con 435 miembros basados en la población. Los representantes son elegidos por 2 años."
+    }
+  },
+  {
+    "id": "glossary-10",
+    "term": {
+      "en": "Declaration of Independence",
+      "zh": "独立宣言",
+      "es": "Declaración de Independencia"
+    },
+    "definitions": {
+      "en": "The document adopted on July 4, 1776, declaring the 13 American colonies independent from Great Britain.",
+      "zh": "1776年7月4日通过的文件，宣布13个美洲殖民地脱离大不列颠独立。",
+      "es": "El documento adoptado el 4 de julio de 1776, que declaró a las 13 colonias americanas independientes de Gran Bretaña."
+    }
+  },
+  {
+    "id": "glossary-11",
+    "term": {
+      "en": "Founding Fathers",
+      "zh": "建国国父",
+      "es": "Padres Fundadores"
+    },
+    "definitions": {
+      "en": "The political leaders who signed the Declaration of Independence or the Constitution, or otherwise participated in the American Revolution.",
+      "zh": "签署独立宣言或宪法，或参与美国革命的政治领袖。",
+      "es": "Los líderes políticos que firmaron la Declaración de Independencia o la Constitución, o participaron de otra manera en la Revolución Americana."
+    }
+  },
+  {
+    "id": "glossary-12",
+    "term": {
+      "en": "Rule of Law",
+      "zh": "法治",
+      "es": "Estado de Derecho"
+    },
+    "definitions": {
+      "en": "The principle that everyone, including government officials, must follow the law.",
+      "zh": "所有人都必须遵守法律的原则，包括政府官员。",
+      "es": "El principio de que todos, incluidos los funcionarios del gobierno, deben seguir la ley."
+    }
+  },
+  {
+    "id": "glossary-13",
+    "term": {
+      "en": "Separation of Powers",
+      "zh": "权力分立",
+      "es": "Separación de Poderes"
+    },
+    "definitions": {
+      "en": "The division of government responsibilities into distinct branches to limit any one branch from exercising the core functions of another.",
+      "zh": "将政府职责划分为不同的部门，以限制任何一个部门行使另一个部门的核心职能。",
+      "es": "La división de las responsabilidades del gobierno en distintas ramas para limitar que una rama ejerza las funciones centrales de otra."
+    }
+  },
+  {
+    "id": "glossary-14",
+    "term": {
+      "en": "Checks and Balances",
+      "zh": "制衡",
+      "es": "Pesos y Contrapesos"
+    },
+    "definitions": {
+      "en": "A system that allows each branch of government to amend or veto acts of another branch so as to prevent any one branch from exerting too much power.",
+      "zh": "允许政府各部门修改或否决其他部门法案的制度，以防止任何一个部门权力过大。",
+      "es": "Un sistema que permite a cada rama del gobierno enmendar o vetar actos de otra rama para evitar que una rama ejerza demasiado poder."
+    }
+  },
+  {
+    "id": "glossary-15",
+    "term": {
+      "en": "Cabinet",
+      "zh": "内阁",
+      "es": "Gabinete"
+    },
+    "definitions": {
+      "en": "A group of advisors to the President, composed of the heads of the executive departments.",
+      "zh": "总统的顾问团，由各行政部门的首长组成。",
+      "es": "Un grupo de asesores del Presidente, compuesto por los jefes de los departamentos ejecutivos."
+    }
+  },
+  {
+    "id": "glossary-16",
+    "term": {
+      "en": "Speaker of the House",
+      "zh": "众议院议长",
+      "es": "Presidente de la Cámara de Representantes"
+    },
+    "definitions": {
+      "en": "The presiding officer of the House of Representatives. Next in line for presidency after the Vice President.",
+      "zh": "众议院的主持官。继副总统之后的总统顺位继承人。",
+      "es": "El oficial que preside la Cámara de Representantes. El siguiente en la línea de sucesión presidencial después del Vicepresidente."
+    }
+  },
+  {
+    "id": "glossary-17",
+    "term": {
+      "en": "Chief Justice",
+      "zh": "首席大法官",
+      "es": "Presidente del Tribunal Supremo"
+    },
+    "definitions": {
+      "en": "The presiding judge in the Supreme Court.",
+      "zh": "最高法院的主持法官。",
+      "es": "El juez que preside el Tribunal Supremo."
+    }
+  },
+  {
+    "id": "glossary-18",
+    "term": {
+      "en": "Governor",
+      "zh": "州长",
+      "es": "Gobernador"
+    },
+    "definitions": {
+      "en": "The elected executive head of a state government.",
+      "zh": "选举产生的州政府行政首长。",
+      "es": "El jefe ejecutivo electo del gobierno de un estado."
+    }
+  },
+  {
+    "id": "glossary-19",
+    "term": {
+      "en": "Capitalism",
+      "zh": "资本主义",
+      "es": "Capitalismo"
+    },
+    "definitions": {
+      "en": "The economic system of the United States based on private ownership and market competition.",
+      "zh": "美国的经济制度，基于私有制和市场竞争。",
+      "es": "El sistema económico de los Estados Unidos basado en la propiedad privada y la competencia de mercado."
+    }
+  },
+  {
+    "id": "glossary-20",
+    "term": {
+      "en": "Federalism",
+      "zh": "联邦制",
+      "es": "Federalismo"
+    },
+    "definitions": {
+      "en": "A system of government where power is divided between a central (federal) government and state governments.",
+      "zh": "一种政府制度，权力在中央（联邦）政府和州政府之间分配。",
+      "es": "Un sistema de gobierno donde el poder se divide entre un gobierno central (federal) y los gobiernos estatales."
+    }
+  },
+  {
+    "id": "glossary-21",
+    "term": {
+      "en": "Citizen",
+      "zh": "公民",
+      "es": "Ciudadano"
+    },
+    "definitions": {
+      "en": "A legally recognized subject or national of a state or commonwealth, either native or naturalized.",
+      "zh": "法律承认的国家国民，包括土生或归化。",
+      "es": "Un sujeto o nacional legalmente reconocido de un estado, ya sea nativo o naturalizado."
+    }
+  },
+  {
+    "id": "glossary-22",
+    "term": {
+      "en": "Oath of Allegiance",
+      "zh": "效忠宣誓",
+      "es": "Juramento de Lealtad"
+    },
+    "definitions": {
+      "en": "A promise to be loyal to the United States and defend the Constitution, taken during the naturalization ceremony.",
+      "zh": "在入籍仪式上宣誓效忠美国并捍卫宪法的承诺。",
+      "es": "Una promesa de ser leal a los Estados Unidos y defender la Constitución, tomada durante la ceremonia de naturalización."
+    }
+  },
+  {
+    "id": "glossary-23",
+    "term": {
+      "en": "Voting",
+      "zh": "投票",
+      "es": "Votar"
+    },
+    "definitions": {
+      "en": "A civic responsibility and right of citizens to choose their leaders.",
+      "zh": "公民选择领导人的公民责任和权利。",
+      "es": "Una responsabilidad cívica y un derecho de los ciudadanos de elegir a sus líderes."
+    }
+  },
+  {
+    "id": "glossary-24",
+    "term": {
+      "en": "Selective Service",
+      "zh": "兵役登记制度",
+      "es": "Servicio Selectivo"
+    },
+    "definitions": {
+      "en": "The system used in the United States to register men (ages 18-26) for potential military draft.",
+      "zh": "美国用于登记男性（18-26岁）以备潜在征兵的系统。",
+      "es": "El sistema utilizado en los Estados Unidos para registrar a los hombres (de 18 a 26 años) para un posible reclutamiento militar."
+    }
+  },
+  {
+    "id": "glossary-25",
+    "term": {
+      "en": "Civil War",
+      "zh": "南北战争 (内战)",
+      "es": "Guerra Civil"
+    },
+    "definitions": {
+      "en": "The war between the North (Union) and the South (Confederacy) in the U.S. from 1861 to 1865.",
+      "zh": "1861年至1865年间美国北方（联邦）与南方（邦联）之间的战争。",
+      "es": "La guerra entre el Norte (Unión) y el Sur (Confederación) en los EE. UU. de 1861 a 1865."
+    }
+  },
+  {
+    "id": "glossary-26",
+    "term": {
+      "en": "Emancipation Proclamation",
+      "zh": "解放奴隶宣言",
+      "es": "Proclamación de Emancipación"
+    },
+    "definitions": {
+      "en": "An order issued by Abraham Lincoln freeing slaves in the Confederate states.",
+      "zh": "亚伯拉罕·林肯颁布的命令，解放邦联各州的奴隶。",
+      "es": "Una orden emitida por Abraham Lincoln que liberaba a los esclavos en los estados confederados."
+    }
+  },
+  {
+    "id": "glossary-27",
+    "term": {
+      "en": "Civil Rights Movement",
+      "zh": "民权运动",
+      "es": "Movimiento de Derechos Civiles"
+    },
+    "definitions": {
+      "en": "A movement to end racial discrimination and ensure equal rights for all citizens, especially African Americans.",
+      "zh": "旨在结束种族歧视并确保所有公民（特别是非裔美国人）享有平等权利的运动。",
+      "es": "Un movimiento para poner fin a la discriminación racial y garantizar la igualdad de derechos para todos los ciudadanos."
+    }
+  },
+  {
+    "id": "glossary-28",
+    "term": {
+      "en": "The Star-Spangled Banner",
+      "zh": "星条旗之歌 (美国国歌)",
+      "es": "La Bandera de Estrellas y Franjas"
+    },
+    "definitions": {
+      "en": "The national anthem of the United States.",
+      "zh": "美国的国歌。",
+      "es": "El himno nacional de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-29",
+    "term": {
+      "en": "Pledge of Allegiance",
+      "zh": "效忠誓词",
+      "es": "Juramento a la Bandera"
+    },
+    "definitions": {
+      "en": "A declaration of loyalty to the flag and the republic of the United States.",
+      "zh": "对美国国旗和共和国表示效忠的宣言。",
+      "es": "Una declaración de lealtad a la bandera y a la república de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-30",
+    "term": {
+      "en": "Freedom of Religion",
+      "zh": "宗教自由",
+      "es": "Libertad de Religión"
+    },
+    "definitions": {
+      "en": "You can practice any religion, or not practice a religion.",
+      "zh": "你可以信仰任何宗教，也可以不信仰任何宗教。",
+      "es": "Puedes practicar cualquier religión, o no practicar ninguna religión."
+    }
+  },
+  {
+    "id": "glossary-31",
+    "term": {
+      "en": "Market Economy",
+      "zh": "市场经济",
+      "es": "Economía de Mercado"
+    },
+    "definitions": {
+      "en": "An economic system in which production and prices are determined by unrestricted competition between privately owned businesses.",
+      "zh": "一种经济体制，生产和价格由私营企业之间的自由竞争决定。",
+      "es": "Un sistema económico en el que la producción y los precios se determinan por la competencia sin restricciones entre empresas privadas."
+    }
+  },
+  {
+    "id": "glossary-32",
+    "term": {
+      "en": "Terrorism",
+      "zh": "恐怖主义",
+      "es": "Terrorismo"
+    },
+    "definitions": {
+      "en": "The unlawful use of violence and intimidation, especially against civilians, in the pursuit of political aims (e.g., September 11, 2001 attacks).",
+      "zh": "非法使用暴力和恐吓，特别是针对平民，以追求政治目标（例如2001年9月11日的袭击）。",
+      "es": "El uso ilegal de la violencia y la intimidación, especialmente contra civiles, en la búsqueda de objetivos políticos."
+    }
+  },
+  {
+    "id": "glossary-33",
+    "term": {
+      "en": "Native Americans",
+      "zh": "美洲原住民",
+      "es": "Nativos Americanos"
+    },
+    "definitions": {
+      "en": "The indigenous peoples who lived in America before the Europeans arrived.",
+      "zh": "欧洲人到达之前居住在美洲的土著人民。",
+      "es": "Los pueblos indígenas que vivían en América antes de la llegada de los europeos."
+    }
+  },
+  {
+    "id": "glossary-34",
+    "term": {
+      "en": "Colony",
+      "zh": "殖民地",
+      "es": "Colonia"
+    },
+    "definitions": {
+      "en": "An area under the full or partial political control of another country (e.g., the original 13 colonies).",
+      "zh": "处于另一个国家完全或部分政治控制下的地区（例如最初的13个殖民地）。",
+      "es": "Un área bajo el control político total o parcial de otro país (por ejemplo, las 13 colonias originales)."
+    }
+  },
+  {
+    "id": "glossary-35",
+    "term": {
+      "en": "Political Party",
+      "zh": "政党",
+      "es": "Partido Político"
+    },
+    "definitions": {
+      "en": "An organized group of people with similar political aims (e.g., Democratic and Republican parties).",
+      "zh": "具有相似政治目标的有组织的团体（例如民主党和共和党）。",
+      "es": "Un grupo organizado de personas con objetivos políticos similares (por ejemplo, los partidos Demócrata y Republicano)."
+    }
+  },
+  {
+    "id": "glossary-36",
+    "term": {
+      "en": "Democratic Party",
+      "zh": "民主党",
+      "es": "Partido Demócrata"
+    },
+    "definitions": {
+      "en": "One of the two major political parties in the United States.",
+      "zh": "美国两大主要政党之一。",
+      "es": "Uno de los dos partidos políticos principales en los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-37",
+    "term": {
+      "en": "Republican Party",
+      "zh": "共和党",
+      "es": "Partido Republicano"
+    },
+    "definitions": {
+      "en": "One of the two major political parties in the United States.",
+      "zh": "美国两大主要政党之一。",
+      "es": "Uno de los dos partidos políticos principales en los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-38",
+    "term": {
+      "en": "Jury",
+      "zh": "陪审团",
+      "es": "Jurado"
+    },
+    "definitions": {
+      "en": "A group of citizens sworn to give a verdict in a legal case on the basis of evidence submitted to them in court.",
+      "zh": "一群宣誓根据法庭提交的证据对法律案件作出裁决的公民。",
+      "es": "Un grupo de ciudadanos juramentados para dar un veredicto en un caso legal sobre la base de las pruebas presentadas ante el tribunal."
+    }
+  },
+  {
+    "id": "glossary-39",
+    "term": {
+      "en": "Veto",
+      "zh": "否决",
+      "es": "Veto"
+    },
+    "definitions": {
+      "en": "The power of the President to refuse to approve a bill or joint resolution and thus prevent its enactment into law.",
+      "zh": "总统拒绝批准法案或联合决议，从而阻止其成为法律的权力。",
+      "es": "El poder del Presidente para negarse a aprobar un proyecto de ley o resolución conjunta y así evitar su promulgación como ley."
+    }
+  },
+  {
+    "id": "glossary-40",
+    "term": {
+      "en": "Electoral College",
+      "zh": "选举人团",
+      "es": "Colegio Electoral"
+    },
+    "definitions": {
+      "en": "The group of people chosen from each state and the District of Columbia to formally select the President and Vice President.",
+      "zh": "由各州和哥伦比亚特区选出的人员组成的小组，负责正式选举总统和副总统。",
+      "es": "El grupo de personas elegidas de cada estado y el Distrito de Columbia para seleccionar formalmente al Presidente y al Vicepresidente."
+    }
+  },
+  {
+    "id": "glossary-41",
+    "term": {
+      "en": "Naturalization",
+      "zh": "归化 (入籍)",
+      "es": "Naturalización"
+    },
+    "definitions": {
+      "en": "The legal process by which a non-citizen in a country may acquire citizenship or nationality of that country.",
+      "zh": "非该国公民获得该国公民身份或国籍的法律程序。",
+      "es": "El proceso legal mediante el cual un no ciudadano en un país puede adquirir la ciudadanía o nacionalidad de ese país."
+    }
+  },
+  {
+    "id": "glossary-42",
+    "term": {
+      "en": "Secretary of State",
+      "zh": "国务卿",
+      "es": "Secretario de Estado"
+    },
+    "definitions": {
+      "en": "The head of the State Department, responsible for foreign affairs.",
+      "zh": "国务院首长，负责外交事务。",
+      "es": "El jefe del Departamento de Estado, responsable de los asuntos exteriores."
+    }
+  },
+  {
+    "id": "glossary-43",
+    "term": {
+      "en": "Attorney General",
+      "zh": "司法部长",
+      "es": "Fiscal General"
+    },
+    "definitions": {
+      "en": "The head of the Department of Justice and chief law enforcement officer of the federal government.",
+      "zh": "司法部首长，联邦政府的首席执法官员。",
+      "es": "El jefe del Departamento de Justicia y principal funcionario encargado de hacer cumplir la ley del gobierno federal."
+    }
+  },
+  {
+    "id": "glossary-44",
+    "term": {
+      "en": "Legislative Branch",
+      "zh": "立法部门",
+      "es": "Rama Legislativa"
+    },
+    "definitions": {
+      "en": "The branch of government that makes laws (Congress).",
+      "zh": "制定法律的政府部门（国会）。",
+      "es": "La rama del gobierno que hace las leyes (Congreso)."
+    }
+  },
+  {
+    "id": "glossary-45",
+    "term": {
+      "en": "Executive Branch",
+      "zh": "行政部门",
+      "es": "Rama Ejecutiva"
+    },
+    "definitions": {
+      "en": "The branch of government that enforces laws (President, Vice President, Cabinet).",
+      "zh": "执行法律的政府部门（总统、副总统、内阁）。",
+      "es": "La rama del gobierno que hace cumplir las leyes (Presidente, Vicepresidente, Gabinete)."
+    }
+  },
+  {
+    "id": "glossary-46",
+    "term": {
+      "en": "Judicial Branch",
+      "zh": "司法部门",
+      "es": "Rama Judicial"
+    },
+    "definitions": {
+      "en": "The branch of government that interprets laws (Supreme Court and other courts).",
+      "zh": "解释法律的政府部门（最高法院和其他法院）。",
+      "es": "La rama del gobierno que interpreta las leyes (Corte Suprema y otros tribunales)."
+    }
+  },
+  {
+    "id": "glossary-47",
+    "term": {
+      "en": "Freedom of Speech",
+      "zh": "言论自由",
+      "es": "Libertad de Expresión"
+    },
+    "definitions": {
+      "en": "The right to express any opinions without censorship, restraint, or legal penalty.",
+      "zh": "在不受审查、限制或法律惩罚的情况下发表任何意见的权利。",
+      "es": "El derecho a expresar cualquier opinión sin censura, restricción o sanción legal."
+    }
+  },
+  {
+    "id": "glossary-48",
+    "term": {
+      "en": "Right to Bear Arms",
+      "zh": "持有武器的权利",
+      "es": "Derecho a Portar Armas"
+    },
+    "definitions": {
+      "en": "The right to own weapons for protection, guaranteed by the Second Amendment.",
+      "zh": "拥有武器以进行自卫的权利，由第二修正案保障。",
+      "es": "El derecho a poseer armas para protección, garantizado por la Segunda Enmienda."
+    }
+  },
+  {
+    "id": "glossary-49",
+    "term": {
+      "en": "Income Tax",
+      "zh": "所得税",
+      "es": "Impuesto sobre la Renta"
+    },
+    "definitions": {
+      "en": "Tax levied by a government directly on income, especially an annual tax on personal income.",
+      "zh": "政府直接对收入征收的税，特别是对个人收入征收的年度税。",
+      "es": "Impuesto recaudado por un gobierno directamente sobre los ingresos, especialmente un impuesto anual sobre los ingresos personales."
+    }
+  },
+  {
+    "id": "glossary-50",
+    "term": {
+      "en": "Tax Day",
+      "zh": "报税日",
+      "es": "Día de los Impuestos"
+    },
+    "definitions": {
+      "en": "The last day you can send in your federal income tax forms (April 15).",
+      "zh": "你可以提交联邦所得税表的最后一天（4月15日）。",
+      "es": "El último día en que puede enviar sus formularios de impuestos federales sobre la renta (15 de abril)."
+    }
+  },
+  {
+    "id": "glossary-51",
+    "term": {
+      "en": "Statue of Liberty",
+      "zh": "自由女神像",
+      "es": "Estatua de la Libertad"
+    },
+    "definitions": {
+      "en": "A famous monument in New York Harbor that symbolizes freedom.",
+      "zh": "位于纽约港的著名纪念碑，象征着自由。",
+      "es": "Un monumento famoso en el puerto de Nueva York que simboliza la libertad."
+    }
+  },
+  {
+    "id": "glossary-52",
+    "term": {
+      "en": "Independence Day",
+      "zh": "独立日",
+      "es": "Día de la Independencia"
+    },
+    "definitions": {
+      "en": "A holiday celebrated on July 4th to mark the anniversary of the Declaration of Independence.",
+      "zh": "在7月4日庆祝的节日，以纪念独立宣言的发表。",
+      "es": "Un día festivo celebrado el 4 de julio para conmemorar el aniversario de la Declaración de Independencia."
+    }
+  },
+  {
+    "id": "glossary-53",
+    "term": {
+      "en": "Thanksgiving",
+      "zh": "感恩节",
+      "es": "Acción de Gracias"
+    },
+    "definitions": {
+      "en": "A national holiday celebrated in November.",
+      "zh": "在十一月庆祝的全国性节日。",
+      "es": "Un día festivo nacional celebrado en noviembre."
+    }
+  },
+  {
+    "id": "glossary-54",
+    "term": {
+      "en": "Martin Luther King, Jr.",
+      "zh": "马丁·路德·金",
+      "es": "Martin Luther King, Jr."
+    },
+    "definitions": {
+      "en": "A civil rights leader who fought for racial equality.",
+      "zh": "为种族平等而战的民权领袖。",
+      "es": "Un líder de los derechos civiles que luchó por la igualdad racial."
+    }
+  },
+  {
+    "id": "glossary-55",
+    "term": {
+      "en": "George Washington",
+      "zh": "乔治·华盛顿",
+      "es": "George Washington"
+    },
+    "definitions": {
+      "en": "The first President of the United States. Often called the 'Father of Our Country'.",
+      "zh": "美国第一任总统。常被称为“国父”。",
+      "es": "El primer presidente de los Estados Unidos. A menudo llamado el 'Padre de Nuestra Patria'."
+    }
+  },
+  {
+    "id": "glossary-56",
+    "term": {
+      "en": "Abraham Lincoln",
+      "zh": "亚伯拉罕·林肯",
+      "es": "Abraham Lincoln"
+    },
+    "definitions": {
+      "en": "President during the Civil War who issued the Emancipation Proclamation.",
+      "zh": "内战时期的总统，颁布了解放奴隶宣言。",
+      "es": "Presidente durante la Guerra Civil que emitió la Proclamación de Emancipación."
+    }
+  },
+  {
+    "id": "glossary-57",
+    "term": {
+      "en": "Franklin D. Roosevelt",
+      "zh": "富兰克林·罗斯福",
+      "es": "Franklin D. Roosevelt"
+    },
+    "definitions": {
+      "en": "President during the Great Depression and World War II.",
+      "zh": "大萧条和第二次世界大战期间的总统。",
+      "es": "Presidente durante la Gran Depresión y la Segunda Guerra Mundial."
+    }
+  },
+  {
+    "id": "glossary-58",
+    "term": {
+      "en": "Cold War",
+      "zh": "冷战",
+      "es": "Guerra Fría"
+    },
+    "definitions": {
+      "en": "The period of political tension between the United States and the Soviet Union after World War II.",
+      "zh": "二战后美国与苏联之间政治紧张的时期。",
+      "es": "El período de tensión política entre los Estados Unidos y la Unión Soviética después de la Segunda Guerra Mundial."
+    }
+  },
+  {
+    "id": "glossary-59",
+    "term": {
+      "en": "Communism",
+      "zh": "共产主义",
+      "es": "Comunismo"
+    },
+    "definitions": {
+      "en": "A political and economic system where the government owns all property (the main concern of the U.S. during the Cold War).",
+      "zh": "一种政治和经济制度，政府拥有所有财产（这是美国冷战期间主要关注的问题）。",
+      "es": "Un sistema político y económico donde el gobierno posee toda la propiedad (la principal preocupación de EE. UU. durante la Guerra Fría)."
+    }
+  },
+  {
+    "id": "glossary-60",
+    "term": {
+      "en": "September 11, 2001",
+      "zh": "2001年9月11日",
+      "es": "11 de septiembre de 2001"
+    },
+    "definitions": {
+      "en": "The date of major terrorist attacks on the United States.",
+      "zh": "美国遭受重大恐怖袭击的日期。",
+      "es": "La fecha de importantes ataques terroristas en los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-61",
+    "term": {
+      "en": "Atlantic Ocean",
+      "zh": "大西洋",
+      "es": "Océano Atlántico"
+    },
+    "definitions": {
+      "en": "The ocean on the East Coast of the United States.",
+      "zh": "美国东海岸的海洋。",
+      "es": "El océano en la costa este de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-62",
+    "term": {
+      "en": "Pacific Ocean",
+      "zh": "太平洋",
+      "es": "Océano Pacífico"
+    },
+    "definitions": {
+      "en": "The ocean on the West Coast of the United States.",
+      "zh": "美国西海岸的海洋。",
+      "es": "El océano en la costa oeste de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-63",
+    "term": {
+      "en": "Mississippi River",
+      "zh": "密西西比河",
+      "es": "Río Misisipi"
+    },
+    "definitions": {
+      "en": "One of the two longest rivers in the United States.",
+      "zh": "美国最长的两条河流之一。",
+      "es": "Uno de los dos ríos más largos de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-64",
+    "term": {
+      "en": "Territory",
+      "zh": "领地 (属地)",
+      "es": "Territorio"
+    },
+    "definitions": {
+      "en": "An area of land under the jurisdiction of a ruler or state (e.g., Puerto Rico, Guam).",
+      "zh": "处于统治者或国家管辖下的土地区域（例如波多黎各、关岛）。",
+      "es": "Un área de tierra bajo la jurisdicción de un gobernante o estado (por ejemplo, Puerto Rico, Guam)."
+    }
+  },
+  {
+    "id": "glossary-65",
+    "term": {
+      "en": "Capital",
+      "zh": "首都",
+      "es": "Capital"
+    },
+    "definitions": {
+      "en": "The city where the government of a country or state is located (Washington, D.C.).",
+      "zh": "国家或州政府所在地（华盛顿特区）。",
+      "es": "La ciudad donde se encuentra el gobierno de un país o estado (Washington, D.C.)."
+    }
+  },
+  {
+    "id": "glossary-66",
+    "term": {
+      "en": "Star-Spangled Banner",
+      "zh": "星条旗",
+      "es": "Bandera de Estrellas y Franjas"
+    },
+    "definitions": {
+      "en": "The national anthem of the United States.",
+      "zh": "美国的国歌。",
+      "es": "El himno nacional de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-67",
+    "term": {
+      "en": "The Federalist Papers",
+      "zh": "联邦党人文集",
+      "es": "Los Papeles Federalistas"
+    },
+    "definitions": {
+      "en": "Essays written to support the passage of the U.S. Constitution (Authors: Hamilton, Madison, Jay).",
+      "zh": "为支持通过美国宪法而撰写的文章（作者：汉密尔顿、麦迪逊、杰伊）。",
+      "es": "Ensayos escritos para apoyar la aprobación de la Constitución de los EE. UU. (Autores: Hamilton, Madison, Jay)."
+    }
+  },
+  {
+    "id": "glossary-68",
+    "term": {
+      "en": "Benjamin Franklin",
+      "zh": "本杰明·富兰克林",
+      "es": "Benjamin Franklin"
+    },
+    "definitions": {
+      "en": "Famous U.S. diplomat, oldest member of the Constitutional Convention, and writer of 'Poor Richard's Almanac'.",
+      "zh": "著名的美国外交官，制宪会议最年长的成员，以及《穷理查年鉴》的作者。",
+      "es": "Famoso diplomático de EE. UU., miembro de mayor edad de la Convención Constitucional y autor del 'Almanaque del Pobre Richard'."
+    }
+  },
+  {
+    "id": "glossary-69",
+    "term": {
+      "en": "Thomas Jefferson",
+      "zh": "托马斯·杰斐逊",
+      "es": "Thomas Jefferson"
+    },
+    "definitions": {
+      "en": "Writer of the Declaration of Independence and the third President of the United States.",
+      "zh": "独立宣言的作者，美国第三任总统。",
+      "es": "Autor de la Declaración de Independencia y tercer presidente de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-70",
+    "term": {
+      "en": "James Madison",
+      "zh": "詹姆斯·麦迪逊",
+      "es": "James Madison"
+    },
+    "definitions": {
+      "en": "One of the authors of the Federalist Papers, known as the 'Father of the Constitution'.",
+      "zh": "联邦党人文集的作者之一，被称为“宪法之父”。",
+      "es": "Uno de los autores de los Papeles Federalistas, conocido como el 'Padre de la Constitución'."
+    }
+  },
+  {
+    "id": "glossary-71",
+    "term": {
+      "en": "Alexander Hamilton",
+      "zh": "亚历山大·汉密尔顿",
+      "es": "Alexander Hamilton"
+    },
+    "definitions": {
+      "en": "First Secretary of the Treasury and one of the authors of the Federalist Papers.",
+      "zh": "第一任财政部长，联邦党人文集的作者之一。",
+      "es": "Primer Secretario del Tesoro y uno de los autores de los Papeles Federalistas."
+    }
+  },
+  {
+    "id": "glossary-72",
+    "term": {
+      "en": "Louisiana Purchase",
+      "zh": "路易斯安那购地",
+      "es": "Compra de Luisiana"
+    },
+    "definitions": {
+      "en": "Territory purchased from France in 1803 that doubled the size of the United States.",
+      "zh": "1803年从法国购买的领土，使美国领土面积扩大了一倍。",
+      "es": "Territorio comprado a Francia en 1803 que duplicó el tamaño de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-73",
+    "term": {
+      "en": "Susan B. Anthony",
+      "zh": "苏珊·B·安东尼",
+      "es": "Susan B. Anthony"
+    },
+    "definitions": {
+      "en": "A leader of the women's suffrage movement who fought for women's rights.",
+      "zh": "妇女选举权运动的领袖，为妇女权利而战。",
+      "es": "Una líder del movimiento por el sufragio femenino que luchó por los derechos de las mujeres."
+    }
+  },
+  {
+    "id": "glossary-74",
+    "term": {
+      "en": "Woodrow Wilson",
+      "zh": "伍德罗·威尔逊",
+      "es": "Woodrow Wilson"
+    },
+    "definitions": {
+      "en": "President during World War I.",
+      "zh": "第一次世界大战期间的总统。",
+      "es": "Presidente durante la Primera Guerra Mundial."
+    }
+  },
+  {
+    "id": "glossary-75",
+    "term": {
+      "en": "Dwight D. Eisenhower",
+      "zh": "德怀特·D·艾森豪威尔",
+      "es": "Dwight D. Eisenhower"
+    },
+    "definitions": {
+      "en": "Supreme Commander in World War II and later President of the United States.",
+      "zh": "二战期间的最高指挥官，后来成为美国总统。",
+      "es": "Comandante Supremo en la Segunda Guerra Mundial y luego Presidente de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-76",
+    "term": {
+      "en": "World War I",
+      "zh": "第一次世界大战",
+      "es": "Primera Guerra Mundial"
+    },
+    "definitions": {
+      "en": "A war fought from 1914 to 1918. The U.S. entered in 1917.",
+      "zh": "1914年至1918年进行的战争。美国于1917年参战。",
+      "es": "Una guerra librada de 1914 a 1918. EE. UU. entró en 1917."
+    }
+  },
+  {
+    "id": "glossary-77",
+    "term": {
+      "en": "World War II",
+      "zh": "第二次世界大战",
+      "es": "Segunda Guerra Mundial"
+    },
+    "definitions": {
+      "en": "A global war fought from 1939 to 1945. The U.S. fought against Japan, Germany, and Italy.",
+      "zh": "1939年至1945年进行的全球战争。美国对抗日本、德国和意大利。",
+      "es": "Una guerra global librada de 1939 a 1945. EE. UU. luchó contra Japón, Alemania e Italia."
+    }
+  },
+  {
+    "id": "glossary-78",
+    "term": {
+      "en": "Korean War",
+      "zh": "朝鲜战争 (韩战)",
+      "es": "Guerra de Corea"
+    },
+    "definitions": {
+      "en": "A war fought in the 1950s against the spread of communism in Korea.",
+      "zh": "1950年代为对抗共产主义在朝鲜的蔓延而进行的战争。",
+      "es": "Una guerra librada en la década de 1950 contra la expansión del comunismo en Corea."
+    }
+  },
+  {
+    "id": "glossary-79",
+    "term": {
+      "en": "Vietnam War",
+      "zh": "越南战争",
+      "es": "Guerra de Vietnam"
+    },
+    "definitions": {
+      "en": "A war fought in the 1960s and 70s to stop the spread of communism in Vietnam.",
+      "zh": "1960年代和70年代为阻止共产主义在越南蔓延而进行的战争。",
+      "es": "Una guerra librada en las décadas de 1960 y 1970 para detener la expansión del comunismo en Vietnam."
+    }
+  },
+  {
+    "id": "glossary-80",
+    "term": {
+      "en": "Missouri River",
+      "zh": "密苏里河",
+      "es": "Río Misuri"
+    },
+    "definitions": {
+      "en": "The longest river in the United States.",
+      "zh": "美国最长的河流。",
+      "es": "El río más largo de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-81",
+    "term": {
+      "en": "Great Lakes",
+      "zh": "五大湖",
+      "es": "Grandes Lagos"
+    },
+    "definitions": {
+      "en": "A group of five large lakes on the border between the U.S. and Canada.",
+      "zh": "位于美国和加拿大边境的五个大湖群。",
+      "es": "Un grupo de cinco grandes lagos en la frontera entre EE. UU. y Canadá."
+    }
+  },
+  {
+    "id": "glossary-82",
+    "term": {
+      "en": "Canada",
+      "zh": "加拿大",
+      "es": "Canadá"
+    },
+    "definitions": {
+      "en": "The country to the north of the United States.",
+      "zh": "位于美国北部的国家。",
+      "es": "El país al norte de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-83",
+    "term": {
+      "en": "Mexico",
+      "zh": "墨西哥",
+      "es": "México"
+    },
+    "definitions": {
+      "en": "The country to the south of the United States.",
+      "zh": "位于美国南部的国家。",
+      "es": "El país al sur de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-84",
+    "term": {
+      "en": "Memorial Day",
+      "zh": "阵亡将士纪念日",
+      "es": "Día de los Caídos"
+    },
+    "definitions": {
+      "en": "A holiday honoring soldiers who died in military service (observed in May).",
+      "zh": "纪念在服兵役期间牺牲的士兵的节日（五月纪念）。",
+      "es": "Un día festivo en honor a los soldados que murieron en el servicio militar (observado en mayo)."
+    }
+  },
+  {
+    "id": "glossary-85",
+    "term": {
+      "en": "Veterans Day",
+      "zh": "退伍军人节",
+      "es": "Día de los Veteranos"
+    },
+    "definitions": {
+      "en": "A holiday honoring all who have served in the U.S. military (observed in November).",
+      "zh": "纪念所有在美国军队服役过的人员的节日（十一月纪念）。",
+      "es": "Un día festivo en honor a todos los que han servido en el ejército de los EE. UU. (observado en noviembre)."
+    }
+  },
+  {
+    "id": "glossary-86",
+    "term": {
+      "en": "Labor Day",
+      "zh": "劳动节",
+      "es": "Día del Trabajo"
+    },
+    "definitions": {
+      "en": "A holiday celebrating the contributions of workers (observed in September).",
+      "zh": "庆祝劳动者贡献的节日（九月纪念）。",
+      "es": "Un día festivo que celebra las contribuciones de los trabajadores (observado en septiembre)."
+    }
+  },
+  {
+    "id": "glossary-87",
+    "term": {
+      "en": "Columbus Day",
+      "zh": "哥伦布日",
+      "es": "Día de la Raza"
+    },
+    "definitions": {
+      "en": "A national holiday celebrating Christopher Columbus's arrival in the Americas.",
+      "zh": "庆祝克里斯托弗·哥伦布抵达美洲的全国性节日。",
+      "es": "Un día festivo nacional que celebra la llegada de Cristóbal Colón a las Américas."
+    }
+  },
+  {
+    "id": "glossary-88",
+    "term": {
+      "en": "Presidents' Day",
+      "zh": "总统日",
+      "es": "Día de los Presidentes"
+    },
+    "definitions": {
+      "en": "A holiday honoring George Washington and Abraham Lincoln, and other presidents.",
+      "zh": "纪念乔治·华盛顿、亚伯拉罕·林肯和其他总统的节日。",
+      "es": "Un día festivo en honor a George Washington y Abraham Lincoln, y otros presidentes."
+    }
+  },
+  {
+    "id": "glossary-89",
+    "term": {
+      "en": "Freedom of Assembly",
+      "zh": "集会自由",
+      "es": "Libertad de Reunión"
+    },
+    "definitions": {
+      "en": "The right to gather peacefully in groups.",
+      "zh": "和平集会的权利。",
+      "es": "El derecho a reunirse pacíficamente en grupos."
+    }
+  },
+  {
+    "id": "glossary-90",
+    "term": {
+      "en": "Freedom of the Press",
+      "zh": "新闻自由",
+      "es": "Libertad de Prensa"
+    },
+    "definitions": {
+      "en": "The right to publish information and opinions without government censorship.",
+      "zh": "在不受政府审查的情况下发布信息和意见的权利。",
+      "es": "El derecho a publicar información y opiniones sin censura del gobierno."
+    }
+  },
+  {
+    "id": "glossary-91",
+    "term": {
+      "en": "Constitutional Convention",
+      "zh": "制宪会议",
+      "es": "Convención Constitucional"
+    },
+    "definitions": {
+      "en": "The meeting held in 1787 where the U.S. Constitution was written.",
+      "zh": "1787年举行的会议，会上起草了美国宪法。",
+      "es": "La reunión celebrada en 1787 donde se redactó la Constitución de los EE. UU."
+    }
+  },
+  {
+    "id": "glossary-92",
+    "term": {
+      "en": "The Great Depression",
+      "zh": "经济大萧条",
+      "es": "La Gran Depresión"
+    },
+    "definitions": {
+      "en": "The severe worldwide economic downturn that took place mostly during the 1930s.",
+      "zh": "主要发生在1930年代的严重全球经济衰退。",
+      "es": "La grave recesión económica mundial que tuvo lugar principalmente durante la década de 1930."
+    }
+  },
+  {
+    "id": "glossary-93",
+    "term": {
+      "en": "Cherokee",
+      "zh": "切罗基族",
+      "es": "Cheroqui"
+    },
+    "definitions": {
+      "en": "One of the major American Indian tribes in the United States.",
+      "zh": "美国主要的印第安部落之一。",
+      "es": "Una de las principales tribus de indios americanos en los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-94",
+    "term": {
+      "en": "Cabinet Positions",
+      "zh": "内阁职位",
+      "es": "Cargos del Gabinete"
+    },
+    "definitions": {
+      "en": "Roles such as Secretary of State, Education, Defense, Energy, etc., that advise the President.",
+      "zh": "如国务卿、教育部、国防部、能源部部长等职位，负责向总统提供建议。",
+      "es": "Roles como Secretario de Estado, Educación, Defensa, Energía, etc., que asesoran al Presidente."
+    }
+  },
+  {
+    "id": "glossary-95",
+    "term": {
+      "en": "Amendments (Rights)",
+      "zh": "修正案 (权利)",
+      "es": "Enmiendas (Derechos)"
+    },
+    "definitions": {
+      "en": "Changes to the Constitution that grant rights like voting at age 18, women's suffrage, etc.",
+      "zh": "宪法的变更，赋予如18岁投票权、妇女选举权等权利。",
+      "es": "Cambios a la Constitución que otorgan derechos como votar a los 18 años, sufragio femenino, etc."
+    }
+  },
+  {
+    "id": "glossary-96",
+    "term": {
+      "en": "The Bill of Rights",
+      "zh": "权利法案",
+      "es": "La Carta de Derechos"
+    },
+    "definitions": {
+      "en": "The first ten amendments to the Constitution that guarantee certain rights and freedoms.",
+      "zh": "美国宪法的前十条修正案，保障某些权利和自由。",
+      "es": "Las primeras diez enmiendas a la Constitución que garantizan ciertos derechos y libertades."
+    }
+    },
+    {
+    "id": "glossary-96",
+    "term": {
+      "en": "19th Amendment",
+      "zh": "第19修正案",
+      "es": "Enmienda 19"
+    },
+    "definitions": {
+      "en": "Gave women the right to vote (1920).",
+      "zh": "赋予妇女投票权（1920年）。",
+      "es": "Otorgó a las mujeres el derecho al voto (1920)."
+    }
+  },
+  {
+    "id": "glossary-97",
+    "term": {
+      "en": "26th Amendment",
+      "zh": "第26修正案",
+      "es": "Enmienda 26"
+    },
+    "definitions": {
+      "en": "Lowered the voting age from 21 to 18.",
+      "zh": "将投票年龄从21岁降低到18岁。",
+      "es": "Redujo la edad para votar de 21 a 18 años."
+    }
+  },
+  {
+    "id": "glossary-98",
+    "term": {
+      "en": "15th Amendment",
+      "zh": "第15修正案",
+      "es": "Enmienda 15"
+    },
+    "definitions": {
+      "en": "Stated that no citizen can be denied the right to vote because of race or color.",
+      "zh": "规定任何公民不得因种族或肤色被剥夺投票权。",
+      "es": "Declaró que a ningún ciudadano se le puede negar el derecho al voto por motivos de raza o color."
+    }
+  },
+  {
+    "id": "glossary-99",
+    "term": {
+      "en": "24th Amendment",
+      "zh": "第24修正案",
+      "es": "Enmienda 24"
+    },
+    "definitions": {
+      "en": "Abolished poll taxes (paying money to vote) in federal elections.",
+      "zh": "在联邦选举中废除了人头税（投票需付费的制度）。",
+      "es": "Abolió los impuestos electorales (pagar dinero para votar) en las elecciones federales."
+    }
+  },
+  {
+    "id": "glossary-100",
+    "term": {
+      "en": "Federal Powers",
+      "zh": "联邦权力",
+      "es": "Poderes Federales"
+    },
+    "definitions": {
+      "en": "Powers belonging to the federal government, such as printing money, declaring war, and creating an army.",
+      "zh": "属于联邦政府的权力，如印制钞票、宣战和建立军队。",
+      "es": "Poderes pertenecientes al gobierno federal, como imprimir dinero, declarar la guerra y crear un ejército."
+    }
+  },
+  {
+    "id": "glossary-101",
+    "term": {
+      "en": "State Powers",
+      "zh": "州权力",
+      "es": "Poderes Estatales"
+    },
+    "definitions": {
+      "en": "Powers belonging to the states, such as providing schooling, police protection, and issuing driver's licenses.",
+      "zh": "属于各州的权力，如提供教育、警察保护和签发驾驶执照。",
+      "es": "Poderes pertenecientes a los estados, como proporcionar educación, protección policial y emitir licencias de conducir."
+    }
+  },
+  {
+    "id": "glossary-102",
+    "term": {
+      "en": "We the People",
+      "zh": "我们人民",
+      "es": "Nosotros el Pueblo"
+    },
+    "definitions": {
+      "en": "The first three words of the Constitution, establishing the idea of self-government.",
+      "zh": "宪法的前三个词，确立了自治的理念。",
+      "es": "Las tres primeras palabras de la Constitución, estableciendo la idea de autogobierno."
+    }
+  },
+  {
+    "id": "glossary-103",
+    "term": {
+      "en": "The Stars (Flag)",
+      "zh": "国旗上的星星",
+      "es": "Las Estrellas (Bandera)"
+    },
+    "definitions": {
+      "en": "There are 50 stars on the flag, representing the 50 states.",
+      "zh": "国旗上有50颗星，代表50个州。",
+      "es": "Hay 50 estrellas en la bandera, que representan los 50 estados."
+    }
+  },
+  {
+    "id": "glossary-104",
+    "term": {
+      "en": "The Stripes (Flag)",
+      "zh": "国旗上的条纹",
+      "es": "Las Franjas (Bandera)"
+    },
+    "definitions": {
+      "en": "There are 13 stripes on the flag, representing the original 13 colonies.",
+      "zh": "国旗上有13条条纹，代表最初的13个殖民地。",
+      "es": "Hay 13 franjas en la bandera, que representan las 13 colonias originales."
+    }
+  },
+  {
+    "id": "glossary-105",
+    "term": {
+      "en": "White House",
+      "zh": "白宫",
+      "es": "Casa Blanca"
+    },
+    "definitions": {
+      "en": "The official residence and workplace of the President, located in Washington, D.C.",
+      "zh": "总统的官邸和办公地点，位于华盛顿特区。",
+      "es": "La residencia oficial y lugar de trabajo del Presidente, ubicada en Washington, D.C."
+    }
+  },
+  {
+    "id": "glossary-106",
+    "term": {
+      "en": "Washington, D.C.",
+      "zh": "华盛顿哥伦比亚特区",
+      "es": "Washington, D.C."
+    },
+    "definitions": {
+      "en": "The capital of the United States. D.C. stands for District of Columbia.",
+      "zh": "美国的首都。D.C.代表哥伦比亚特区。",
+      "es": "La capital de los Estados Unidos. D.C. significa Distrito de Columbia."
+    }
+  },
+  {
+    "id": "glossary-107",
+    "term": {
+      "en": "In God We Trust",
+      "zh": "我们信仰上帝",
+      "es": "En Dios Confiamos"
+    },
+    "definitions": {
+      "en": "The official motto of the United States.",
+      "zh": "美国的官方座右铭（格言）。",
+      "es": "El lema oficial de los Estados Unidos."
+    }
+  },
+  {
+    "id": "glossary-108",
+    "term": {
+      "en": "Liberty Bell",
+      "zh": "自由钟",
+      "es": "Campana de la Libertad"
+    },
+    "definitions": {
+      "en": "A symbol of American independence, located in Philadelphia.",
+      "zh": "美国独立的象征，位于费城。",
+      "es": "Un símbolo de la independencia estadounidense, ubicado en Filadelfia."
+    }
+  },
+  {
+    "id": "glossary-109",
+    "term": {
+      "en": "Axis Powers",
+      "zh": "轴心国",
+      "es": "Potencias del Eje"
+    },
+    "definitions": {
+      "en": "The alliance of Germany, Italy, and Japan during World War II.",
+      "zh": "二战期间德国、意大利和日本的联盟。",
+      "es": "La alianza de Alemania, Italia y Japón durante la Segunda Guerra Mundial."
+    }
+  },
+  {
+    "id": "glossary-110",
+    "term": {
+      "en": "Rights of Citizens",
+      "zh": "公民的权利 (仅限公民)",
+      "es": "Derechos de los Ciudadanos"
+    },
+    "definitions": {
+      "en": "Rights exclusive to U.S. citizens, such as voting in federal elections and running for federal office.",
+      "zh": "仅限美国公民享有的权利，例如在联邦选举中投票和竞选联邦公职。",
+      "es": "Derechos exclusivos de los ciudadanos estadounidenses, como votar en elecciones federales y postularse para cargos federales."
+    }
+  },
+  {
+    "id": "glossary-111",
+    "term": {
+      "en": "Rights of Everyone",
+      "zh": "所有人的权利 (包括非公民)",
+      "es": "Derechos de Todos"
+    },
+    "definitions": {
+      "en": "Rights that apply to everyone living in the U.S., such as freedom of speech, assembly, and religion.",
+      "zh": "适用于居住在美国的所有人的权利，如言论、集会和宗教自由。",
+      "es": "Derechos que se aplican a todos los que viven en los EE. UU., como la libertad de expresión, reunión y religión."
+    }
+  },
+  {
+    "id": "glossary-112",
+    "term": {
+      "en": "Primary Election",
+      "zh": "初选",
+      "es": "Elección Primaria"
+    },
+    "definitions": {
+      "en": "An election to choose a political party's candidate for an office.",
+      "zh": "选出政党候选人竞选公职的选举。",
+      "es": "Una elección para elegir al candidato de un partido político para un cargo."
+    }
+  },
+  {
+    "id": "glossary-113",
+    "term": {
+      "en": "General Election",
+      "zh": "大选",
+      "es": "Elección General"
+    },
+    "definitions": {
+      "en": "A regular election of candidates for office, as opposed to a primary election (usually held in November).",
+      "zh": "公职候选人的正式选举，有别于初选（通常在11月举行）。",
+      "es": "Una elección regular de candidatos para cargos públicos, a diferencia de una elección primaria (generalmente se celebra en noviembre)."
+    }
+  },
+  {
+    "id": "glossary-114",
+    "term": {
+      "en": "Inauguration",
+      "zh": "就职典礼",
+      "es": "Inauguración"
+    },
+    "definitions": {
+      "en": "The ceremony where the President takes the Oath of Office (January 20th).",
+      "zh": "总统宣誓就职的仪式（1月20日）。",
+      "es": "La ceremonia donde el Presidente toma el Juramento de Cargo (20 de enero)."
+    }
+  },
+  {
+    "id": "glossary-115",
+    "term": {
+      "en": "Democracy",
+      "zh": "民主",
+      "es": "Democracia"
+    },
+    "definitions": {
+      "en": "A system of government by the whole population or all the eligible members of a state, typically through elected representatives.",
+      "zh": "由全体人民或所有符合资格的成员组成的政府制度，通常通过选举产生的代表进行。",
+      "es": "Un sistema de gobierno por toda la población o todos los miembros elegibles de un estado, típicamente a través de representantes elegidos."
+    }
+  },
+  {
+    "id": "glossary-116",
+    "term": {
+      "en": "Bill",
+      "zh": "法案",
+      "es": "Proyecto de ley"
+    },
+    "definitions": {
+      "en": "A proposed law presented to a legislative body for consideration.",
+      "zh": "提交给立法机构审议的拟议法律。",
+      "es": "Una ley propuesta presentada a un cuerpo legislativo para su consideración."
+    }
+  },
+  {
+    "id": "glossary-117",
+    "term": {
+      "en": "Term Limit (President)",
+      "zh": "任期限制 (总统)",
+      "es": "Límite de Mandato (Presidente)"
+    },
+    "definitions": {
+      "en": "The President can only serve two terms (4 years each, max 8 years).",
+      "zh": "总统只能连任两届（每届4年，最多8年）。",
+      "es": "El Presidente solo puede servir dos mandatos (4 años cada uno, máximo 8 años)."
+    }
+  },
+  {
+    "id": "glossary-118",
+    "term": {
+      "en": "States Bordering Mexico",
+      "zh": "与墨西哥接壤的州",
+      "es": "Estados fronterizos con México"
+    },
+    "definitions": {
+      "en": "California, Arizona, New Mexico, Texas.",
+      "zh": "加利福尼亚州、亚利桑那州、新墨西哥州、得克萨斯州。",
+      "es": "California, Arizona, Nuevo México, Texas."
+    }
+  },
+  {
+    "id": "glossary-119",
+    "term": {
+      "en": "States Bordering Canada",
+      "zh": "与加拿大接壤的州",
+      "es": "Estados fronterizos con Canadá"
+    },
+    "definitions": {
+      "en": "Includes Maine, New Hampshire, Vermont, New York, Pennsylvania, Ohio, Michigan, Minnesota, North Dakota, Montana, Idaho, Washington, Alaska.",
+      "zh": "包括缅因州、新罕布什尔州、佛蒙特州、纽约州、宾夕法尼亚州、俄亥俄州、密歇根州、明尼苏达州、北达科他州、蒙大拿州、爱达荷州、华盛顿州、阿拉斯加州。",
+      "es": "Incluye Maine, New Hampshire, Vermont, Nueva York, Pensilvania, Ohio, Michigan, Minnesota, Dakota del Norte, Montana, Idaho, Washington, Alaska."
+    }
+  },
+  {
+    "id": "glossary-120",
+    "term": {
+      "en": "U.S. Territories",
+      "zh": "美国领地",
+      "es": "Territorios de EE. UU."
+    },
+    "definitions": {
+      "en": "Puerto Rico, U.S. Virgin Islands, American Samoa, Northern Mariana Islands, Guam.",
+      "zh": "波多黎各、美属维尔京群岛、美属萨摩亚、北马里亚纳群岛、关岛。",
+      "es": "Puerto Rico, Islas Vírgenes de EE. UU., Samoa Americana, Islas Marianas del Norte, Guam."
+    }
+  },
+  {
+    "id": "glossary-121",
+    "term": {
+      "en": "Suffrage",
+      "zh": "选举权",
+      "es": "Sufragio"
+    },
+    "definitions": {
+      "en": "The right to vote in political elections.",
+      "zh": "在政治选举中投票的权利。",
+      "es": "El derecho a votar en elecciones políticas."
+    }
+  },
+  {
+    "id": "glossary-122",
+    "term": {
+      "en": "Justices of the Supreme Court",
+      "zh": "最高法院大法官 (人数)",
+      "es": "Jueces de la Corte Suprema"
+    },
+    "definitions": {
+      "en": "There are nine (9) justices on the Supreme Court.",
+      "zh": "最高法院共有九（9）名大法官。",
+      "es": "Hay nueve (9) jueces en la Corte Suprema."
+    }
+  },
+  {
+    "id": "glossary-123",
+    "term": {
+      "en": "Life, Liberty, Pursuit of Happiness",
+      "zh": "生命、自由、追求幸福",
+      "es": "Vida, Libertad, Búsqueda de la Felicidad"
+    },
+    "definitions": {
+      "en": "The three unalienable rights listed in the Declaration of Independence.",
+      "zh": "独立宣言中列出的三项不可剥夺的权利。",
+      "es": "Los tres derechos inalienables enumerados en la Declaración de Independencia."
+    }
+  },
+  {
+    "id": "glossary-124",
+    "term": {
+      "en": "Succession (President)",
+      "zh": "继任顺序 (总统)",
+      "es": "Sucesión (Presidente)"
+    },
+    "definitions": {
+      "en": "If the President can no longer serve: 1. Vice President, 2. Speaker of the House.",
+      "zh": "如果总统无法继续履职：1. 副总统，2. 众议院议长。",
+      "es": "Si el Presidente ya no puede servir: 1. Vicepresidente, 2. Presidente de la Cámara de Representantes."
+    }
+  },
+  {
+    "id": "glossary-125",
+    "term": {
+      "en": "Federal Holidays",
+      "zh": "联邦法定假日",
+      "es": "Días Feriados Federales"
+    },
+    "definitions": {
+      "en": "Holidays like New Year’s Day, Martin Luther King, Jr. Day, Presidents’ Day, Memorial Day, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving, Christmas.",
+      "zh": "如元旦、马丁·路德·金纪念日、总统日、阵亡将士纪念日、独立日、劳动节、哥伦布日、退伍军人节、感恩节、圣诞节。",
+      "es": "Días festivos como Año Nuevo, Día de Martin Luther King, Jr., Día de los Presidentes, Día de los Caídos, Día de la Independencia, Día del Trabajo, Día de la Raza, Día de los Veteranos, Acción de Gracias, Navidad."
+    }
+  },
+  {
+    "id": "glossary-126",
+    "term": {
+      "en": "Draft (Military)",
+      "zh": "征兵",
+      "es": "Reclutamiento"
+    },
+    "definitions": {
+      "en": "Mandatory enrollment of individuals into the armed forces (historically used during wars).",
+      "zh": "强制个人加入武装部队（历史上在战争期间使用）。",
+      "es": "Inscripción obligatoria de individuos en las fuerzas armadas (históricamente utilizada durante las guerras)."
+    }
+  },
+  {
+    "id": "glossary-127",
+    "term": {
+      "en": "Bear Arms",
+      "zh": "携带武器",
+      "es": "Portar Armas"
+    },
+    "definitions": {
+      "en": "The right to possess weapons for defense; also part of the Oath where you promise to bear arms on behalf of the U.S. if required.",
+      "zh": "拥有武器进行防御的权利；也是入籍宣誓的一部分，承诺在需要时代表美国携带武器。",
+      "es": "El derecho a poseer armas para la defensa; también parte del Juramento donde prometes portar armas en nombre de los EE. UU. si es necesario."
+    }
+  },
+  {
+    "id": "glossary-128",
+    "term": {
+      "en": "Noncombatant Service",
+      "zh": "非战斗服役",
+      "es": "Servicio No Combatiente"
+    },
+    "definitions": {
+      "en": "Service in the armed forces that does not involve fighting (e.g., medical, clerical), which you may promise to do in the Oath.",
+      "zh": "武装部队中不涉及战斗的服役（例如医疗、文书），这是你在宣誓中可能承诺要做的。",
+      "es": "Servicio en las fuerzas armadas que no implica combate (por ejemplo, médico, administrativo), que puedes prometer hacer en el Juramento."
+    }
+  },
+  {
+    "id": "glossary-129",
+    "term": {
+      "en": "Persecution",
+      "zh": "迫害",
+      "es": "Persecución"
+    },
+    "definitions": {
+      "en": "Mistreatment or punishment of a group of people because of their beliefs, race, or origin (a key question on the N-400 form).",
+      "zh": "因信仰、种族或出身而对一群人进行虐待或惩罚（N-400表格上的关键问题）。",
+      "es": "Maltrato o castigo a un grupo de personas debido a sus creencias, raza u origen (una pregunta clave en el formulario N-400)."
+    }
+  },
+  {
+    "id": "glossary-130",
+    "term": {
+      "en": "Genocide",
+      "zh": "种族灭绝",
+      "es": "Genocidio"
+    },
+    "definitions": {
+      "en": "The deliberate killing of a large number of people from a particular nation or ethnic group.",
+      "zh": "蓄意杀害特定国家或族裔群体的大量人员。",
+      "es": "El asesinato deliberado de un gran número de personas de una nación o grupo étnico en particular."
+    }
+  },
+  {
+    "id": "glossary-131",
+    "term": {
+      "en": "Totalitarian Party",
+      "zh": "极权主义政党",
+      "es": "Partido Totalitario"
+    },
+    "definitions": {
+      "en": "A political system where the state recognizes no limits to its authority and strives to regulate every aspect of public and private life.",
+      "zh": "一种国家权力不受限制，并试图控制公共和私人生活各个方面的政治制度。",
+      "es": "Un sistema político donde el estado no reconoce límites a su autoridad y se esfuerza por regular todos los aspectos de la vida pública y privada."
+    }
+  },
+  {
+    "id": "glossary-132",
+    "term": {
+      "en": "Hereditary Title",
+      "zh": "世袭头衔",
+      "es": "Título Hereditario"
+    },
+    "definitions": {
+      "en": "Titles like 'King', 'Queen', or 'Prince' passed down through family. You must give these up to become a U.S. citizen.",
+      "zh": "如‘国王’、‘女王’或‘王子’等通过家族传承的头衔。成为美国公民必须放弃这些头衔。",
+      "es": "Títulos como 'Rey', 'Reina' o 'Príncipe' transmitidos a través de la familia. Debes renunciar a ellos para convertirte en ciudadano de los EE. UU."
+    }
+  },
+  {
+    "id": "glossary-133",
+    "term": {
+      "en": "Register to Vote",
+      "zh": "选民登记",
+      "es": "Registrarse para Votar"
+    },
+    "definitions": {
+      "en": "The process of signing up to vote. You strictly CANNOT do this until you are a citizen.",
+      "zh": "报名参加投票的过程。在成为公民之前，你绝对不能这样做。",
+      "es": "El proceso de inscribirse para votar. Estrictamente NO puedes hacer esto hasta que seas ciudadano."
+    }
+  },
+  {
+    "id": "glossary-134",
+    "term": {
+      "en": "Oath",
+      "zh": "宣誓",
+      "es": "Juramento"
+    },
+    "definitions": {
+      "en": "A solemn promise, often invoking a divine witness, regarding one's future action or behavior.",
+      "zh": "关于未来行动或行为的庄严承诺，通常涉及神圣的见证。",
+      "es": "Una promesa solemne, a menudo invocando un testigo divino, con respecto a la acción o comportamiento futuro de uno."
+    }
+  },
+  {
+    "id": "glossary-135",
+    "term": {
+      "en": "Allegiance",
+      "zh": "效忠",
+      "es": "Lealtad"
+    },
+    "definitions": {
+      "en": "Loyalty or commitment of a subordinate to a superior or of an individual to a group or cause (e.g., to the USA).",
+      "zh": "下属对上级或个人对团体或事业的忠诚或承诺（例如对美国）。",
+      "es": "Lealtad o compromiso de un subordinado a un superior o de un individuo a un grupo o causa (por ejemplo, a los EE. UU.)."
+    }
+  },
+  {
+    "id": "glossary-136",
+    "term": {
+      "en": "Work of National Importance",
+      "zh": "国家重要工作",
+      "es": "Trabajo de Importancia Nacional"
+    },
+    "definitions": {
+      "en": "Tasks that are important to the nation, done during a war if you cannot fight (e.g., helping in a hospital).",
+      "zh": "在战争期间，如果你不能参战，则从事对国家重要的任务（例如在医院帮忙）。",
+      "es": "Tareas que son importantes para la nación, realizadas durante una guerra si no puedes luchar (por ejemplo, ayudar en un hospital)."
+    }
+  },
+  {
+    "id": "glossary-137",
+    "term": {
+      "en": "Civilian Direction",
+      "zh": "平民指导",
+      "es": "Dirección Civil"
+    },
+    "definitions": {
+      "en": "Orders given by non-military government officials.",
+      "zh": "由非军事政府官员下达的命令。",
+      "es": "Órdenes dadas por funcionarios gubernamentales no militares."
+    }
+  },
+  {
+    "id": "glossary-138",
+    "term": {
+      "en": "Arrested",
+      "zh": "被逮捕",
+      "es": "Arrestado"
+    },
+    "definitions": {
+      "en": "Taken to a police station by the police and handcuffed.",
+      "zh": "被警察带到警察局并戴上手铐。",
+      "es": "Llevado a una estación de policía por la policía y esposado."
+    }
+  },
+  {
+    "id": "glossary-139",
+    "term": {
+      "en": "Cited",
+      "zh": "被传讯 (收罚单)",
+      "es": "Citado"
+    },
+    "definitions": {
+      "en": "Given a ticket by the police (e.g., for speeding or parking violations).",
+      "zh": "收到警察开的罚单（例如因超速或违章停车）。",
+      "es": "Recibir una multa de la policía (por ejemplo, por exceso de velocidad o infracciones de estacionamiento)."
+    }
+  },
+  {
+    "id": "glossary-140",
+    "term": {
+      "en": "Detained",
+      "zh": "被拘留",
+      "es": "Detenido"
+    },
+    "definitions": {
+      "en": "Stopped and held by a police officer or immigration official for questioning.",
+      "zh": "被警察或移民官员拦下并扣留问话。",
+      "es": "Detenido y retenido por un oficial de policía o funcionario de inmigración para ser interrogado."
+    }
+  },
+  {
+    "id": "glossary-141",
+    "term": {
+      "en": "Convicted",
+      "zh": "被定罪",
+      "es": "Condenado"
+    },
+    "definitions": {
+      "en": "Found guilty of a crime by a judge or jury in court.",
+      "zh": "被法官或陪审团在法庭上判定有罪。",
+      "es": "Declarado culpable de un delito por un juez o jurado en el tribunal."
+    }
+  },
+  {
+    "id": "glossary-142",
+    "term": {
+      "en": "Probation",
+      "zh": "缓刑",
+      "es": "Libertad Condicional (Probatoria)"
+    },
+    "definitions": {
+      "en": "A period of time where a person who broke the law is supervised by an officer instead of going to jail.",
+      "zh": "犯法者在监视下的一段时间，而不是去监狱服刑。",
+      "es": "Un período de tiempo en el que una persona que infringió la ley es supervisada por un oficial en lugar de ir a la cárcel."
+    }
+  },
+  {
+    "id": "glossary-143",
+    "term": {
+      "en": "Parole",
+      "zh": "假释",
+      "es": "Libertad Condicional (Parole)"
+    },
+    "definitions": {
+      "en": "Early release from prison before the sentence is finished.",
+      "zh": "在刑期结束前提前从监狱释放。",
+      "es": "Liberación anticipada de prisión antes de que termine la sentencia."
+    }
+  },
+  {
+    "id": "glossary-144",
+    "term": {
+      "en": "Habitual Drunkard",
+      "zh": "习惯性酗酒者",
+      "es": "Borracho Habitual"
+    },
+    "definitions": {
+      "en": "Someone who drinks too much alcohol regularly.",
+      "zh": "经常喝太多酒的人。",
+      "es": "Alguien que bebe demasiado alcohol regularmente."
+    }
+  },
+  {
+    "id": "glossary-145",
+    "term": {
+      "en": "Prostitute",
+      "zh": "妓女/男妓",
+      "es": "Prostituta"
+    },
+    "definitions": {
+      "en": "Someone who has sex for money.",
+      "zh": "为了钱而出卖性行为的人。",
+      "es": "Alguien que tiene relaciones sexuales por dinero."
+    }
+  },
+  {
+    "id": "glossary-146",
+    "term": {
+      "en": "Smuggle",
+      "zh": "走私",
+      "es": "Contrabandear"
+    },
+    "definitions": {
+      "en": "To bring things or people into a country illegally and secretly.",
+      "zh": "非法且秘密地将物品或人员带入一个国家。",
+      "es": "Traer cosas o personas a un país ilegalmente y en secreto."
+    }
+  },
+  {
+    "id": "glossary-147",
+    "term": {
+      "en": "Illegal Gambling",
+      "zh": "非法赌博",
+      "es": "Juego Ilegal"
+    },
+    "definitions": {
+      "en": "Playing games for money in a way that is not allowed by law.",
+      "zh": "以法律不允许的方式玩钱的游戏。",
+      "es": "Jugar juegos por dinero de una manera que no está permitida por la ley."
+    }
+  },
+  {
+    "id": "glossary-148",
+    "term": {
+      "en": "Alimony",
+      "zh": "赡养费",
+      "es": "Pensión Alimenticia"
+    },
+    "definitions": {
+      "en": "Money that a court orders someone to pay to their former spouse (husband or wife) after a divorce.",
+      "zh": "离婚后法院命令某人支付给前配偶（丈夫或妻子）的钱。",
+      "es": "Dinero que un tribunal ordena a alguien pagar a su ex cónyuge (esposo o esposa) después de un divorcio."
+    }
+  },
+  {
+    "id": "glossary-149",
+    "term": {
+      "en": "Misrepresentation",
+      "zh": "虚假陈述",
+      "es": "Tergiversación"
+    },
+    "definitions": {
+      "en": "Giving false information or lying to get a benefit (like a visa or green card).",
+      "zh": "提供虚假信息或撒谎以获得利益（如签证或绿卡）。",
+      "es": "Dar información falsa o mentir para obtener un beneficio (como una visa o tarjeta verde)."
+    }
+  },
+  {
+    "id": "glossary-150",
+    "term": {
+      "en": "Fraudulent",
+      "zh": "欺诈性的",
+      "es": "Fraudulento"
+    },
+    "definitions": {
+      "en": "Fake or false; intended to deceive.",
+      "zh": "假的或虚伪的；意图欺骗。",
+      "es": "Falso o simulado; con la intención de engañar."
+    }
+  },
+  {
+    "id": "glossary-151",
+    "term": {
+      "en": "Deportation",
+      "zh": "驱逐出境",
+      "es": "Deportación"
+    },
+    "definitions": {
+      "en": "The official process of sending a foreigner back to their home country.",
+      "zh": "将外国人遣送回其祖国的正式程序。",
+      "es": "El proceso oficial de enviar a un extranjero de regreso a su país de origen."
+    }
+  },
+  {
+    "id": "glossary-152",
+    "term": {
+      "en": "Overdue Taxes",
+      "zh": "逾期未缴税款",
+      "es": "Impuestos Atrasados"
+    },
+    "definitions": {
+      "en": "Taxes that were not paid on time.",
+      "zh": "没有按时缴纳的税款。",
+      "es": "Impuestos que no se pagaron a tiempo."
+    }
+  },
+  {
+    "id": "glossary-153",
+    "term": {
+      "en": "Communist Party",
+      "zh": "共产党",
+      "es": "Partido Comunista"
+    },
+    "definitions": {
+      "en": "A political party that advocates for a society where all property is publicly owned (no private ownership).",
+      "zh": "主张所有财产公有（无私有制）社会的政党。",
+      "es": "Un partido político que aboga por una sociedad donde toda la propiedad es de propiedad pública (sin propiedad privada)."
+    }
+  },
+  {
+    "id": "glossary-154",
+    "term": {
+      "en": "Torture",
+      "zh": "酷刑/折磨",
+      "es": "Tortura"
+    },
+    "definitions": {
+      "en": "Causing severe pain or suffering to someone to punish them or get information.",
+      "zh": "为了惩罚某人或获取信息而对其造成严重的痛苦或折磨。",
+      "es": "Causar dolor o sufrimiento severo a alguien para castigarlo u obtener información."
+    }
+  },
+  {
+    "id": "glossary-155",
+    "term": {
+      "en": "Vigilante Unit",
+      "zh": "治安维持会 (私刑队)",
+      "es": "Unidad de Vigilantes"
+    },
+    "definitions": {
+      "en": "A group of people who act like police but are not official police.",
+      "zh": "一群像警察一样行动但不是正式警察的人。",
+      "es": "Un grupo de personas que actúan como la policía pero no son policías oficiales."
+    }
+  },
+  {
+    "id": "glossary-156",
+    "term": {
+      "en": "Rebel Group",
+      "zh": "叛乱组织",
+      "es": "Grupo Rebelde"
+    },
+    "definitions": {
+      "en": "A group that fights against the government.",
+      "zh": "对抗政府的组织。",
+      "es": "Un grupo que lucha contra el gobierno."
+    }
+  },
+  {
+    "id": "glossary-157",
+    "term": {
+      "en": "Militia",
+      "zh": "民兵",
+      "es": "Milicia"
+    },
+    "definitions": {
+      "en": "An army of people who are not official soldiers.",
+      "zh": "由非正规军人组成的军队。",
+      "es": "Un ejército de personas que no son soldados oficiales."
+    }
+  },
+  {
+    "id": "glossary-158",
+    "term": {
+      "en": "Insurgent Organization",
+      "zh": "叛乱组织",
+      "es": "Organización Insurgente"
+    },
+    "definitions": {
+      "en": "A group that uses weapons to fight against the government.",
+      "zh": "使用武器对抗政府的组织。",
+      "es": "Un grupo que usa armas para luchar contra el gobierno."
+    }
+  },
+  {
+    "id": "glossary-159",
+    "term": {
+      "en": "Maiden Name",
+      "zh": "婚前姓氏",
+      "es": "Apellido de Soltera"
+    },
+    "definitions": {
+      "en": "A woman's last name before she got married.",
+      "zh": "女性结婚前的姓氏。",
+      "es": "El apellido de una mujer antes de casarse."
+    }
+  },
+  {
+    "id": "glossary-160",
+    "term": {
+      "en": "Marital Status",
+      "zh": "婚姻状况",
+      "es": "Estado Civil"
+    },
+    "definitions": {
+      "en": "Whether you are single, married, divorced, or widowed.",
+      "zh": "你是单身、已婚、离婚还是丧偶。",
+      "es": "Si eres soltero, casado, divorciado o viudo."
+    }
+  },
+  {
+    "id": "glossary-161",
+    "term": {
+      "en": "Widowed",
+      "zh": "丧偶",
+      "es": "Viudo/a"
+    },
+    "definitions": {
+      "en": "Your husband or wife has died, and you have not remarried.",
+      "zh": "你的丈夫或妻子已经去世，且你没有再婚。",
+      "es": "Tu esposo o esposa ha fallecido y no te has vuelto a casar."
+    }
+  },
+  {
+    "id": "glossary-162",
+    "term": {
+      "en": "Current Address",
+      "zh": "当前地址",
+      "es": "Dirección Actual"
+    },
+    "definitions": {
+      "en": "Where you are living right now.",
+      "zh": "你现在居住的地方。",
+      "es": "Donde vives ahora mismo."
+    }
+  },
+  {
+    "id": "glossary-163",
+    "term": {
+      "en": "Spouse",
+      "zh": "配偶",
+      "es": "Cónyuge"
+    },
+    "definitions": {
+      "en": "Your husband or wife.",
+      "zh": "你的丈夫或妻子。",
+      "es": "Tu esposo o esposa."
+    }
+  },
+  {
+    "id": "glossary-164",
+    "term": {
+      "en": "Raise your right hand",
+      "zh": "举起右手",
+      "es": "Levante su mano derecha"
+    },
+    "definitions": {
+      "en": "A command given before taking the oath to tell the truth.",
+      "zh": "在宣誓讲真话之前发出的指令。",
+      "es": "Una orden dada antes de prestar juramento de decir la verdad."
+    }
+  },
+  {
+    "id": "glossary-165",
+    "term": {
+      "en": "Do you swear...",
+      "zh": "你发誓...",
+      "es": "¿Jura usted..."
+    },
+    "definitions": {
+      "en": "Do you promise before God?",
+      "zh": "你在上帝面前承诺吗？",
+      "es": "¿Promete ante Dios?"
+    }
+  },
+  {
+    "id": "glossary-166",
+    "term": {
+      "en": "Weapon",
+      "zh": "武器",
+      "es": "Arma"
+    },
+    "definitions": {
+      "en": "Something used to hurt or kill people, like a gun or a knife.",
+      "zh": "用来伤害或杀人的东西，如枪或刀。",
+      "es": "Algo usado para herir o matar personas, como un arma de fuego o un cuchillo."
+    }
+  },
+  {
+    "id": "glossary-167",
+    "term": {
+      "en": "Controlled Substances",
+      "zh": "受管制物质 (毒品)",
+      "es": "Sustancias Controladas"
+    },
+    "definitions": {
+      "en": "Drugs that are regulated by the government (e.g., cocaine, heroin).",
+      "zh": "受政府管制的药物（如可卡因、海洛因）。",
+      "es": "Drogas que están reguladas por el gobierno (por ejemplo, cocaína, heroína)."
+    }
+  },
+  {
+    "id": "glossary-168",
+    "term": {
+      "en": "Polygamy",
+      "zh": "一夫多妻/一妻多夫",
+      "es": "Poligamia"
+    },
+    "definitions": {
+      "en": "Being married to more than one person at the same time.",
+      "zh": "同时与超过一个人结婚。",
+      "es": "Estar casado con más de una persona al mismo tiempo."
+    }
+  },
+  {
+    "id": "glossary-169",
+    "term": {
+      "en": "Public Benefit",
+      "zh": "公共福利",
+      "es": "Beneficio Público"
+    },
+    "definitions": {
+      "en": "Money or help from the government for food or housing (e.g., food stamps).",
+      "zh": "政府为食品或住房提供的资金或帮助（例如食品券）。",
+      "es": "Dinero o ayuda del gobierno para comida o vivienda (por ejemplo, cupones de alimentos)."
+    }
+  },
+  {
+    "id": "glossary-170",
+    "term": {
+      "en": "Immigration Benefit",
+      "zh": "移民福利",
+      "es": "Beneficio de Inmigración"
+    },
+    "definitions": {
+      "en": "Things like a visa, green card, or citizenship.",
+      "zh": "诸如签证、绿卡或公民身份之类的东西。",
+      "es": "Cosas como una visa, tarjeta verde o ciudadanía."
+    }
+  },
+  {
+    "id": "glossary-171",
+    "term": {
+      "en": "Guerrilla Group",
+      "zh": "游击队",
+      "es": "Grupo Guerrillero"
+    },
+    "definitions": {
+      "en": "A group of people who use weapons to attack the military, police, or government.",
+      "zh": "一群使用武器攻击军队、警察或政府的人。",
+      "es": "Un grupo de personas que usan armas para atacar a los militares, la policía o el gobierno."
+    }
+  },
+  {
+    "id": "glossary-172",
+    "term": {
+      "en": "Labor Camp",
+      "zh": "劳改营",
+      "es": "Campo de Trabajo"
+    },
+    "definitions": {
+      "en": "A place where people are forced to work.",
+      "zh": "强迫人们工作的地方。",
+      "es": "Un lugar donde se obliga a la gente a trabajar."
+    }
+  },
+  {
+    "id": "glossary-173",
+    "term": {
+      "en": "Prison or Jail",
+      "zh": "监狱",
+      "es": "Prisión o Cárcel"
+    },
+    "definitions": {
+      "en": "A place where people are kept as punishment for a crime.",
+      "zh": "因犯罪而关押人员进行惩罚的地方。",
+      "es": "Un lugar donde se mantiene a las personas como castigo por un delito."
+    }
+  },
+  {
+    "id": "glossary-174",
+    "term": {
+      "en": "Exempt / Exemption",
+      "zh": "豁免",
+      "es": "Exento / Exención"
+    },
+    "definitions": {
+      "en": "You do not have to do something (e.g., exempt from the English test due to age).",
+      "zh": "你不必做某事（例如因年龄而豁免英语测试）。",
+      "es": "No tienes que hacer algo (por ejemplo, exento del examen de inglés debido a la edad)."
+    }
+  },
+  {
+    "id": "glossary-175",
+    "term": {
+      "en": "Verify",
+      "zh": "核实",
+      "es": "Verificar"
+    },
+    "definitions": {
+      "en": "To check that something is true or correct.",
+      "zh": "检查某事是否真实或正确。",
+      "es": "Comprobar que algo es verdadero o correcto."
+    }
+  }
+]
