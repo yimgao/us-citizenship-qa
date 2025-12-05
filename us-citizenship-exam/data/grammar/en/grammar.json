@@ -1,0 +1,504 @@
+{
+  "topics": [
+    {
+      "id": "basic-sentences",
+      "name": {
+        "en": "Basic Sentences",
+        "es": "Oraciones Básicas",
+        "zh": "基本句型"
+      },
+      "rules": [
+        {
+          "id": "rule-basic-1",
+          "title": {
+            "en": "Simple Present Tense - 'I am'",
+            "es": "Presente Simple - 'Yo soy'",
+            "zh": "一般现在时 - '我是'"
+          },
+          "explanation": {
+            "en": "Use 'I am' to describe yourself or your current state. This is essential for introducing yourself in the citizenship interview.",
+            "es": "Use 'Yo soy' para describirte a ti mismo o tu estado actual. Esto es esencial para presentarte en la entrevista de ciudadanía.",
+            "zh": "使用 '我是' 来描述自己或当前状态。这在入籍面试中介绍自己时非常重要。"
+          },
+          "examples": [
+            {
+              "sentence": "I am a citizen.",
+              "translation": {
+                "en": "I am a citizen.",
+                "es": "Yo soy ciudadano.",
+                "zh": "我是公民。"
+              },
+              "highlight": "am"
+            },
+            {
+              "sentence": "I am from Mexico.",
+              "translation": {
+                "en": "I am from Mexico.",
+                "es": "Yo soy de México.",
+                "zh": "我来自墨西哥。"
+              },
+              "highlight": "am"
+            },
+            {
+              "sentence": "I am ready for the interview.",
+              "translation": {
+                "en": "I am ready for the interview.",
+                "es": "Estoy listo para la entrevista.",
+                "zh": "我准备好面试了。"
+              },
+              "highlight": "am"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-basic-1-1",
+              "type": "fill-blank",
+              "question": "I _____ a permanent resident.",
+              "answer": "am",
+              "explanation": "Use 'am' with 'I' in present tense."
+            },
+            {
+              "id": "ex-basic-1-2",
+              "type": "multiple-choice",
+              "question": "Which sentence is correct?",
+              "options": [
+                "I is a citizen.",
+                "I am a citizen.",
+                "I are a citizen.",
+                "I be a citizen."
+              ],
+              "answer": 1,
+              "explanation": "The correct form is 'I am' - 'am' is used with 'I'."
+            }
+          ]
+        },
+        {
+          "id": "rule-basic-2",
+          "title": {
+            "en": "Answering Questions - 'Yes, I am' / 'No, I am not'",
+            "es": "Responder Preguntas - 'Sí, lo soy' / 'No, no lo soy'",
+            "zh": "回答问题 - '是的，我是' / '不，我不是'"
+          },
+          "explanation": {
+            "en": "When answering yes/no questions in the interview, use 'Yes, I am' or 'No, I am not' to be clear and polite.",
+            "es": "Al responder preguntas de sí/no en la entrevista, use 'Sí, lo soy' o 'No, no lo soy' para ser claro y cortés.",
+            "zh": "在面试中回答是/否问题时，使用 '是的，我是' 或 '不，我不是' 来清晰礼貌地回答。"
+          },
+          "examples": [
+            {
+              "sentence": "Are you a citizen? Yes, I am.",
+              "translation": {
+                "en": "Are you a citizen? Yes, I am.",
+                "es": "¿Eres ciudadano? Sí, lo soy.",
+                "zh": "你是公民吗？是的，我是。"
+              },
+              "highlight": "Yes, I am"
+            },
+            {
+              "sentence": "Are you married? No, I am not.",
+              "translation": {
+                "en": "Are you married? No, I am not.",
+                "es": "¿Estás casado? No, no lo estoy.",
+                "zh": "你结婚了吗？不，我没有。"
+              },
+              "highlight": "No, I am not"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-basic-2-1",
+              "type": "fill-blank",
+              "question": "Are you ready? Yes, I _____.",
+              "answer": "am",
+              "explanation": "Use 'am' to answer 'Yes' questions about yourself."
+            },
+            {
+              "id": "ex-basic-2-2",
+              "type": "correction",
+              "question": "Are you a citizen? Yes, I is.",
+              "answer": "Are you a citizen? Yes, I am.",
+              "explanation": "The correct form is 'I am', not 'I is'."
+            }
+          ]
+        },
+        {
+          "id": "rule-basic-3",
+          "title": {
+            "en": "Asking Questions - 'What is...?' / 'Who is...?'",
+            "es": "Hacer Preguntas - '¿Qué es...?' / '¿Quién es...?'",
+            "zh": "提问 - '什么是...？' / '谁是...？'"
+          },
+          "explanation": {
+            "en": "Use 'What is' for things and 'Who is' for people. These are common in citizenship questions.",
+            "es": "Use '¿Qué es' para cosas y '¿Quién es' para personas. Estas son comunes en las preguntas de ciudadanía.",
+            "zh": "用 '什么是' 询问事物，用 '谁是' 询问人。这些在公民考试问题中很常见。"
+          },
+          "examples": [
+            {
+              "sentence": "What is the capital of the United States?",
+              "translation": {
+                "en": "What is the capital of the United States?",
+                "es": "¿Cuál es la capital de los Estados Unidos?",
+                "zh": "美国的首都是什么？"
+              },
+              "highlight": "What is"
+            },
+            {
+              "sentence": "Who is the President of the United States?",
+              "translation": {
+                "en": "Who is the President of the United States?",
+                "es": "¿Quién es el Presidente de los Estados Unidos?",
+                "zh": "美国总统是谁？"
+              },
+              "highlight": "Who is"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-basic-3-1",
+              "type": "multiple-choice",
+              "question": "Which question is correct?",
+              "options": [
+                "What is the President?",
+                "Who is the President?",
+                "What are the President?",
+                "Who are the President?"
+              ],
+              "answer": 1,
+              "explanation": "Use 'Who' for people, 'What' for things."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tenses",
+      "name": {
+        "en": "Tenses",
+        "es": "Tiempos Verbales",
+        "zh": "时态"
+      },
+      "rules": [
+        {
+          "id": "rule-tenses-1",
+          "title": {
+            "en": "Present Perfect - 'I have been'",
+            "es": "Presente Perfecto - 'He estado'",
+            "zh": "现在完成时 - '我已经'"
+          },
+          "explanation": {
+            "en": "Use 'I have been' to talk about something that started in the past and continues to the present. Important for describing how long you've lived in the U.S.",
+            "es": "Use 'He estado' para hablar de algo que comenzó en el pasado y continúa hasta el presente. Importante para describir cuánto tiempo has vivido en EE. UU.",
+            "zh": "使用 '我已经' 来谈论从过去开始并持续到现在的事情。对于描述你在美国生活了多长时间很重要。"
+          },
+          "examples": [
+            {
+              "sentence": "I have been living in the United States for five years.",
+              "translation": {
+                "en": "I have been living in the United States for five years.",
+                "es": "He estado viviendo en los Estados Unidos durante cinco años.",
+                "zh": "我已经在美国生活了五年。"
+              },
+              "highlight": "have been"
+            },
+            {
+              "sentence": "I have been a permanent resident since 2019.",
+              "translation": {
+                "en": "I have been a permanent resident since 2019.",
+                "es": "He sido residente permanente desde 2019.",
+                "zh": "我从2019年起就是永久居民。"
+              },
+              "highlight": "have been"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-tenses-1-1",
+              "type": "fill-blank",
+              "question": "I _____ _____ here for three years.",
+              "answer": "have been",
+              "explanation": "Use 'have been' to describe duration from past to present."
+            },
+            {
+              "id": "ex-tenses-1-2",
+              "type": "multiple-choice",
+              "question": "Which sentence is correct?",
+              "options": [
+                "I am living here for five years.",
+                "I have been living here for five years.",
+                "I was living here for five years.",
+                "I will living here for five years."
+              ],
+              "answer": 1,
+              "explanation": "Use present perfect 'have been' for duration from past to present."
+            }
+          ]
+        },
+        {
+          "id": "rule-tenses-2",
+          "title": {
+            "en": "Simple Past - 'I came' / 'I went'",
+            "es": "Pasado Simple - 'Vine' / 'Fui'",
+            "zh": "一般过去时 - '我来了' / '我去了'"
+          },
+          "explanation": {
+            "en": "Use simple past tense to talk about completed actions in the past. Essential for describing when you came to the U.S.",
+            "es": "Use el tiempo pasado simple para hablar de acciones completadas en el pasado. Esencial para describir cuándo viniste a EE. UU.",
+            "zh": "使用一般过去时来谈论过去完成的动作。对于描述你何时来到美国很重要。"
+          },
+          "examples": [
+            {
+              "sentence": "I came to the United States in 2018.",
+              "translation": {
+                "en": "I came to the United States in 2018.",
+                "es": "Vine a los Estados Unidos en 2018.",
+                "zh": "我于2018年来到美国。"
+              },
+              "highlight": "came"
+            },
+            {
+              "sentence": "I went to the interview yesterday.",
+              "translation": {
+                "en": "I went to the interview yesterday.",
+                "es": "Fui a la entrevista ayer.",
+                "zh": "我昨天去面试了。"
+              },
+              "highlight": "went"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-tenses-2-1",
+              "type": "fill-blank",
+              "question": "I _____ to America in 2020.",
+              "answer": "came",
+              "explanation": "Use 'came' (past tense of 'come') for past actions."
+            },
+            {
+              "id": "ex-tenses-2-2",
+              "type": "correction",
+              "question": "I come to the United States in 2019.",
+              "answer": "I came to the United States in 2019.",
+              "explanation": "Use past tense 'came' for actions completed in the past."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interview-phrases",
+      "name": {
+        "en": "Interview Phrases",
+        "es": "Frases de Entrevista",
+        "zh": "面试常用语"
+      },
+      "rules": [
+        {
+          "id": "rule-interview-1",
+          "title": {
+            "en": "Polite Requests - 'Could you please...?'",
+            "es": "Solicitudes Corteses - '¿Podría por favor...?'",
+            "zh": "礼貌请求 - '您能...吗？'"
+          },
+          "explanation": {
+            "en": "Use 'Could you please' to make polite requests during the interview. This shows respect and good manners.",
+            "es": "Use '¿Podría por favor' para hacer solicitudes corteses durante la entrevista. Esto muestra respeto y buenos modales.",
+            "zh": "在面试中使用 '您能...吗' 来礼貌地提出请求。这显示尊重和良好的礼貌。"
+          },
+          "examples": [
+            {
+              "sentence": "Could you please repeat the question?",
+              "translation": {
+                "en": "Could you please repeat the question?",
+                "es": "¿Podría por favor repetir la pregunta?",
+                "zh": "您能重复一下问题吗？"
+              },
+              "highlight": "Could you please"
+            },
+            {
+              "sentence": "Could you please speak more slowly?",
+              "translation": {
+                "en": "Could you please speak more slowly?",
+                "es": "¿Podría por favor hablar más despacio?",
+                "zh": "您能说慢一点吗？"
+              },
+              "highlight": "Could you please"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-interview-1-1",
+              "type": "fill-blank",
+              "question": "Could you please _____ the question?",
+              "answer": "repeat",
+              "explanation": "Use 'repeat' to ask someone to say something again."
+            },
+            {
+              "id": "ex-interview-1-2",
+              "type": "sentence-reorder",
+              "question": "Arrange these words: please / Could / repeat / you / the question",
+              "answer": "Could you please repeat the question",
+              "explanation": "The correct order is: Could you please repeat the question"
+            }
+          ]
+        },
+        {
+          "id": "rule-interview-2",
+          "title": {
+            "en": "Expressing Uncertainty - 'I'm not sure' / 'I don't know'",
+            "es": "Expresar Incertidumbre - 'No estoy seguro' / 'No sé'",
+            "zh": "表达不确定 - '我不确定' / '我不知道'"
+          },
+          "explanation": {
+            "en": "It's okay to say 'I'm not sure' or 'I don't know' if you don't understand a question. It's better to be honest than to guess.",
+            "es": "Está bien decir 'No estoy seguro' o 'No sé' si no entiendes una pregunta. Es mejor ser honesto que adivinar.",
+            "zh": "如果你不理解问题，说 '我不确定' 或 '我不知道' 是可以的。诚实比猜测更好。"
+          },
+          "examples": [
+            {
+              "sentence": "I'm not sure about that question.",
+              "translation": {
+                "en": "I'm not sure about that question.",
+                "es": "No estoy seguro de esa pregunta.",
+                "zh": "我不确定那个问题。"
+              },
+              "highlight": "I'm not sure"
+            },
+            {
+              "sentence": "I don't know the answer to that.",
+              "translation": {
+                "en": "I don't know the answer to that.",
+                "es": "No sé la respuesta a eso.",
+                "zh": "我不知道那个问题的答案。"
+              },
+              "highlight": "I don't know"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-interview-2-1",
+              "type": "multiple-choice",
+              "question": "What should you say if you don't understand?",
+              "options": [
+                "I am wrong.",
+                "I'm not sure.",
+                "I am correct.",
+                "I am sure."
+              ],
+              "answer": 1,
+              "explanation": "Use 'I'm not sure' to express uncertainty politely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "numbers-dates",
+      "name": {
+        "en": "Numbers & Dates",
+        "es": "Números y Fechas",
+        "zh": "数字和日期"
+      },
+      "rules": [
+        {
+          "id": "rule-numbers-1",
+          "title": {
+            "en": "Saying Years - 'in 2018' / 'since 2019'",
+            "es": "Decir Años - 'en 2018' / 'desde 2019'",
+            "zh": "说年份 - '在2018年' / '自2019年'"
+          },
+          "explanation": {
+            "en": "Use 'in' for a specific year when something happened. Use 'since' for a year that marks the start of a period that continues to now.",
+            "es": "Use 'en' para un año específico cuando algo sucedió. Use 'desde' para un año que marca el inicio de un período que continúa hasta ahora.",
+            "zh": "用 '在' 表示某事发生的具体年份。用 '自' 表示从某个年份开始并持续到现在。"
+          },
+          "examples": [
+            {
+              "sentence": "I came to the United States in 2018.",
+              "translation": {
+                "en": "I came to the United States in 2018.",
+                "es": "Vine a los Estados Unidos en 2018.",
+                "zh": "我于2018年来到美国。"
+              },
+              "highlight": "in 2018"
+            },
+            {
+              "sentence": "I have been here since 2019.",
+              "translation": {
+                "en": "I have been here since 2019.",
+                "es": "He estado aquí desde 2019.",
+                "zh": "我自2019年就在这里。"
+              },
+              "highlight": "since 2019"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-numbers-1-1",
+              "type": "fill-blank",
+              "question": "I arrived _____ 2020.",
+              "answer": "in",
+              "explanation": "Use 'in' for a specific year when something happened."
+            },
+            {
+              "id": "ex-numbers-1-2",
+              "type": "multiple-choice",
+              "question": "Which sentence is correct?",
+              "options": [
+                "I have been here in 2019.",
+                "I have been here since 2019.",
+                "I have been here on 2019.",
+                "I have been here at 2019."
+              ],
+              "answer": 1,
+              "explanation": "Use 'since' for a starting point that continues to now."
+            }
+          ]
+        },
+        {
+          "id": "rule-numbers-2",
+          "title": {
+            "en": "Saying Dates - 'on January 1st' / 'on the first'",
+            "es": "Decir Fechas - 'el 1 de enero' / 'el primero'",
+            "zh": "说日期 - '在1月1日' / '在第一天'"
+          },
+          "explanation": {
+            "en": "Use 'on' for specific dates. Say the day with ordinal numbers (first, second, third) or with 'the' and the number.",
+            "es": "Use 'en' para fechas específicas. Diga el día con números ordinales (primero, segundo, tercero) o con 'el' y el número.",
+            "zh": "用 '在' 表示具体日期。用序数词（第一、第二、第三）或 '第' 加数字来说日期。"
+          },
+          "examples": [
+            {
+              "sentence": "My interview is on January 15th.",
+              "translation": {
+                "en": "My interview is on January 15th.",
+                "es": "Mi entrevista es el 15 de enero.",
+                "zh": "我的面试在1月15日。"
+              },
+              "highlight": "on January 15th"
+            },
+            {
+              "sentence": "I became a citizen on the first of July.",
+              "translation": {
+                "en": "I became a citizen on the first of July.",
+                "es": "Me convertí en ciudadano el primero de julio.",
+                "zh": "我在7月1日成为公民。"
+              },
+              "highlight": "on the first"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "ex-numbers-2-1",
+              "type": "fill-blank",
+              "question": "My birthday is _____ March 20th.",
+              "answer": "on",
+              "explanation": "Use 'on' for specific dates."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
