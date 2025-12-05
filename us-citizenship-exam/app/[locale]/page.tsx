@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { FileText, BookOpen, GraduationCap } from 'lucide-react';
+import { FileText, BookOpen, GraduationCap, BookMarked } from 'lucide-react';
 import FeedbackForm from '@/components/FeedbackForm';
 import type { Metadata } from 'next';
 
@@ -47,62 +47,82 @@ export default async function HomePage({ params }: { params: Promise<{ locale: '
   return (
     <div className="mx-auto max-w-4xl">
       <div className="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center text-center px-4">
-        <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+        <h1 className="text-display text-slate-900 animate-fade-in">
           {t('title')}
         </h1>
-        <p className="mt-4 text-xl text-slate-600 sm:text-2xl">
+        <p className="mt-4 text-body-lg text-slate-600 animate-slide-up">
           {t('subtitle')}
         </p>
-        <p className="mt-6 text-lg font-medium text-slate-700">
+        <p className="mt-6 text-title text-slate-700 animate-slide-up" style={{ animationDelay: '0.1s' }}>
           {t('question')}
         </p>
-        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-2 items-stretch">
           <Link
             href={`/${locale}/quiz`}
-            className="group h-full min-h-[220px] min-w-[260px] rounded-2xl border-2 border-slate-200 bg-white px-8 py-8 text-left shadow-sm transition-all hover:border-blue-400 hover:bg-blue-50 hover:shadow-md flex flex-col justify-between"
+            className="group h-full min-h-[200px] sm:min-h-[220px] rounded-2xl border-2 border-slate-200 bg-white px-6 sm:px-8 py-6 sm:py-8 text-left shadow-sm card-hover btn-press active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 flex flex-col justify-between touch-action-manipulation animate-scale-in"
+            style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-colors">
-                <FileText className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110">
+                <FileText className="h-6 w-6 text-blue-600 transition-transform group-hover:scale-110" />
               </div>
-              <div className="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+              <div className="text-title text-slate-900 group-hover:text-blue-700 transition-colors">
                 {t('quizTitle')}
               </div>
             </div>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            <p className="mt-4 text-body text-slate-600">
               {t('quizDescription')}
             </p>
           </Link>
           <Link
             href={`/${locale}/flashcards`}
-            className="group h-full min-h-[220px] min-w-[260px] rounded-2xl border-2 border-slate-200 bg-white px-8 py-8 text-left shadow-sm transition-all hover:border-blue-400 hover:bg-blue-50 hover:shadow-md flex flex-col justify-between"
+            className="group h-full min-h-[200px] sm:min-h-[220px] rounded-2xl border-2 border-slate-200 bg-white px-6 sm:px-8 py-6 sm:py-8 text-left shadow-sm card-hover btn-press active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 flex flex-col justify-between touch-action-manipulation animate-scale-in"
+            style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-colors">
-                <BookOpen className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110">
+                <BookOpen className="h-6 w-6 text-blue-600 transition-transform group-hover:scale-110" />
               </div>
-              <div className="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+              <div className="text-title text-slate-900 group-hover:text-blue-700 transition-colors">
                 {t('flashcardsTitle')}
               </div>
             </div>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            <p className="mt-4 text-body text-slate-600">
               {t('flashcardsDescription')}
             </p>
           </Link>
           <Link
             href={`/${locale}/grammar`}
-            className="group h-full min-h-[220px] min-w-[260px] rounded-2xl border-2 border-slate-200 bg-white px-8 py-8 text-left shadow-sm transition-all hover:border-blue-400 hover:bg-blue-50 hover:shadow-md flex flex-col justify-between"
+            className="group h-full min-h-[200px] sm:min-h-[220px] rounded-2xl border-2 border-slate-200 bg-white px-6 sm:px-8 py-6 sm:py-8 text-left shadow-sm card-hover btn-press active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 flex flex-col justify-between touch-action-manipulation animate-scale-in"
+            style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
           >
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-colors">
-                <GraduationCap className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110">
+                <GraduationCap className="h-6 w-6 text-blue-600 transition-transform group-hover:scale-110" />
               </div>
-              <div className="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+              <div className="text-title text-slate-900 group-hover:text-blue-700 transition-colors">
                 {t('grammarTitle')}
               </div>
             </div>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            <p className="mt-4 text-body text-slate-600">
               {t('grammarDescription')}
+            </p>
+          </Link>
+          <Link
+            href={`/${locale}/glossary`}
+            className="group h-full min-h-[200px] sm:min-h-[220px] rounded-2xl border-2 border-slate-200 bg-white px-6 sm:px-8 py-6 sm:py-8 text-left shadow-sm card-hover btn-press active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 flex flex-col justify-between touch-action-manipulation animate-scale-in"
+            style={{ animationDelay: '0.5s', animationFillMode: 'both' }}
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-all duration-300 group-hover:scale-110">
+                <BookMarked className="h-6 w-6 text-blue-600 transition-transform group-hover:scale-110" />
+              </div>
+              <div className="text-title text-slate-900 group-hover:text-blue-700 transition-colors">
+                {t('glossaryTitle')}
+              </div>
+            </div>
+            <p className="mt-4 text-body text-slate-600">
+              {t('glossaryDescription')}
             </p>
           </Link>
         </div>
