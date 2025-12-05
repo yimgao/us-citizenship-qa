@@ -13,9 +13,9 @@ export default function FeedbackForm() {
   const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
 
   return (
-    <div className="mx-auto mt-10 w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-6 shadow-md">
+    <div className="mx-auto mt-10 w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-md">
       <div className="text-center">
-        <h3 className="text-xl font-bold text-slate-900">{t('title')}</h3>
+        <h3 className="text-lg sm:text-xl font-bold text-slate-900">{t('title')}</h3>
         <p className="mt-1 text-sm text-slate-600">{t('subtitle')}</p>
       </div>
       <div className="mt-5 grid gap-4">
@@ -26,7 +26,7 @@ export default function FeedbackForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t('email')}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base sm:text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
           />
         </label>
         <label className="block">
@@ -36,11 +36,14 @@ export default function FeedbackForm() {
             onChange={(e) => setMessage(e.target.value)}
             placeholder={t('message')}
             rows={5}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base sm:text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
           />
         </label>
         <div className="flex justify-center">
-          <a href={mailto} className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-blue-700">
+          <a 
+            href={mailto} 
+            className="min-h-[44px] inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow active:bg-blue-700 hover:bg-blue-700 touch-action-manipulation"
+          >
             {t('submit')}
           </a>
         </div>
