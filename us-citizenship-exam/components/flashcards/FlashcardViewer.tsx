@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, RotateCw, Volume2, VolumeX } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useSwipeable } from 'react-swipeable';
 import { useQuizStore } from '@/lib/store';
 import { useTTS } from '@/lib/useTTS';
 import type { Locale } from '@/lib/questions';
@@ -57,6 +58,30 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
   const answerText = c.options[c.answer];
   const pct = ((index + 1) / visibleCards.length) * 100;
 
+  // Swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (index < visibleCards.length - 1) {
+        setIndex((v) => Math.min(visibleCards.length - 1, v + 1));
+        setShow(false);
+      }
+    },
+    onSwipedRight: () => {
+      if (index > 0) {
+        setIndex((v) => Math.max(0, v - 1));
+        setShow(false);
+      }
+    },
+    onSwipedUp: () => {
+      setShow(true);
+    },
+    onSwipedDown: () => {
+      setShow(false);
+    },
+    trackMouse: false,
+    preventScrollOnSwipe: true,
+  });
+
   return (
     <div className="mx-auto max-w-2xl">
       {/* Filters + Progress */}
@@ -67,12 +92,12 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
       </div>
       <div className="mb-6">
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-medium text-slate-600">
+          <span className="text-sm sm:text-base font-medium text-slate-600">
             {t('cardCount', { current: index + 1, total: visibleCards.length })}
           </span>
-          <span className="text-sm font-medium text-slate-600">{Math.round(pct)}%</span>
+          <span className="text-sm sm:text-base font-medium text-slate-600">{Math.round(pct)}%</span>
         </div>
-        <div className="h-3 overflow-hidden rounded-full bg-slate-200">
+        <div className="h-2 sm:h-3 overflow-hidden rounded-full bg-slate-200">
           <div
             className="h-full bg-blue-600 transition-all duration-500 ease-out"
             style={{ width: `${pct}%` }}
@@ -83,8 +108,9 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
       {/* Flashcard */}
       <div className="relative mb-6">
         <div
+          {...swipeHandlers}
           onClick={() => setShow(v => !v)}
-          className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px]"
+          className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-pan-y"
         >
           <div
             className={`absolute inset-0 rounded-2xl bg-white shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${
@@ -97,7 +123,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
                 {t('question')}
               </div>
               <div className="relative flex w-full max-w-xl flex-col items-center gap-3">
-                <p className="text-center text-2xl font-bold leading-relaxed text-slate-900">
+                <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-slate-900">
                   {c.text}
                 </p>
                 {tts.isSupported && !show && (
@@ -110,7 +136,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
                         tts.speak(c.text);
                       }
                     }}
-                    className="rounded-lg border-2 border-slate-200 bg-white p-2 text-slate-600 transition-colors hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600"
+                    className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-blue-100 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600 touch-action-manipulation"
                     title={tts.state === 'speaking' ? 'Stop reading' : 'Read question aloud'}
                     aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read question aloud'}
                   >
@@ -134,7 +160,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
                 {t('answer')}
               </div>
               <div className="relative flex w-full max-w-xl flex-col items-center gap-3">
-                <p className="text-center text-2xl font-bold leading-relaxed text-green-700">
+                <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-green-700">
                   {answerText}
                 </p>
                 {tts.isSupported && show && (
@@ -147,7 +173,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
                         tts.speak(answerText);
                       }
                     }}
-                    className="rounded-lg border-2 border-slate-200 bg-white p-2 text-slate-600 transition-colors hover:border-green-400 hover:bg-green-50 hover:text-green-600"
+                    className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-green-100 hover:border-green-400 hover:bg-green-50 hover:text-green-600 touch-action-manipulation"
                     title={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
                     aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
                   >
@@ -169,11 +195,11 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
       </div>
 
       {/* Navigation Controls */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
         <button
           onClick={() => { setIndex((v) => Math.max(0, v - 1)); setShow(false); }}
           disabled={index === 0}
-          className="flex items-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
+          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
         >
           <ArrowLeft className="h-5 w-5" />
           {t('previous')}
@@ -181,7 +207,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
 
         <button
           onClick={() => toggleStar(c.id)}
-          className="rounded-xl border-2 border-amber-300 bg-white px-4 py-2 text-sm font-semibold text-amber-700 hover:bg-amber-50"
+          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center rounded-xl border-2 border-amber-300 bg-white px-4 py-2.5 text-sm font-semibold text-amber-700 active:bg-amber-100 hover:bg-amber-50 touch-action-manipulation"
         >
           {starredIds.has(c.id) ? '★ Starred' : '☆ Star'}
         </button>
@@ -189,7 +215,7 @@ export default function FlashcardViewer({ cards }: { cards: Card[] }) {
         <button
           onClick={() => { setIndex((v) => Math.min(visibleCards.length - 1, v + 1)); setShow(false); }}
           disabled={index === visibleCards.length - 1}
-          className="flex items-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
+          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
         >
           {t('next')}
           <ArrowRight className="h-5 w-5" />
