@@ -120,15 +120,43 @@ export default function GlossaryViewer({ items, locale }: { items: GlossaryItem[
               show ? '[transform:rotateY(180deg)]' : ''
             }`}
           >
-            {/* Front Side - Term (current language) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-8 [backface-visibility:hidden]">
+            {/* Front Side - Term (all languages) */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-6 [backface-visibility:hidden] overflow-y-auto">
               <div className="mb-4 rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
                 {t('term')}
               </div>
-              <p className="max-w-xl text-center text-3xl font-bold leading-relaxed text-slate-900">
-                {item.term[locale]}
-              </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-slate-500">
+              
+              {/* English Term */}
+              <div className="mb-4 w-full rounded-lg bg-white/80 p-4 shadow-sm">
+                <div className="mb-2 text-center">
+                  <span className="text-xs font-semibold uppercase text-slate-500">🇺🇸 English</span>
+                </div>
+                <p className="text-center text-xl font-bold leading-relaxed text-slate-900">
+                  {item.term.en}
+                </p>
+              </div>
+
+              {/* Spanish Term */}
+              <div className="mb-4 w-full rounded-lg bg-white/80 p-4 shadow-sm">
+                <div className="mb-2 text-center">
+                  <span className="text-xs font-semibold uppercase text-slate-500">🇪🇸 Español</span>
+                </div>
+                <p className="text-center text-xl font-bold leading-relaxed text-slate-900">
+                  {item.term.es}
+                </p>
+              </div>
+
+              {/* Chinese Term */}
+              <div className="mb-2 w-full rounded-lg bg-white/80 p-4 shadow-sm">
+                <div className="mb-2 text-center">
+                  <span className="text-xs font-semibold uppercase text-slate-500">🇨🇳 中文</span>
+                </div>
+                <p className="text-center text-xl font-bold leading-relaxed text-slate-900">
+                  {item.term.zh}
+                </p>
+              </div>
+
+              <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
                 <RotateCw className="h-4 w-4" />
                 <span>{t('clickToFlip')}</span>
               </div>
