@@ -1,6 +1,6 @@
 "use client";
 import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
-import { BookOpen, FileText, Menu, Link as LinkIcon } from 'lucide-react';
+import { BookOpen, FileText, Menu, Link as LinkIcon, GraduationCap } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -10,6 +10,8 @@ export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
   const pathname = usePathname();
   const isQuiz = pathname?.includes('/quiz');
   const isFlashcards = pathname?.includes('/flashcards');
+  const isGlossary = pathname?.includes('/glossary');
+  const isGrammar = pathname?.includes('/grammar');
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const firstFocusable = useRef<HTMLAnchorElement | null>(null);
@@ -62,6 +64,28 @@ export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
             {t('flashcards')}
           </a>
           <a 
+            href={`/${locale}/glossary`} 
+            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              isGlossary
+                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
+                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
+            }`}
+          >
+            <BookOpen className="h-4 w-4" />
+            {t('glossary')}
+          </a>
+          <a 
+            href={`/${locale}/grammar`} 
+            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+              isGrammar
+                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
+                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
+            }`}
+          >
+            <GraduationCap className="h-4 w-4" />
+            {t('grammar')}
+          </a>
+          <a 
             href={`/${locale}/resources`} 
             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-blue-600"
           >
@@ -107,6 +131,12 @@ export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
             </a>
             <a href={`/${locale}/flashcards`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isFlashcards ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
               <BookOpen className="h-4 w-4" /> {t('flashcards')}
+            </a>
+            <a href={`/${locale}/glossary`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isGlossary ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
+              <BookOpen className="h-4 w-4" /> {t('glossary')}
+            </a>
+            <a href={`/${locale}/grammar`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isGrammar ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
+              <GraduationCap className="h-4 w-4" /> {t('grammar')}
             </a>
             <a href={`/${locale}/resources`} className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm hover:bg-slate-50" onClick={() => setOpen(false)}>
               <LinkIcon className="h-4 w-4" /> {t('resources')}

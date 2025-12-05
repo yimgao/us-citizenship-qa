@@ -27,7 +27,7 @@ export default async function LocaleLayout({
   const messages = (await import(`@/messages/${locale}.json`)).default;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body suppressHydrationWarning className={`bg-slate-50 text-slate-900 antialiased ${inter.className}`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <Navbar locale={locale as 'en'|'es'|'zh'} />

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { FileText, BookOpen } from 'lucide-react';
+import { FileText, BookOpen, GraduationCap } from 'lucide-react';
 import FeedbackForm from '@/components/FeedbackForm';
 import type { Metadata } from 'next';
 
@@ -56,7 +56,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: '
         <p className="mt-6 text-lg font-medium text-slate-700">
           {t('question')}
         </p>
-        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 items-stretch">
+        <div className="mt-10 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
           <Link
             href={`/${locale}/quiz`}
             className="group h-full min-h-[220px] min-w-[260px] rounded-2xl border-2 border-slate-200 bg-white px-8 py-8 text-left shadow-sm transition-all hover:border-blue-400 hover:bg-blue-50 hover:shadow-md flex flex-col justify-between"
@@ -87,6 +87,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: '
             </div>
             <p className="mt-4 text-base text-slate-600 leading-relaxed">
               {t('flashcardsDescription')}
+            </p>
+          </Link>
+          <Link
+            href={`/${locale}/grammar`}
+            className="group h-full min-h-[220px] min-w-[260px] rounded-2xl border-2 border-slate-200 bg-white px-8 py-8 text-left shadow-sm transition-all hover:border-blue-400 hover:bg-blue-50 hover:shadow-md flex flex-col justify-between"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                <GraduationCap className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                {t('grammarTitle')}
+              </div>
+            </div>
+            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+              {t('grammarDescription')}
             </p>
           </Link>
         </div>
