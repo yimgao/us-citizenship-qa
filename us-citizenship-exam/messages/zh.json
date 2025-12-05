@@ -9,7 +9,9 @@
     "flashcardsDescription": "使用交互式闪卡逐一复习问题。",
     "grammarTitle": "语法练习",
     "grammarDescription": "学习和练习英语语法，为入籍面试做准备。",
-    "suggestion": "三种都试试，看看哪个更能帮助您学习！"
+    "glossaryTitle": "名词复习",
+    "glossaryDescription": "学习关键术语和定义，支持多语言和语音朗读。",
+    "suggestion": "四种都试试，看看哪个更能帮助您学习！"
   },
   "navbar": {
     "title": "美国公民学习中心",

@@ -9,7 +9,9 @@
     "flashcardsDescription": "Review questions one at a time with interactive flashcards.",
     "grammarTitle": "Grammar Practice",
     "grammarDescription": "Learn and practice English grammar for the citizenship interview.",
-    "suggestion": "Try all three and see which helps you learn better!"
+    "glossaryTitle": "Glossary Review",
+    "glossaryDescription": "Learn key terms and definitions with multi-language and voice reading support.",
+    "suggestion": "Try all four and see which helps you learn better!"
   },
   "navbar": {
     "title": "U.S. Civics Study Hub",
