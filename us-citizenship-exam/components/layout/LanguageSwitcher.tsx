@@ -33,28 +33,35 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: 'en
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen(v => !v)}
-        className="rounded-full border px-3 py-1 text-sm hover:bg-zinc-50"
+        className="min-h-[44px] min-w-[44px] rounded-full border px-3 py-1.5 text-sm active:bg-zinc-100 hover:bg-zinc-50 touch-action-manipulation"
       >
         {current.label}
       </button>
       {open && (
-        <ul
-          role="listbox"
-          className="absolute right-0 mt-2 w-40 overflow-hidden rounded-xl border bg-white shadow-lg"
-        >
-          {locales.map((l) => (
-            <li key={l.code}>
-              <button
-                role="option"
-                aria-selected={l.code === currentLocale}
-                className={`w-full px-3 py-2 text-left text-sm hover:bg-zinc-50 ${l.code === currentLocale ? 'bg-zinc-50' : ''}`}
-                onClick={() => onSelect(l.code)}
-              >
-                {l.label}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <>
+          <div
+            className="fixed inset-0 z-10"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <ul
+            role="listbox"
+            className="absolute right-0 sm:right-auto mt-2 w-full sm:w-40 overflow-hidden rounded-xl border bg-white shadow-lg z-20"
+          >
+            {locales.map((l) => (
+              <li key={l.code}>
+                <button
+                  role="option"
+                  aria-selected={l.code === currentLocale}
+                  className={`min-h-[44px] w-full px-3 py-2.5 text-left text-sm active:bg-zinc-100 hover:bg-zinc-50 touch-action-manipulation ${l.code === currentLocale ? 'bg-zinc-50' : ''}`}
+                  onClick={() => onSelect(l.code)}
+                >
+                  {l.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

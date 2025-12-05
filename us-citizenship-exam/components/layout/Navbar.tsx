@@ -28,7 +28,7 @@ export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
+    <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm safe-area-inset-x" style={{ paddingTop: 'max(0px, env(safe-area-inset-top))' }}>
       <div className="relative mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-4">
         {/* Centered title on mobile */}
         <a href={`/${locale}`} className="absolute left-1/2 -translate-x-1/2 text-center text-lg font-bold tracking-tight text-slate-900 hover:text-blue-600 transition-colors md:static md:translate-x-0 md:text-xl">
@@ -95,56 +95,96 @@ export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
           <LanguageSwitcher currentLocale={locale} />
         </nav>
         {/* Mobile hamburger */}
-        <button aria-label="Menu" aria-controls="mobile-menu" aria-expanded={open} onClick={() => setOpen(v => !v)} className="ml-auto inline-flex items-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 md:hidden">
+        <button 
+          aria-label="Menu" 
+          aria-controls="mobile-menu" 
+          aria-expanded={open} 
+          onClick={() => setOpen(v => !v)} 
+          className="ml-auto inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg p-2 text-slate-700 active:bg-slate-200 hover:bg-slate-100 md:hidden touch-action-manipulation"
+        >
           <Menu className="h-5 w-5" />
         </button>
         {open && (
-          <div
-            id="mobile-menu"
-            role="menu"
-            ref={menuRef}
-            className="absolute right-4 top-14 w-52 rounded-xl border bg-white p-2 shadow-lg md:hidden"
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') {
-                setOpen(false);
-              }
-              if (e.key === 'Tab' && menuRef.current) {
-                const focusables = menuRef.current.querySelectorAll<HTMLElement>('a,button,[tabindex]:not([tabindex="-1"])');
-                if (focusables.length === 0) return;
-                const first = focusables[0];
-                const last = focusables[focusables.length - 1];
-                if (!e.shiftKey && document.activeElement === last) {
-                  e.preventDefault();
-                  (first as HTMLElement).focus();
-                } else if (e.shiftKey && document.activeElement === first) {
-                  e.preventDefault();
-                  (last as HTMLElement).focus();
+          <>
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-10 md:hidden"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            {/* Menu */}
+            <div
+              id="mobile-menu"
+              role="menu"
+              ref={menuRef}
+              className="fixed right-4 top-16 w-[calc(100%-2rem)] sm:w-64 rounded-xl border bg-white p-2 shadow-xl z-20 md:hidden animate-in slide-in-from-top-2 duration-200"
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  setOpen(false);
                 }
-              }
-            }}
-          >
-            <a href={`/${locale}`} className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm hover:bg-slate-50" onClick={() => setOpen(false)}>
-              {t('home')}
-            </a>
-            <a ref={firstFocusable} href={`/${locale}/quiz`} className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isQuiz ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
-              <FileText className="h-4 w-4" /> {t('quiz')}
-            </a>
-            <a href={`/${locale}/flashcards`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isFlashcards ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
-              <BookOpen className="h-4 w-4" /> {t('flashcards')}
-            </a>
-            <a href={`/${locale}/glossary`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isGlossary ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
-              <BookOpen className="h-4 w-4" /> {t('glossary')}
-            </a>
-            <a href={`/${locale}/grammar`} className={`mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm ${isGrammar ? 'bg-blue-50 text-blue-700' : 'hover:bg-slate-50'}`} onClick={() => setOpen(false)}>
-              <GraduationCap className="h-4 w-4" /> {t('grammar')}
-            </a>
-            <a href={`/${locale}/resources`} className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm hover:bg-slate-50" onClick={() => setOpen(false)}>
-              <LinkIcon className="h-4 w-4" /> {t('resources')}
-            </a>
-            <div className="mt-1 border-t pt-2">
-              <LanguageSwitcher currentLocale={locale} />
+                if (e.key === 'Tab' && menuRef.current) {
+                  const focusables = menuRef.current.querySelectorAll<HTMLElement>('a,button,[tabindex]:not([tabindex="-1"])');
+                  if (focusables.length === 0) return;
+                  const first = focusables[0];
+                  const last = focusables[focusables.length - 1];
+                  if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    (first as HTMLElement).focus();
+                  } else if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    (last as HTMLElement).focus();
+                  }
+                }
+              }}
+            >
+              <a 
+                href={`/${locale}`} 
+                className="min-h-[44px] flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation" 
+                onClick={() => setOpen(false)}
+              >
+                {t('home')}
+              </a>
+              <a 
+                ref={firstFocusable} 
+                href={`/${locale}/quiz`} 
+                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isQuiz ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
+                onClick={() => setOpen(false)}
+              >
+                <FileText className="h-4 w-4" /> {t('quiz')}
+              </a>
+              <a 
+                href={`/${locale}/flashcards`} 
+                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isFlashcards ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
+                onClick={() => setOpen(false)}
+              >
+                <BookOpen className="h-4 w-4" /> {t('flashcards')}
+              </a>
+              <a 
+                href={`/${locale}/glossary`} 
+                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isGlossary ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
+                onClick={() => setOpen(false)}
+              >
+                <BookOpen className="h-4 w-4" /> {t('glossary')}
+              </a>
+              <a 
+                href={`/${locale}/grammar`} 
+                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isGrammar ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
+                onClick={() => setOpen(false)}
+              >
+                <GraduationCap className="h-4 w-4" /> {t('grammar')}
+              </a>
+              <a 
+                href={`/${locale}/resources`} 
+                className="min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation" 
+                onClick={() => setOpen(false)}
+              >
+                <LinkIcon className="h-4 w-4" /> {t('resources')}
+              </a>
+              <div className="mt-1 border-t pt-2">
+                <LanguageSwitcher currentLocale={locale} />
+              </div>
             </div>
-          </div>
+          </>
         )}
         {/* focus handled via useEffect above */}
       </div>
