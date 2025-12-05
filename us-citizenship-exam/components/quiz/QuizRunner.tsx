@@ -107,23 +107,23 @@ export default function QuizRunner({
   if (submitted) {
     return (
       <div className="mx-auto max-w-2xl">
-        <div className="rounded-2xl bg-white p-8 shadow-sm">
+        <div className="rounded-2xl bg-white p-8 shadow-sm animate-fade-in">
           <div className="text-center">
-            <div className={`inline-flex h-20 w-20 items-center justify-center rounded-full ${
+            <div className={`inline-flex h-20 w-20 items-center justify-center rounded-full animate-scale-in ${
               passed ? 'bg-green-100' : 'bg-red-100'
-            }`}>
+            }`} style={{ animationDelay: '0.1s' }}>
               {passed ? (
                 <CheckCircle2 className="h-10 w-10 text-green-600" />
               ) : (
                 <XCircle className="h-10 w-10 text-red-600" />
               )}
             </div>
-            <h2 className={`mt-4 text-3xl font-bold ${
+            <h2 className={`mt-4 text-headline animate-slide-up ${
               passed ? 'text-green-700' : 'text-red-700'
-            }`}>
+            }`} style={{ animationDelay: '0.2s' }}>
               {passed ? t('pass') : t('fail')}
             </h2>
-            <p className="mt-2 text-xl text-slate-600">
+            <p className="mt-2 text-body-lg text-slate-600 animate-slide-up" style={{ animationDelay: '0.3s' }}>
               {isTestMode ? (
                 passed ? t('passMessage', { correct: score.correct, total: score.total }) : 
                          t('failMessage', { correct: score.correct, total: score.total })
@@ -131,7 +131,7 @@ export default function QuizRunner({
                 t('score', { correct: score.correct, total: score.total })
               )}
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
               <button
                 onClick={() => {
                   reset();
@@ -139,14 +139,14 @@ export default function QuizRunner({
                   setIndex(0);
                   setAnsweredQuestions(new Set());
                 }}
-                className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                className="min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white btn-press transition-colors active:bg-blue-700 hover:bg-blue-700 touch-action-manipulation"
               >
                 <RotateCcw className="h-5 w-5" />
                 {t('tryAgain')}
               </button>
               <a
                 href={`/${storageKey.split(':')[0]}`}
-                className="flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors hover:bg-slate-50"
+                className="min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 btn-press transition-colors active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
               >
                 <Home className="h-5 w-5" />
                 {t('backHome')}
@@ -205,19 +205,19 @@ export default function QuizRunner({
       {/* Progress */}
       <div className="mb-6">
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-medium text-slate-600">
+          <span className="text-sm sm:text-base font-medium text-slate-600">
             {t('questionCount', { current: index + 1, total: questions.length })}
           </span>
           {isTestMode && (
-            <span className="text-xs text-slate-500">
+            <span className="text-xs sm:text-sm text-slate-500">
               {t('needToPass', { min: PASS_THRESHOLD })}
             </span>
           )}
-          <span className="text-sm font-medium text-slate-600">
+          <span className="text-sm sm:text-base font-medium text-slate-600">
             {t('percent', { percent: Math.round(pct) })}
           </span>
         </div>
-        <div className="h-3 overflow-hidden rounded-full bg-slate-200">
+        <div className="h-2 sm:h-3 overflow-hidden rounded-full bg-slate-200">
           <div
             className="h-full bg-blue-600 transition-all duration-500 ease-out"
             style={{ width: `${pct}%` }}
@@ -226,9 +226,9 @@ export default function QuizRunner({
       </div>
 
       {/* Question Card */}
-      <div className="rounded-2xl bg-white p-8 shadow-sm">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <h2 className="flex-1 text-2xl font-bold leading-relaxed text-slate-900">{q.text}</h2>
+      <div className="rounded-2xl bg-white p-4 sm:p-8 shadow-sm">
+        <div className="mb-4 sm:mb-6 flex items-start justify-between gap-4">
+          <h2 className="flex-1 text-title leading-relaxed text-slate-900">{q.text}</h2>
           {tts.isSupported && (
             <button
               onClick={() => {
@@ -238,7 +238,7 @@ export default function QuizRunner({
                   tts.speak(q.text);
                 }
               }}
-              className="flex-shrink-0 rounded-lg border-2 border-slate-200 bg-white p-2 text-slate-600 transition-colors hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600"
+              className="min-h-[44px] min-w-[44px] flex-shrink-0 flex items-center justify-center rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-blue-100 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600 touch-action-manipulation"
               title={tts.state === 'speaking' ? 'Stop reading' : 'Read aloud'}
               aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read aloud'}
             >
@@ -257,14 +257,14 @@ export default function QuizRunner({
             const key = String(i);
             const wasSelected = selected === key;
             const isCorrectAnswer = i === q.answer;
-            let buttonClass = "w-full rounded-xl border-2 px-6 py-4 text-left font-medium transition-all";
+            let buttonClass = "w-full rounded-xl border-2 px-4 sm:px-6 py-4 sm:py-3 text-base sm:text-sm text-left font-medium transition-all min-h-[52px] touch-action-manipulation";
 
             // In practice mode, show feedback immediately; in test mode, only show selection
             if (isTestMode) {
               if (wasSelected) {
-                buttonClass += " bg-blue-50 border-blue-500 text-blue-900";
+                buttonClass += " bg-blue-50 border-blue-500 text-blue-900 active:bg-blue-100";
               } else {
-                buttonClass += " border-slate-200 bg-white text-slate-700 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm cursor-pointer";
+                buttonClass += " border-slate-200 bg-white text-slate-700 active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm cursor-pointer";
               }
             } else {
               // Practice mode with immediate feedback
@@ -278,9 +278,9 @@ export default function QuizRunner({
                 }
               } else {
                 if (wasSelected) {
-                  buttonClass += " bg-blue-50 border-blue-500 text-blue-900";
+                  buttonClass += " bg-blue-50 border-blue-500 text-blue-900 active:bg-blue-100";
                 } else {
-                  buttonClass += " border-slate-200 bg-white text-slate-700 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm cursor-pointer";
+                  buttonClass += " border-slate-200 bg-white text-slate-700 active:bg-blue-50 hover:border-blue-400 hover:bg-blue-50 hover:shadow-sm cursor-pointer";
                 }
               }
             }
@@ -292,13 +292,13 @@ export default function QuizRunner({
                   onClick={() => handleAnswer(q.id, key)}
                   className={buttonClass}
                 >
-                  <div className="flex items-center justify-between pr-8">
-                    <span>{opt}</span>
+                  <div className="flex items-center justify-between pr-10 sm:pr-8">
+                    <span className="break-words">{opt}</span>
                     {!isTestMode && isAnswered && isCorrectAnswer && (
-                      <CheckCircle2 className="h-5 w-5 text-green-600" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0" />
                     )}
                     {!isTestMode && isAnswered && wasSelected && !isCorrectAnswer && (
-                      <XCircle className="h-5 w-5 text-red-600" />
+                      <XCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
                     )}
                   </div>
                 </button>
@@ -312,12 +312,12 @@ export default function QuizRunner({
                         tts.speak(opt);
                       }
                     }}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md border border-slate-300 bg-white p-1.5 text-slate-500 opacity-60 transition-all hover:border-blue-400 hover:bg-blue-50 hover:opacity-100 hover:text-blue-600 focus:opacity-100"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-md border border-slate-300 bg-white p-2 text-slate-500 opacity-60 transition-all active:bg-blue-100 hover:border-blue-400 hover:bg-blue-50 hover:opacity-100 hover:text-blue-600 focus:opacity-100 touch-action-manipulation"
                     title="Read this option aloud"
                     aria-label="Read this option aloud"
                     onMouseDown={(e) => e.stopPropagation()}
                   >
-                    <Volume2 className="h-4 w-4" />
+                    <Volume2 className="h-5 w-5" />
                   </button>
                 )}
               </div>
@@ -327,11 +327,11 @@ export default function QuizRunner({
       </div>
 
       {/* Navigation */}
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
         <button
           onClick={() => setIndex((v) => Math.max(0, v - 1))}
           disabled={index === 0}
-          className="flex items-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
+          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
         >
           <ArrowLeft className="h-5 w-5" />
           {t('previous')}
@@ -347,7 +347,7 @@ export default function QuizRunner({
                 setSubmitted(true);
               }
             }}
-            className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+            className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors active:bg-blue-700 hover:bg-blue-700 touch-action-manipulation"
           >
             {index < questions.length - 1 ? (
               <>
@@ -369,7 +369,7 @@ export default function QuizRunner({
                     setSubmitted(true);
                   }
                 }}
-                className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
+                className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition-colors active:bg-blue-700 hover:bg-blue-700 touch-action-manipulation"
               >
                 {index < questions.length - 1 ? (
                   <>
@@ -386,7 +386,7 @@ export default function QuizRunner({
               <button
                 onClick={() => setIndex((v) => Math.min(questions.length - 1, v + 1))}
                 disabled={true}
-                className="flex items-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-100 px-6 py-3 font-semibold text-slate-400 transition-colors cursor-not-allowed"
+                className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-slate-100 px-6 py-3 font-semibold text-slate-400 transition-colors cursor-not-allowed"
               >
                 {t('next')}
                 <ArrowRight className="h-5 w-5" />
@@ -396,7 +396,7 @@ export default function QuizRunner({
             {answeredQuestions.size === questions.length && !isAnswered && (
               <button
                 onClick={() => setSubmitted(true)}
-                className="ml-auto flex items-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-green-700"
+                className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition-colors active:bg-green-700 hover:bg-green-700 touch-action-manipulation"
               >
                 {t('viewResults')}
               </button>
