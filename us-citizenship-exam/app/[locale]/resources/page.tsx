@@ -20,14 +20,14 @@ export default async function ResourcesPage({ params }: { params: Promise<{ loca
   ];
 
   return (
-    <div className="mx-auto max-w-4xl p-4">
-      <h1 className="mb-6 text-center text-3xl font-bold text-slate-900">{t('title')}</h1>
+    <div>
+      <h1 className="mb-6 sm:mb-8 text-center text-headline text-primary">{t('title')}</h1>
 
       <Section title={t('youtube')} items={youtube} />
       <Section title={t('official')} items={official} />
       <Section title={t('community')} items={community} />
 
-      <div id="feedback" className="mt-10">
+      <div id="feedback" className="mt-8 sm:mt-10 lg:mt-12">
         <FeedbackForm />
       </div>
     </div>
@@ -36,12 +36,17 @@ export default async function ResourcesPage({ params }: { params: Promise<{ loca
 
 function Section({ title, items }: { title: string; items: { label: string; url: string }[] }) {
   return (
-    <section className="mb-8">
-      <h2 className="mb-3 text-xl font-semibold text-slate-800">{title}</h2>
-      <ul className="space-y-2">
+    <section className="mb-6 sm:mb-8 rounded-xl glass-card modern-shadow p-4 sm:p-6">
+      <h2 className="mb-3 sm:mb-4 text-subtitle text-primary">{title}</h2>
+      <ul className="space-y-2 sm:space-y-3">
         {items.map((it) => (
           <li key={it.url}>
-            <a className="text-blue-600 underline" href={it.url} target="_blank" rel="noreferrer">
+            <a 
+              className="touch-target inline-block text-body text-primary smooth-hover hover:opacity-80 hover:underline active:opacity-70" 
+              href={it.url} 
+              target="_blank" 
+              rel="noreferrer"
+            >
               {it.label}
             </a>
           </li>
