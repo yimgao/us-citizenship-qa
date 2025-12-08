@@ -11,6 +11,7 @@ export interface UseFlashcardSwipeOptions {
   onSwipeRight: () => void;
   onSwipeUp: () => void;
   onSwipeDown: () => void;
+  onTap?: () => void;
 }
 
 export function useFlashcardSwipe({
@@ -18,13 +19,16 @@ export function useFlashcardSwipe({
   onSwipeRight,
   onSwipeUp,
   onSwipeDown,
+  onTap,
 }: UseFlashcardSwipeOptions) {
   return useSwipeable({
     onSwipedLeft: onSwipeLeft,
     onSwipedRight: onSwipeRight,
     onSwipedUp: onSwipeUp,
     onSwipedDown: onSwipeDown,
+    onTap: onTap,
     trackMouse: false,
     preventScrollOnSwipe: true,
+    delta: 10, // Minimum distance for a swipe
   });
 }
