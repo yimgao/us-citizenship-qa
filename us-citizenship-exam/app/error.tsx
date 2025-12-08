@@ -1,11 +1,20 @@
 "use client";
 import { useEffect } from 'react';
+import { errorReporter } from '@/shared/utils/errorReporting';
 
 export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
-    // TODO: add error reporting here
-    // console.error(error);
+    // Report error with context
+    errorReporter.reportError(error, {
+      digest: error.digest,
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      location: typeof window !== 'undefined' ? window.location.href : 'unknown',
+      timestamp: new Date().toISOString(),
+    });
   }, [error]);
+
   return (
     <html>
       <body className="mx-auto max-w-2xl p-6">

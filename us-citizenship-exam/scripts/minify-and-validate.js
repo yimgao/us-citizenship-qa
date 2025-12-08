@@ -2,6 +2,7 @@
   Minify and validate question JSON files.
   Usage: node scripts/minify-and-validate.js
 */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 

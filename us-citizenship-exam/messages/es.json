@@ -22,7 +22,20 @@
     "grammar": "Gramática",
     "resources": "Recursos"
   },
-  "footer": { "text": "Hecho con ☕ durante muchos días. Por byteMing.", "feedback": "Comentarios" },
+  "footer": {
+    "title": "Centro de Estudio Cívico de EE. UU.",
+    "description": "Practica para el examen de naturalización de EE. UU. con cuestionarios y tarjetas interactivas.",
+    "quickLinks": "Enlaces Rápidos",
+    "quiz": "Examen",
+    "flashcards": "Tarjetas",
+    "glossary": "Glosario",
+    "grammar": "Gramática",
+    "resources": "Recursos",
+    "about": "Acerca de",
+    "text": "Hecho con ☕ durante muchos días. Por byteMing.",
+    "feedback": "Comentarios",
+    "rights": "Todos los derechos reservados."
+  },
   "quiz": {
     "title": "Modo Quiz",
     "selectMode": "Elige el modo:",

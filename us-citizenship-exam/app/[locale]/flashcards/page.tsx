@@ -1,7 +1,10 @@
-import { loadQuestionsPaged, loadQuestions } from '@/lib/questions';
-import FlashcardViewer from '@/components/flashcards/FlashcardViewer';
+import { QuestionService } from '@/core/services/data/questionService';
+import { FlashcardViewer } from '@/modules/flashcards';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import type { Category } from '@/core/types';
+import { Suspense } from 'react';
+import { FlashcardLoadingSkeleton } from '@/shared/ui/loading';
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: 'en'|'es'|'zh' }> }
@@ -31,6 +34,66 @@ export async function generateMetadata(
   };
 }
 
+async function FlashcardsContent({
+  locale,
+  selected,
+  current,
+  size,
+}: {
+  locale: 'en' | 'es' | 'zh';
+  selected: string;
+  current: number;
+  size: number;
+}) {
+  try {
+    const key = (selected === 'all' ? 'all' : selected) as Category;
+    const offset = (current - 1) * size;
+    let cards;
+    let totalPages = 1;
+    if (key === 'all') {
+      // Show all cards when "All" is selected (no pagination)
+      cards = await QuestionService.loadQuestions(locale, 'all', 'all');
+    } else {
+      const paged = await QuestionService.loadQuestionsPaged(locale, key, offset, size);
+      cards = paged.items;
+      totalPages = Math.max(1, Math.ceil(paged.total / size));
+    }
+
+    return (
+      <>
+        <FlashcardViewer cards={cards} />
+        {selected !== 'all' && (
+          <div className="mt-6 sm:mt-8 flex items-center justify-center gap-3 sm:gap-4">
+            <a
+              href={`?category=${selected}&page=${Math.max(1, current - 1)}&pageSize=${size}`}
+              className={`touch-target rounded-lg border-2 border-slate-200/50 bg-white/80 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-medium smooth-hover transition-all ${
+                current===1 
+                  ? 'pointer-events-none opacity-40 cursor-not-allowed' 
+                  : 'hover:bg-slate-50/50 hover:border-slate-300 text-primary'
+              }`}
+            >
+              ← Prev
+            </a>
+            <span className="text-body-sm text-secondary px-2">Page {current} / {totalPages}</span>
+            <a
+              href={`?category=${selected}&page=${Math.min(totalPages, current + 1)}&pageSize=${size}`}
+              className={`touch-target rounded-lg border-2 border-slate-200/50 bg-white/80 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-medium smooth-hover transition-all ${
+                current===totalPages 
+                  ? 'pointer-events-none opacity-40 cursor-not-allowed' 
+                  : 'hover:bg-slate-50/50 hover:border-slate-300 text-primary'
+              }`}
+            >
+              Next →
+            </a>
+          </div>
+        )}
+      </>
+    );
+  } catch (error) {
+    throw new Error(`Failed to load flashcards: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
+}
+
 export default async function FlashcardsPage({
   params,
   searchParams
@@ -42,53 +105,67 @@ export default async function FlashcardsPage({
   const t = await getTranslations({ locale, namespace: 'flashcards' });
   const { category, page, pageSize } = await searchParams;
   const selected = (category as string) ?? 'all';
-  const key = (selected === 'all' ? 'all' : selected) as 'gov'|'history'|'civics'|'all';
   const current = Math.max(1, parseInt((page as string) ?? '1', 10));
   const size = Math.max(1, Math.min(50, parseInt((pageSize as string) ?? '25', 10)));
-  const offset = (current - 1) * size;
-  let cards;
-  let totalPages = 1;
-  if (key === 'all') {
-    // Show all cards when "All" is selected (no pagination)
-    cards = await loadQuestions(locale, 'all', 'all');
-  } else {
-    const paged = await loadQuestionsPaged(locale, key, offset, size);
-    cards = paged.items;
-    totalPages = Math.max(1, Math.ceil(paged.total / size));
-  }
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="mb-6">
-        <h1 className="mb-4 text-center text-3xl font-bold text-slate-900">{t('title')}</h1>
-        <div className="rounded-xl bg-white p-4 shadow-sm">
-          <p className="mb-3 text-center text-sm font-medium text-slate-600">{t('selectCategory')}</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <a href={`?category=all`} className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${selected==='all' ? 'border-blue-500 bg-blue-600 text-white shadow-md' : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'}`}>{t('all')}</a>
-            <a href={`?category=gov`} className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${selected==='gov' ? 'border-blue-500 bg-blue-600 text-white shadow-md' : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'}`}>{t('categoryGov')}</a>
-            <a href={`?category=history`} className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${selected==='history' ? 'border-blue-500 bg-blue-600 text-white shadow-md' : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'}`}>{t('categoryHistory')}</a>
-            <a href={`?category=civics`} className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${selected==='civics' ? 'border-blue-500 bg-blue-600 text-white shadow-md' : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'}`}>{t('categoryCivics')}</a>
+    <div>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="mb-4 sm:mb-6 text-center text-headline text-primary">{t('title')}</h1>
+        <div className="rounded-xl glass-card modern-shadow p-4 sm:p-6">
+          <p className="mb-3 sm:mb-4 text-center text-body font-medium text-foreground/70">{t('selectCategory')}</p>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <a 
+              href={`?category=all`} 
+              className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
+                selected==='all' 
+                  ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
+                  : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
+              }`}
+            >
+              {t('all')}
+            </a>
+            <a 
+              href={`?category=gov`} 
+              className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
+                selected==='gov' 
+                  ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
+                  : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
+              }`}
+            >
+              {t('categoryGov')}
+            </a>
+            <a 
+              href={`?category=history`} 
+              className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
+                selected==='history' 
+                  ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
+                  : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
+              }`}
+            >
+              {t('categoryHistory')}
+            </a>
+            <a 
+              href={`?category=civics`} 
+              className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
+                selected==='civics' 
+                  ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
+                  : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
+              }`}
+            >
+              {t('categoryCivics')}
+            </a>
           </div>
         </div>
       </div>
-      <FlashcardViewer cards={cards} />
-      {selected !== 'all' && (
-        <div className="mt-6 flex items-center justify-center gap-3">
-          <a
-            href={`?category=${selected}&page=${Math.max(1, current - 1)}&pageSize=${size}`}
-            className={`rounded border px-3 py-1 text-sm ${current===1 ? 'pointer-events-none opacity-40' : 'hover:bg-slate-50'}`}
-          >
-            ← Prev
-          </a>
-          <span className="text-xs text-slate-600">Page {current} / {totalPages}</span>
-          <a
-            href={`?category=${selected}&page=${Math.min(totalPages, current + 1)}&pageSize=${size}`}
-            className={`rounded border px-3 py-1 text-sm ${current===totalPages ? 'pointer-events-none opacity-40' : 'hover:bg-slate-50'}`}
-          >
-            Next →
-          </a>
-        </div>
-      )}
+      <Suspense fallback={<FlashcardLoadingSkeleton />}>
+        <FlashcardsContent 
+          locale={locale}
+          selected={selected}
+          current={current}
+          size={size}
+        />
+      </Suspense>
     </div>
   );
 }
