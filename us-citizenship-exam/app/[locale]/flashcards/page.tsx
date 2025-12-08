@@ -67,18 +67,18 @@ async function FlashcardsContent({
             <a
               href={`?category=${selected}&page=${Math.max(1, current - 1)}&pageSize=${size}`}
               className={`touch-target rounded-lg border-2 border-slate-200/50 bg-white/80 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-medium smooth-hover transition-all ${
-                current===1 
+                current === 1 
                   ? 'pointer-events-none opacity-40 cursor-not-allowed' 
                   : 'hover:bg-slate-50/50 hover:border-slate-300 text-primary'
               }`}
             >
               ← Prev
             </a>
-            <span className="text-body-sm text-secondary px-2">Page {current} / {totalPages}</span>
+            <span className="text-body-sm text-muted-foreground px-2">Page {current} / {totalPages}</span>
             <a
               href={`?category=${selected}&page=${Math.min(totalPages, current + 1)}&pageSize=${size}`}
               className={`touch-target rounded-lg border-2 border-slate-200/50 bg-white/80 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-medium smooth-hover transition-all ${
-                current===totalPages 
+                current === totalPages 
                   ? 'pointer-events-none opacity-40 cursor-not-allowed' 
                   : 'hover:bg-slate-50/50 hover:border-slate-300 text-primary'
               }`}
@@ -118,7 +118,7 @@ export default async function FlashcardsPage({
             <a 
               href={`?category=all`} 
               className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
-                selected==='all' 
+                selected === 'all' 
                   ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
                   : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
               }`}
@@ -128,7 +128,7 @@ export default async function FlashcardsPage({
             <a 
               href={`?category=gov`} 
               className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
-                selected==='gov' 
+                selected === 'gov' 
                   ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
                   : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
               }`}
@@ -138,7 +138,7 @@ export default async function FlashcardsPage({
             <a 
               href={`?category=history`} 
               className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
-                selected==='history' 
+                selected === 'history' 
                   ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
                   : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
               }`}
@@ -148,7 +148,7 @@ export default async function FlashcardsPage({
             <a 
               href={`?category=civics`} 
               className={`touch-target rounded-lg border-2 px-4 sm:px-6 py-2.5 sm:py-3 text-body font-semibold smooth-hover transition-all ${
-                selected==='civics' 
+                selected === 'civics' 
                   ? 'border-blue-500 bg-primary text-primary-foreground modern-shadow' 
                   : 'border-blue-200/50 bg-white/80 text-primary hover:border-blue-400 hover:bg-blue-50/50'
               }`}
