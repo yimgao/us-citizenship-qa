@@ -33,8 +33,22 @@ export const GlossaryCard = memo(function GlossaryCard({
     <div className="relative mb-6">
       <div
         {...swipeHandlers}
-        onClick={onFlip}
-        className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-pan-y"
+        onClick={(e) => {
+          // Only flip if clicking on the card itself, not on buttons
+          if (e.target === e.currentTarget || (e.target as HTMLElement).closest('.no-flip') === null) {
+            onFlip();
+          }
+        }}
+        className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-manipulation"
+        role="button"
+        aria-label={showDefinition ? t('clickToFlipBack') : t('clickToFlip')}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onFlip();
+          }
+        }}
       >
         <div
           className={`absolute inset-0 rounded-2xl bg-white shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${
@@ -98,7 +112,7 @@ export const GlossaryCard = memo(function GlossaryCard({
                     e.stopPropagation();
                     onSpeak(item.definitions.en, 'en');
                   }}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
+                  className="no-flip min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
                   title={speakingLang === 'en' ? t('stopSpeaking') : t('speak')}
                 >
                   {speakingLang === 'en' ? (
@@ -122,7 +136,7 @@ export const GlossaryCard = memo(function GlossaryCard({
                     e.stopPropagation();
                     onSpeak(item.definitions.es, 'es');
                   }}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
+                  className="no-flip min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
                   title={speakingLang === 'es' ? t('stopSpeaking') : t('speak')}
                 >
                   {speakingLang === 'es' ? (
@@ -146,7 +160,7 @@ export const GlossaryCard = memo(function GlossaryCard({
                     e.stopPropagation();
                     onSpeak(item.definitions.zh, 'zh');
                   }}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
+                  className="no-flip min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 active:bg-slate-200 hover:bg-slate-100 transition-colors touch-action-manipulation"
                   title={speakingLang === 'zh' ? t('stopSpeaking') : t('speak')}
                 >
                   {speakingLang === 'zh' ? (
