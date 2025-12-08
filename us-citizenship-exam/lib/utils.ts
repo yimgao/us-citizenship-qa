@@ -1,6 +1,8 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+/**
+ * Utility function adapter
+ * Re-exports cn from shared utils for backward compatibility
+ * Used by shadcn/ui components
+ */
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
+export { cn } from '@/shared/utils/cn';
+export type { ClassValue } from 'clsx';

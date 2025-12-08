@@ -22,7 +22,20 @@
     "grammar": "语法练习",
     "resources": "学习资源"
   },
-  "footer": { "text": "由 byteMing 耗费大量咖啡和时间制作。", "feedback": "意见反馈" },
+  "footer": {
+    "title": "美国公民学习中心",
+    "description": "通过交互式测验和复习卡片练习美国入籍考试。",
+    "quickLinks": "快速链接",
+    "quiz": "测验",
+    "flashcards": "复习卡片",
+    "glossary": "名词解释",
+    "grammar": "语法练习",
+    "resources": "学习资源",
+    "about": "关于",
+    "text": "由 byteMing 耗费大量咖啡和时间制作。",
+    "feedback": "意见反馈",
+    "rights": "版权所有。"
+  },
   "quiz": {
     "title": "测验模式",
     "selectMode": "选择模式：",

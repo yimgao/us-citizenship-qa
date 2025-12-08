@@ -22,7 +22,20 @@
     "grammar": "Grammar",
     "resources": "Resources"
   },
-  "footer": { "text": "Made with ☕ over many days. By byteMing.", "feedback": "Feedback" },
+  "footer": {
+    "title": "U.S. Civics Study Hub",
+    "description": "Practice for the U.S. naturalization test with interactive quizzes and flashcards.",
+    "quickLinks": "Quick Links",
+    "quiz": "Quiz",
+    "flashcards": "Flashcards",
+    "glossary": "Glossary",
+    "grammar": "Grammar",
+    "resources": "Resources",
+    "about": "About",
+    "text": "Made with ☕ over many days. By byteMing.",
+    "feedback": "Feedback",
+    "rights": "All rights reserved."
+  },
   "quiz": {
     "title": "Quiz Mode",
     "selectMode": "Choose mode:",
