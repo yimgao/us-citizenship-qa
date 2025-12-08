@@ -1,34 +1,16 @@
-import GlossaryViewer from '@/components/glossary/GlossaryViewer';
+import { GlossaryViewer, GlossaryService } from '@/modules/glossary';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import type { Locale } from '@/core/types';
+import { Suspense } from 'react';
+import { GlossaryLoadingSkeleton } from '@/shared/ui/loading';
 
-type GlossaryItem = {
-  id: string;
-  term: {
-    en: string;
-    zh: string;
-    es: string;
-  };
-  definitions: {
-    en: string;
-    zh: string;
-    es: string;
-  };
-};
-
-async function loadGlossary(): Promise<GlossaryItem[]> {
-  try {
-    const mod = await import('@/data/glossary/glossary.json');
-    return (mod.default ?? []) as GlossaryItem[];
-  } catch {
-    return [];
-  }
-}
-
-export async function generateMetadata(
-  { params }: { params: { locale: 'en'|'es'|'zh' } }
-): Promise<Metadata> {
-  const { locale } = params;
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const dict = {
     en: {
       title: 'Glossary | U.S. Civics Study Hub',
@@ -53,6 +35,19 @@ export async function generateMetadata(
   };
 }
 
+async function GlossaryContent({
+  locale,
+}: {
+  locale: 'en' | 'es' | 'zh';
+}) {
+  try {
+    const items = await GlossaryService.loadGlossary();
+    return <GlossaryViewer items={items} locale={locale} />;
+  } catch (error) {
+    throw new Error(`Failed to load glossary: ${error instanceof Error ? error.message : 'Unknown error'}`);
+  }
+}
+
 export default async function GlossaryPage({
   params,
 }: {
@@ -60,15 +55,16 @@ export default async function GlossaryPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'glossary' });
-  const items = await loadGlossary();
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="mb-6">
-        <h1 className="mb-4 text-center text-3xl font-bold text-slate-900">{t('title')}</h1>
-        <p className="text-center text-slate-600">{t('description')}</p>
+    <div>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="mb-4 sm:mb-6 text-center text-headline text-primary">{t('title')}</h1>
+        <p className="text-center text-body text-foreground/75 max-w-2xl mx-auto">{t('description')}</p>
       </div>
-      <GlossaryViewer items={items} locale={locale} />
+      <Suspense fallback={<GlossaryLoadingSkeleton />}>
+        <GlossaryContent locale={locale} />
+      </Suspense>
     </div>
   );
 }
