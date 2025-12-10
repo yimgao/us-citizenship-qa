@@ -29,16 +29,25 @@ export const GlossaryCard = memo(function GlossaryCard({
 }: GlossaryCardProps) {
   const t = useTranslations('glossary');
 
+  // Handle click - ensure it works even with swipe handlers
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Prevent flip if clicking on a button
+    const target = e.target as HTMLElement;
+    if (target.closest('button') || target.closest('.no-flip')) {
+      return;
+    }
+    // Don't prevent default - let swipe handlers manage touch events
+    // Just stop propagation to avoid double-triggering
+    e.stopPropagation();
+    // Flip the card
+    onFlip();
+  };
+
   return (
     <div className="relative mb-6">
       <div
         {...swipeHandlers}
-        onClick={(e) => {
-          // Only flip if clicking on the card itself, not on buttons
-          if (e.target === e.currentTarget || (e.target as HTMLElement).closest('.no-flip') === null) {
-            onFlip();
-          }
-        }}
+        onClick={handleClick}
         className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-manipulation"
         role="button"
         aria-label={showDefinition ? t('clickToFlipBack') : t('clickToFlip')}

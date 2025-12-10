@@ -107,6 +107,7 @@ export function useGlossary({ items, locale }: UseGlossaryOptions) {
         stopSpeaking();
       }
     },
+    onTap: () => toggleFlip(), // Add onTap for better compatibility
     trackMouse: false,
     preventScrollOnSwipe: true,
   });

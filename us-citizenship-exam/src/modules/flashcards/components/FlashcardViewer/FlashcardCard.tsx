@@ -4,7 +4,7 @@
 
 'use client';
 
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { RotateCw, Volume2, VolumeX } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useTTS } from '@/shared/hooks/useTTS';
@@ -28,6 +28,27 @@ export const FlashcardCard = memo(function FlashcardCard({
   swipeHandlers,
 }: FlashcardCardProps) {
   const t = useTranslations('flashcards');
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure component is mounted on client before showing TTS button
+  // This prevents hydration mismatch since isSupported differs between server and client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Handle click - ensure it works even with swipe handlers
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Prevent flip if clicking on a button (TTS buttons stop propagation, but be safe)
+    const target = e.target as HTMLElement;
+    if (target.closest('button')) {
+      return;
+    }
+    // Don't prevent default - let swipe handlers manage touch events
+    // Just stop propagation to avoid double-triggering
+    e.stopPropagation();
+    // Flip the card
+    onFlip();
+  };
 
   return (
     <div className="relative mb-6">
@@ -37,7 +58,7 @@ export const FlashcardCard = memo(function FlashcardCard({
       </div>
       <div
         {...swipeHandlers}
-        onClick={onFlip}
+        onClick={handleClick}
         className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-pan-y"
         role="button"
         aria-label={showAnswer ? t('flipToQuestion') : t('flipToAnswer')}
@@ -48,6 +69,7 @@ export const FlashcardCard = memo(function FlashcardCard({
             onFlip();
           }
         }}
+        style={{ touchAction: 'pan-y' }}
       >
         <div
           className={`absolute inset-0 rounded-2xl bg-white shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${
@@ -63,7 +85,7 @@ export const FlashcardCard = memo(function FlashcardCard({
               <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-slate-900">
                 {card.text}
               </p>
-              {tts.isSupported && !showAnswer && (
+              {mounted && tts.isSupported && !showAnswer && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -91,28 +113,37 @@ export const FlashcardCard = memo(function FlashcardCard({
             </div>
           </div>
 
-          {/* Back Side - Answer */}
+          {/* Back Side - Explanation */}
           <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-50 to-white p-8 [backface-visibility:hidden] [transform:rotateY(180deg)]">
             <div className="mb-4 rounded-full bg-green-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-green-700">
               {t('answer')}
             </div>
-            <div className="relative flex w-full max-w-xl flex-col items-center gap-3">
+            <div className="relative flex w-full max-w-xl flex-col items-center gap-4">
+              {/* Question repeated for context */}
+              <div className="w-full">
+                <p className="text-center text-sm sm:text-base font-medium text-slate-600 mb-2">
+                  {card.text}
+                </p>
+                <div className="h-px bg-slate-200 my-3"></div>
+              </div>
+              {/* Answer */}
               <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-green-700">
                 {answerText}
               </p>
-              {tts.isSupported && showAnswer && (
+              {mounted && tts.isSupported && showAnswer && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     if (tts.state === 'speaking') {
                       tts.stop();
                     } else {
-                      tts.speak(answerText);
+                      // Speak both question and answer for better context
+                      tts.speak(`${card.text}. ${answerText}`);
                     }
                   }}
                   className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-green-100 hover:border-green-400 hover:bg-green-50 hover:text-green-600 touch-action-manipulation"
-                  title={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
-                  aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
+                  title={tts.state === 'speaking' ? 'Stop reading' : 'Read explanation aloud'}
+                  aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read explanation aloud'}
                 >
                   {tts.state === 'speaking' ? (
                     <VolumeX className="h-5 w-5" />

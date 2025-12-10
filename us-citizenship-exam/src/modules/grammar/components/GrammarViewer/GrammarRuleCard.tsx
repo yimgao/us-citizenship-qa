@@ -31,12 +31,35 @@ export const GrammarRuleCard = memo(function GrammarRuleCard({
 }: GrammarRuleCardProps) {
   const t = useTranslations('grammar');
 
+  // Handle click - ensure it works even with swipe handlers
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Prevent flip if clicking on a button
+    const target = e.target as HTMLElement;
+    if (target.closest('button')) {
+      return;
+    }
+    // Don't prevent default - let swipe handlers manage touch events
+    // Just stop propagation to avoid double-triggering
+    e.stopPropagation();
+    // Flip the card
+    onFlip();
+  };
+
   return (
     <div className="relative mb-6">
       <div
         {...swipeHandlers}
-        onClick={onFlip}
+        onClick={handleClick}
         className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-pan-y"
+        role="button"
+        aria-label={showExplanation ? t('clickToFlipBack') : t('clickToFlip')}
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onFlip();
+          }
+        }}
       >
         <div
           className={`absolute inset-0 rounded-2xl bg-white shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${

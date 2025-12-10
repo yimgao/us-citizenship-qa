@@ -105,6 +105,7 @@ export function useGrammar({ rules, locale }: UseGrammarOptions) {
         stopSpeaking();
       }
     },
+    onTap: () => toggleFlip(), // Add onTap for better compatibility
     trackMouse: false,
     preventScrollOnSwipe: true,
   });

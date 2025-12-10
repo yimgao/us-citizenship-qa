@@ -45,7 +45,7 @@ export function FlashcardViewer({ cards }: FlashcardViewerProps) {
     onSwipeRight: goToPrevious,
     onSwipeUp: () => toggleFlip(),
     onSwipeDown: () => toggleFlip(),
-    onTap: () => toggleFlip(),
+    onTap: () => toggleFlip(), // Use onTap for better compatibility with swipe handlers
   });
 
   if (visibleCards.length === 0) {

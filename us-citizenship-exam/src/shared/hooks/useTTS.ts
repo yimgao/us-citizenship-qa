@@ -131,8 +131,11 @@ export function useTTS(locale: Locale = 'en') {
       utterance.onstart = () => setState('speaking');
       utterance.onend = () => setState('idle');
       utterance.onerror = (e) => {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('TTS Error:', e);
+        // Ignore 'canceled' errors as they're expected when stopping TTS
+        if (e.error !== 'canceled') {
+          if (process.env.NODE_ENV === 'development') {
+            console.warn('TTS Error:', e);
+          }
         }
         setState('idle');
       };
