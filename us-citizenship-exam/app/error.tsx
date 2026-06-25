@@ -1,20 +1,24 @@
-"use client";
-import { useEffect } from 'react';
+'use client';
 
-export default function GlobalError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-  useEffect(() => {
-    // TODO: add error reporting here
-    // console.error(error);
-  }, [error]);
+export default function GlobalError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <html>
-      <body className="mx-auto max-w-2xl p-6">
-        <h2 className="mb-2 text-2xl font-bold text-red-600">Something went wrong</h2>
-        <p className="mb-6 text-slate-700">Please try again. If the issue persists, refresh the page.</p>
-        <button onClick={() => reset()} className="rounded-lg bg-blue-600 px-4 py-2 text-white">Try again</button>
+      <body className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-4 px-6 text-center">
+        <div className="text-hero font-bold text-danger">Oops!</div>
+        <p className="text-body-lg text-muted-foreground">Something went wrong</p>
+        <button
+          onClick={() => reset()}
+          className="mt-4 flex h-12 items-center justify-center rounded-xl bg-primary px-8 text-base font-bold text-primary-fg transition-all hover:brightness-105"
+        >
+          Try Again
+        </button>
       </body>
     </html>
   );
 }
-
-

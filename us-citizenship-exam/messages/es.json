@@ -1,8 +1,16 @@
 {
   "home": {
-    "title": "Centro de Práctica de Naturalización",
-    "subtitle": "Practica para el examen cívico de EE. UU. en varios idiomas.",
-    "question": "¿Quieres practicar? ¿Qué método funciona mejor para ti?",
+    "heroTitle": "Tu Camino a la Ciudadan\u00eda",
+    "heroSubtitle": "Pr\u00e1ctica gratuita para el examen de civismo de naturalizaci\u00f3n",
+    "heroDescription": "Cuestionarios interactivos, tarjetas did\u00e1cticas, lecciones de gram\u00e1tica y un glosario \u2014 todo en ingl\u00e9s, espa\u00f1ol y chino. Sin cuenta necesaria.",
+    "startQuiz": "Comenzar Examen",
+    "learnMore": "Estudiar con Tarjetas",
+    "statsLearners": "Estudiantes Activos",
+    "statsQuestions": "Preguntas de Pr\u00e1ctica",
+    "statsLanguages": "Idiomas",
+    "title": "Centro de Pr\u00e1ctica de Naturalizaci\u00f3n",
+    "subtitle": "Practica para el examen c\u00edvico de EE. UU. en varios idiomas.",
+    "question": "\u00bfQuieres practicar? \u00bfQu\u00e9 m\u00e9todo funciona mejor para ti?",
     "quizTitle": "Modo Quiz",
     "quizDescription": "Prueba tus conocimientos con preguntas de opción múltiple y ve tu puntuación.",
     "flashcardsTitle": "Tarjetas",
@@ -14,15 +22,16 @@
     "suggestion": "¡Prueba los cuatro y descubre cuál te ayuda a aprender mejor!"
   },
   "navbar": {
-    "title": "Centro de Estudio Cívico de EE. UU.",
+    "title": "Citizenship Prep",
     "home": "Inicio",
     "quiz": "Examen",
     "flashcards": "Tarjetas",
     "glossary": "Glosario",
     "grammar": "Gramática",
+    "case-status": "Estado del Caso",
     "resources": "Recursos"
   },
-  "footer": { "text": "Hecho con ☕ durante muchos días. Por byteMing.", "feedback": "Comentarios" },
+  "footer": { "text": "Práctica gratuita de ciudadanía estadounidense. Cuestionarios, tarjetas, gramática y glosario.", "feedback": "Comentarios", "links": "Enlaces", "builtWith": "Hecho Con" },
   "quiz": {
     "title": "Modo Quiz",
     "selectMode": "Elige el modo:",

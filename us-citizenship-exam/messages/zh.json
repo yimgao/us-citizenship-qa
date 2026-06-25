@@ -1,5 +1,13 @@
 {
   "home": {
+    "heroTitle": "通往公民之路",
+    "heroSubtitle": "免费美国入籍公民知识模拟练习",
+    "heroDescription": "互动测验、闪卡、语法课程和词汇表 — 支持英文、西班牙文和中文。无需注册。",
+    "startQuiz": "开始测验",
+    "learnMore": "用闪卡学习",
+    "statsLearners": "活跃学习者",
+    "statsQuestions": "练习题数",
+    "statsLanguages": "语言",
     "title": "入籍考试练习中心",
     "subtitle": "使用多种语言练习美国公民考试公民知识题。",
     "question": "想要练习吗？哪种方法最适合您？",
@@ -14,15 +22,16 @@
     "suggestion": "四种都试试，看看哪个更能帮助您学习！"
   },
   "navbar": {
-    "title": "美国公民学习中心",
+    "title": "入籍练习",
     "home": "首页",
     "quiz": "测验",
     "flashcards": "复习卡片",
     "glossary": "名词解释",
     "grammar": "语法练习",
+    "case-status": "案件状态",
     "resources": "学习资源"
   },
-  "footer": { "text": "由 byteMing 耗费大量咖啡和时间制作。", "feedback": "意见反馈" },
+  "footer": { "text": "免费的美国入籍考试练习。测验、闪卡、语法和词汇表。", "feedback": "意见反馈", "links": "链接", "builtWith": "技术栈" },
   "quiz": {
     "title": "测验模式",
     "selectMode": "选择模式：",

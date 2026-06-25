@@ -1,5 +1,13 @@
 {
   "home": {
+    "heroTitle": "Your Path to Citizenship",
+    "heroSubtitle": "Free practice for the U.S. naturalization civics test",
+    "heroDescription": "Interactive quizzes, flashcards, grammar lessons, and a glossary \u2014 all in English, Spanish, and Chinese. No account needed.",
+    "startQuiz": "Start Quiz",
+    "learnMore": "Study with Flashcards",
+    "statsLearners": "Active Learners",
+    "statsQuestions": "Practice Questions",
+    "statsLanguages": "Languages",
     "title": "Naturalization Practice Hub",
     "subtitle": "Practice for the U.S. civics test with multiple languages.",
     "question": "Do you want to practice? Which method works best for you?",
@@ -14,15 +22,16 @@
     "suggestion": "Try all four and see which helps you learn better!"
   },
   "navbar": {
-    "title": "U.S. Civics Study Hub",
+    "title": "Citizenship Prep",
     "home": "Home",
     "quiz": "Quiz",
     "flashcards": "Flashcards",
     "glossary": "Glossary",
     "grammar": "Grammar",
+    "case-status": "Case Status",
     "resources": "Resources"
   },
-  "footer": { "text": "Made with ☕ over many days. By byteMing.", "feedback": "Feedback" },
+  "footer": { "text": "Free U.S. citizenship practice. Quizzes, flashcards, grammar, and glossary.", "feedback": "Feedback", "links": "Links", "builtWith": "Built With" },
   "quiz": {
     "title": "Quiz Mode",
     "selectMode": "Choose mode:",

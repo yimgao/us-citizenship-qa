@@ -1,75 +1,39 @@
-import GlossaryViewer from '@/components/glossary/GlossaryViewer';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
+import GlossaryViewer from '@/components/glossary/GlossaryViewer';
+import type { Locale } from '@/lib/questions';
 
-type GlossaryItem = {
-  id: string;
-  term: {
-    en: string;
-    zh: string;
-    es: string;
-  };
-  definitions: {
-    en: string;
-    zh: string;
-    es: string;
-  };
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-async function loadGlossary(): Promise<GlossaryItem[]> {
-  try {
-    const mod = await import('@/data/glossary/glossary.json');
-    return (mod.default ?? []) as GlossaryItem[];
-  } catch {
-    return [];
-  }
-}
-
-export async function generateMetadata(
-  { params }: { params: { locale: 'en'|'es'|'zh' } }
-): Promise<Metadata> {
-  const { locale } = params;
-  const dict = {
-    en: {
-      title: 'Glossary | U.S. Civics Study Hub',
-      desc: 'Learn key terms and definitions for the U.S. civics test in English, Spanish, and Chinese.'
-    },
-    es: {
-      title: 'Glosario | Centro de Estudio Cívico de EE. UU.',
-      desc: 'Aprende términos clave y definiciones para el examen cívico de EE. UU. en inglés, español y chino.'
-    },
-    zh: {
-      title: '名词解释 | 美国入籍考试练习中心',
-      desc: '学习美国公民考试的关键术语和定义，支持中文、英文与西语。'
-    }
-  } as const;
-  const lang = (locale === 'en' || locale === 'es' || locale === 'zh') ? locale : 'en';
-  const meta = dict[lang];
-  return {
-    title: meta.title,
-    description: meta.desc,
-    openGraph: { title: meta.title, description: meta.desc, type: 'website' },
-    twitter: { card: 'summary_large_image', title: meta.title, description: meta.desc }
-  };
-}
-
-export default async function GlossaryPage({
-  params,
-}: {
-  params: Promise<{ locale: 'en' | 'es' | 'zh' }>;
-}) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'glossary' });
-  const items = await loadGlossary();
+  const meta: Record<string, { title: string; desc: string }> = {
+    en: { title: 'Glossary — Citizenship Prep', desc: 'Key terms and definitions for the U.S. naturalization test in English, Spanish, and Chinese.' },
+    es: { title: 'Glosario — Citizenship Prep', desc: 'Términos y definiciones clave para el examen de naturalización en inglés, español y chino.' },
+    zh: { title: '名词解释 — Citizenship Prep', desc: '美国入籍考试的关键术语和定义，支持英语、西班牙语和中文。' },
+  };
+  const m = meta[locale as 'en' | 'es' | 'zh'] ?? meta.en;
+  return { title: m.title, description: m.desc };
+}
+
+export default async function GlossaryPage({ params }: Props) {
+  const { locale } = await params;
+  const activeLocale = (['en', 'es', 'zh'].includes(locale) ? locale : 'en') as Locale;
+  const t = await getTranslations({ locale: activeLocale, namespace: 'glossary' });
+
+  const items = (await import('@/data/glossary/glossary.json')).default;
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="mb-6">
-        <h1 className="mb-4 text-center text-3xl font-bold text-slate-900">{t('title')}</h1>
-        <p className="text-center text-slate-600">{t('description')}</p>
+    <div className="flex flex-col items-center gap-8 py-6">
+      {/* Header */}
+      <div className="flex flex-col items-center gap-2 text-center">
+        <h1 className="text-display font-bold text-fg">{t('title')}</h1>
+        <p className="max-w-xl text-body text-muted-foreground">{t('description')}</p>
       </div>
-      <GlossaryViewer items={items} locale={locale} />
+
+      <GlossaryViewer items={items} locale={activeLocale} />
     </div>
   );
 }
-

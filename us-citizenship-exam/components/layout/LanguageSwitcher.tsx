@@ -1,70 +1,64 @@
-"use client";
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+'use client';
 
-const locales = [
-  { code: 'en', label: 'English' },
-  { code: 'es', label: 'Español' },
-  { code: 'zh', label: '中文' }
+import { useState, useRef, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { ChevronDown } from 'lucide-react';
+
+const LOCALES = [
+  { code: 'en', label: 'EN' },
+  { code: 'es', label: 'ES' },
+  { code: 'zh', label: '中文' },
 ];
 
-export default function LanguageSwitcher({ currentLocale }: { currentLocale: 'en'|'es'|'zh' }) {
-  const router = useRouter();
+export default function LanguageSwitcher() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const onSelect = (code: string) => {
-    if (!pathname) return;
-    const parts = pathname.split('/').filter(Boolean);
-    if (parts.length === 0) {
-      router.push(`/${code}`);
-      return;
-    }
-    parts[0] = code;
-    router.push('/' + parts.join('/'));
+  const segments = pathname.split('/').filter(Boolean);
+  const currentCode = LOCALES.some((l) => l.code === segments[0]) ? segments[0] : 'en';
+  const current = LOCALES.find((l) => l.code === currentCode)!;
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const switchLocale = (code: string) => {
+    if (code === currentCode) { setOpen(false); return; }
+    const newPath = code + (segments.length > 1 ? '/' + segments.slice(1).join('/') : '');
+    router.replace('/' + newPath);
     setOpen(false);
   };
 
-  const current = locales.find(l => l.code === currentLocale) ?? locales[0];
-
   return (
-    <div className="relative">
+    <div ref={ref} className="relative">
       <button
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        onClick={() => setOpen(v => !v)}
-        className="min-h-[44px] min-w-[44px] rounded-full border px-3 py-1.5 text-sm active:bg-zinc-100 hover:bg-zinc-50 touch-action-manipulation"
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 rounded-xl border-2 border-border bg-white px-2.5 py-1.5 text-sm font-bold text-fg transition-colors hover:bg-bg-alt"
       >
         {current.label}
+        <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-          <ul
-            role="listbox"
-            className="absolute right-0 sm:right-auto mt-2 w-full sm:w-40 overflow-hidden rounded-xl border bg-white shadow-lg z-20"
-          >
-            {locales.map((l) => (
-              <li key={l.code}>
-                <button
-                  role="option"
-                  aria-selected={l.code === currentLocale}
-                  className={`min-h-[44px] w-full px-3 py-2.5 text-left text-sm active:bg-zinc-100 hover:bg-zinc-50 touch-action-manipulation ${l.code === currentLocale ? 'bg-zinc-50' : ''}`}
-                  onClick={() => onSelect(l.code)}
-                >
-                  {l.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </>
+        <div className="absolute right-0 z-50 mt-1 min-w-[100px] overflow-hidden rounded-xl border-2 border-border bg-white shadow-lg">
+          {LOCALES.map((loc) => (
+            <button
+              key={loc.code}
+              onClick={() => switchLocale(loc.code)}
+              className={`flex w-full items-center px-3 py-2 text-sm font-bold transition-colors ${
+                loc.code === currentCode ? 'bg-primary-bg text-primary' : 'text-fg hover:bg-bg-alt'
+              }`}
+            >
+              {loc.label}
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );
 }
-
-

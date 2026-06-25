@@ -1,138 +1,110 @@
+import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
+import type { Locale } from '@/lib/questions';
 import { loadQuestions } from '@/lib/questions';
 import QuizRunner from '@/components/quiz/QuizRunner';
-import { getTranslations } from 'next-intl/server';
-import type { Metadata } from 'next';
 
-export async function generateMetadata(
-  { params }: { params: Promise<{ locale: 'en'|'es'|'zh' }> }
-): Promise<Metadata> {
-  const { locale } = await params;
-  const dict = {
-    en: {
-      title: 'Quiz Mode | U.S. Civics Study Hub',
-      desc: 'Test your U.S. civics knowledge with multiple-choice practice aligned to the naturalization test.'
-    },
-    es: {
-      title: 'Modo Examen | Centro de Estudio Cívico de EE. UU.',
-      desc: 'Pon a prueba tus conocimientos de cívica con preguntas de opción múltiple.'
-    },
-    zh: {
-      title: '测验模式 | 美国入籍考试练习中心',
-      desc: '通过多项选择题测试您的美国公民知识。'
-    }
-  } as const;
-  const lang = (locale === 'en' || locale === 'es' || locale === 'zh') ? locale : 'en';
-  const meta = dict[lang];
-  return {
-    title: meta.title,
-    description: meta.desc,
-    openGraph: { title: meta.title, description: meta.desc, type: 'website' },
-    twitter: { card: 'summary_large_image', title: meta.title, description: meta.desc }
-  };
-}
+const CATEGORIES = ['all', 'gov', 'history', 'civics'] as const;
+const MODES = ['practice', 'test'] as const;
 
 export default async function QuizPage({
   params,
-  searchParams
+  searchParams,
 }: {
-  params: Promise<{ locale: 'en' | 'es' | 'zh' }>;
+  params: Promise<{ locale: Locale }>;
   searchParams: Promise<{ mode?: string; category?: string }>;
 }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'quiz' });
-  const { mode, category } = await searchParams;
-  
-  const selectedMode = (mode as string) ?? 'practice';
-  const selectedCategory = (category as string) ?? 'gov';
+  const sp = await searchParams;
+  const activeMode = sp.mode ?? 'practice';
+  const activeCategory = sp.category ?? 'all';
 
-  let questions;
-  if (selectedMode === 'test') {
-    // Official test: up to 20 random questions from all categories
-    questions = await loadQuestions(locale, 'all', 'test');
-  } else {
-    // Practice mode: 10 questions from selected category
-    const catKey = selectedCategory as 'gov'|'history'|'civics';
-    questions = await loadQuestions(locale, catKey, 'trial');
-  }
+  const t = await getTranslations({ locale, namespace: 'quiz' });
+
+  const questions = await loadQuestions(
+    locale,
+    activeCategory as 'all' | 'gov' | 'history' | 'civics',
+    activeMode === 'test' ? 'test' : 'trial',
+  );
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="mb-6">
-        <h1 className="mb-4 text-center text-3xl font-bold text-slate-900">{t('title')}</h1>
-        
-        {/* Mode Selection */}
-        <div className="mb-4 rounded-xl bg-white p-4 shadow-sm">
-          <p className="mb-3 text-center text-sm font-medium text-slate-600">{t('selectMode')}</p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a 
-              href={`?mode=practice${selectedCategory ? `&category=${selectedCategory}` : ''}`}
-              className={`flex flex-col rounded-lg border-2 px-6 py-3 text-left transition-all ${
-                selectedMode === 'practice'
-                  ? 'border-blue-500 bg-blue-50 shadow-md'
-                  : 'border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50'
-              }`}
-            >
-              <span className="font-semibold text-slate-900">{t('practiceMode')}</span>
-              <span className="mt-1 text-xs text-slate-600">{t('practiceDesc')}</span>
-            </a>
-            <a 
-              href={`?mode=test`}
-              className={`flex flex-col rounded-lg border-2 px-6 py-3 text-left transition-all ${
-                selectedMode === 'test'
-                  ? 'border-blue-500 bg-blue-50 shadow-md'
-                  : 'border-slate-200 bg-white hover:border-blue-300 hover:bg-blue-50'
-              }`}
-            >
-              <span className="font-semibold text-slate-900">{t('testMode')}</span>
-              <span className="mt-1 text-xs text-slate-600">{t('testDesc')}</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Category Selection (only for practice mode) */}
-        {selectedMode === 'practice' && (
-          <div className="rounded-xl bg-white p-4 shadow-sm">
-            <p className="mb-3 text-center text-sm font-medium text-slate-600">{t('selectCategory')}</p>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <a 
-                href={`?mode=practice&category=gov`} 
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${
-                  selectedCategory === 'gov'
-                    ? 'border-blue-500 bg-blue-600 text-white shadow-md'
-                    : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'
-                }`}
-              >
-                {t('categoryGov')}
-              </a>
-              <a 
-                href={`?mode=practice&category=history`} 
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${
-                  selectedCategory === 'history'
-                    ? 'border-blue-500 bg-blue-600 text-white shadow-md'
-                    : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'
-                }`}
-              >
-                {t('categoryHistory')}
-              </a>
-              <a 
-                href={`?mode=practice&category=civics`} 
-                className={`rounded-lg border-2 px-4 py-2 text-sm font-semibold transition-all ${
-                  selectedCategory === 'civics'
-                    ? 'border-blue-500 bg-blue-600 text-white shadow-md'
-                    : 'border-blue-200 bg-white text-blue-600 hover:border-blue-400 hover:bg-blue-50'
-                }`}
-              >
-                {t('categoryCivics')}
-              </a>
-            </div>
-          </div>
-        )}
+    <div className="space-y-8">
+      {/* Header */}
+      <div>
+        <h1 className="text-display font-bold text-fg">{t('title')}</h1>
       </div>
-      <QuizRunner 
-        questions={questions} 
-        storageKey={`${locale}:${selectedMode}:${selectedCategory}`}
-        mode={selectedMode as 'practice'|'test'}
-      />
+
+      {/* Mode pills */}
+      <div>
+        <p className="text-body-sm font-medium text-muted-foreground mb-3">
+          {t('selectMode')}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {MODES.map((mode) => {
+            const isActive = activeMode === mode;
+            return (
+              <Link
+                key={mode}
+                href={`/quiz?mode=${mode}&category=${activeCategory}`}
+                className={
+                  isActive
+                    ? 'rounded-xl bg-primary px-5 py-2.5 text-body-sm font-semibold text-primary-fg transition-colors'
+                    : 'rounded-xl border-2 border-border bg-white px-5 py-2.5 text-body-sm font-semibold text-fg transition-colors hover:border-primary'
+                }
+              >
+                {mode === 'practice' ? t('practiceMode') : t('testMode')}
+              </Link>
+            );
+          })}
+        </div>
+        <p className="text-caption text-muted-foreground mt-2">
+          {activeMode === 'practice' ? t('practiceDesc') : t('testDesc')}
+        </p>
+      </div>
+
+      {/* Category pills */}
+      <div>
+        <p className="text-body-sm font-medium text-muted-foreground mb-3">
+          {t('selectCategory')}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat;
+            return (
+              <Link
+                key={cat}
+                href={`/quiz?mode=${activeMode}&category=${cat}`}
+                className={
+                  isActive
+                    ? 'rounded-xl bg-primary px-5 py-2.5 text-body-sm font-semibold text-primary-fg transition-colors'
+                    : 'rounded-xl border-2 border-border bg-white px-5 py-2.5 text-body-sm font-semibold text-fg transition-colors hover:border-primary'
+                }
+              >
+                {cat === 'all'
+                  ? t('allQuestions')
+                  : cat === 'gov'
+                    ? t('categoryGov')
+                    : cat === 'history'
+                      ? t('categoryHistory')
+                      : t('categoryCivics')}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Quiz runner */}
+      {questions.length > 0 ? (
+        <QuizRunner
+          questions={questions}
+          mode={activeMode as 'practice' | 'test'}
+          locale={locale}
+        />
+      ) : (
+        <div className="rounded-2xl border-2 border-border bg-white p-8 text-center">
+          <p className="text-body text-muted-foreground">{t('noQuestions')}</p>
+        </div>
+      )}
     </div>
   );
 }

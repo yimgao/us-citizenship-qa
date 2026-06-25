@@ -1,229 +1,215 @@
-"use client";
-import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, ArrowRight, RotateCw, Volume2, VolumeX } from 'lucide-react';
-import { useTranslations, useLocale } from 'next-intl';
-import { useSwipeable } from 'react-swipeable';
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, Star, Volume2, VolumeX } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
 import { useTTS } from '@/lib/useTTS';
-import type { Locale } from '@/lib/questions';
+import type { Question, Locale } from '@/lib/questions';
 
-type Card = {
-  id: string;
-  text: string;
-  options: string[];
-  answer: number;
-};
+interface FlashcardViewerProps {
+  questions: Question[];
+  locale: Locale;
+  totalCount?: number;
+}
 
-export default function FlashcardViewer({ cards }: { cards: Card[] }) {
+export default function FlashcardViewer({
+  questions,
+  locale,
+  totalCount,
+}: FlashcardViewerProps) {
   const t = useTranslations('flashcards');
-  const localeParam = useLocale();
-  const locale = (localeParam === 'en' || localeParam === 'es' || localeParam === 'zh' ? localeParam : 'en') as Locale;
-  const tts = useTTS(locale);
-  const [index, setIndex] = useState(0);
-  const [show, setShow] = useState(false);
-  const [filter, setFilter] = useState<'all'|'starred'|'missed'>('all');
-  const { starredIds, toggleStar, lastIncorrectIds } = useQuizStore();
-  const visibleCards = useMemo(() => {
-    if (filter === 'starred') return cards.filter(c => starredIds.has(c.id));
-    if (filter === 'missed') return cards.filter(c => lastIncorrectIds.has(c.id));
-    return cards;
-  }, [filter, cards, starredIds, lastIncorrectIds]);
+  const { isStarred, toggleStar } = useQuizStore();
+  const { speak, stop: stopSpeaking, state: ttsState } = useTTS(locale);
 
-  // Stop TTS when card changes
-  useEffect(() => {
-    tts.stop();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index]);
+  const speaking = ttsState === 'speaking';
 
-  // keyboard shortcuts
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const currentQuestion = questions[currentIndex];
+  const totalCards = totalCount ?? questions.length;
+
+  // Reset flip on navigation
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === ' ') { e.preventDefault(); setShow(v => !v); }
-      if (e.key === 'ArrowRight') { setIndex(v => Math.min(cards.length - 1, v + 1)); setShow(false); }
-      if (e.key === 'ArrowLeft') { setIndex(v => Math.max(0, v - 1)); setShow(false); }
+    setIsFlipped(false);
+  }, [currentIndex]);
+
+  // Toggle flip
+  const handleFlip = useCallback(() => {
+    setIsFlipped((prev) => !prev);
+  }, []);
+
+  // Navigation
+  const goToPrevious = useCallback(() => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  }, [currentIndex]);
+
+  const goToNext = useCallback(() => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  }, [currentIndex, questions.length]);
+
+  // Star toggle
+  const handleToggleStar = useCallback(() => {
+    if (currentQuestion) toggleStar(currentQuestion.id);
+  }, [currentQuestion, toggleStar]);
+
+  // TTS speak/stop
+  const handleSpeak = useCallback(() => {
+    if (!currentQuestion) return;
+    const text = isFlipped
+      ? `${currentQuestion.options[currentQuestion.answer]}`
+      : currentQuestion.text;
+    if (speaking) {
+      stopSpeaking();
+    } else {
+      speak(text);
+    }
+  }, [currentQuestion, isFlipped, speak, stopSpeaking, speaking]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't handle if user is typing in an input
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
+
+      switch (e.key) {
+        case ' ':
+          e.preventDefault();
+          handleFlip();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          goToPrevious();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          goToNext();
+          break;
+      }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [cards.length]);
 
-  if (visibleCards.length === 0) {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleFlip, goToPrevious, goToNext]);
+
+  if (!currentQuestion) {
     return (
-      <div className="rounded-2xl bg-white p-8 text-center shadow-sm">
-        <p className="text-lg text-slate-600">{t('noCards')}</p>
+      <div className="rounded-2xl border-2 border-border bg-white p-8 text-center">
+        <p className="text-body text-muted-foreground">{t('noCards')}</p>
       </div>
     );
   }
 
-  const c = visibleCards[index];
-  const answerText = c.options[c.answer];
-  const pct = ((index + 1) / visibleCards.length) * 100;
-
-  // Swipe handlers
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (index < visibleCards.length - 1) {
-        setIndex((v) => Math.min(visibleCards.length - 1, v + 1));
-        setShow(false);
-      }
-    },
-    onSwipedRight: () => {
-      if (index > 0) {
-        setIndex((v) => Math.max(0, v - 1));
-        setShow(false);
-      }
-    },
-    onSwipedUp: () => {
-      setShow(true);
-    },
-    onSwipedDown: () => {
-      setShow(false);
-    },
-    trackMouse: false,
-    preventScrollOnSwipe: true,
-  });
+  const starred = isStarred(currentQuestion.id);
 
   return (
-    <div className="mx-auto max-w-2xl">
-      {/* Filters + Progress */}
-      <div className="mb-3 flex items-center gap-2">
-        <button onClick={() => { setFilter('all'); setIndex(0); }} className={`rounded border px-3 py-1 text-xs ${filter==='all'?'bg-blue-50 border-blue-300':'hover:bg-slate-50'}`}>All</button>
-        <button onClick={() => { setFilter('starred'); setIndex(0); }} className={`rounded border px-3 py-1 text-xs ${filter==='starred'?'bg-blue-50 border-blue-300':'hover:bg-slate-50'}`}>Starred</button>
-        <button onClick={() => { setFilter('missed'); setIndex(0); }} className={`rounded border px-3 py-1 text-xs ${filter==='missed'?'bg-blue-50 border-blue-300':'hover:bg-slate-50'}`}>Missed</button>
-      </div>
-      <div className="mb-6">
-        <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm sm:text-base font-medium text-slate-600">
-            {t('cardCount', { current: index + 1, total: visibleCards.length })}
-          </span>
-          <span className="text-sm sm:text-base font-medium text-slate-600">{Math.round(pct)}%</span>
-        </div>
-        <div className="h-2 sm:h-3 overflow-hidden rounded-full bg-slate-200">
-          <div
-            className="h-full bg-blue-600 transition-all duration-500 ease-out"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-      </div>
+    <div className="flex flex-col items-center space-y-6">
+      {/* Card count */}
+      <p className="text-body-sm text-muted-foreground">
+        {t('cardCount', { current: currentIndex + 1, total: totalCards })}
+      </p>
 
       {/* Flashcard */}
-      <div className="relative mb-6">
-        <div
-          {...swipeHandlers}
-          onClick={() => setShow(v => !v)}
-          className="group relative mx-auto aspect-[4/3] w-full cursor-pointer select-none [perspective:1000px] touch-action-pan-y"
-        >
-          <div
-            className={`absolute inset-0 rounded-2xl bg-white shadow-lg transition-transform duration-700 [transform-style:preserve-3d] ${
-              show ? '[transform:rotateY(180deg)]' : ''
-            }`}
-          >
-            {/* Front Side - Question */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white p-8 [backface-visibility:hidden]">
-              <div className="mb-4 rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-                {t('question')}
-              </div>
-              <div className="relative flex w-full max-w-xl flex-col items-center gap-3">
-                <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-slate-900">
-                  {c.text}
-                </p>
-                {tts.isSupported && !show && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (tts.state === 'speaking') {
-                        tts.stop();
-                      } else {
-                        tts.speak(c.text);
-                      }
-                    }}
-                    className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-blue-100 hover:border-blue-400 hover:bg-blue-50 hover:text-blue-600 touch-action-manipulation"
-                    title={tts.state === 'speaking' ? 'Stop reading' : 'Read question aloud'}
-                    aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read question aloud'}
-                  >
-                    {tts.state === 'speaking' ? (
-                      <VolumeX className="h-5 w-5" />
-                    ) : (
-                      <Volume2 className="h-5 w-5" />
-                    )}
-                  </button>
-                )}
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-sm text-slate-500">
-                <RotateCw className="h-4 w-4" />
-                <span>{t('clickToFlip')}</span>
-              </div>
-            </div>
+      <button
+        onClick={handleFlip}
+        className="w-full max-w-2xl cursor-pointer rounded-2xl border-2 border-border bg-white p-8 text-left transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[280px]"
+        aria-label={isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
+      >
+        <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
+          {/* Label */}
+          <span className="mb-4 inline-block rounded-full bg-primary-bg px-3 py-1 text-caption font-semibold text-primary uppercase tracking-wide">
+            {isFlipped ? t('answer') : t('question')}
+          </span>
 
-            {/* Back Side - Answer */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl border-2 border-green-200 bg-gradient-to-br from-green-50 to-white p-8 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <div className="mb-4 rounded-full bg-green-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-green-700">
-                {t('answer')}
-              </div>
-              <div className="relative flex w-full max-w-xl flex-col items-center gap-3">
-                <p className="text-center text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-green-700">
-                  {answerText}
-                </p>
-                {tts.isSupported && show && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (tts.state === 'speaking') {
-                        tts.stop();
-                      } else {
-                        tts.speak(answerText);
-                      }
-                    }}
-                    className="min-h-[44px] min-w-[44px] rounded-lg border-2 border-slate-200 bg-white p-2.5 text-slate-600 transition-colors active:bg-green-100 hover:border-green-400 hover:bg-green-50 hover:text-green-600 touch-action-manipulation"
-                    title={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
-                    aria-label={tts.state === 'speaking' ? 'Stop reading' : 'Read answer aloud'}
-                  >
-                    {tts.state === 'speaking' ? (
-                      <VolumeX className="h-5 w-5" />
-                    ) : (
-                      <Volume2 className="h-5 w-5" />
-                    )}
-                  </button>
-                )}
-              </div>
-              <div className="mt-6 flex items-center gap-2 text-sm text-slate-500">
-                <RotateCw className="h-4 w-4" />
-                <span>{t('clickToFlipBack')}</span>
-              </div>
+          {/* Content */}
+          {isFlipped ? (
+            <p className="text-body-lg font-bold text-fg leading-relaxed">
+              {currentQuestion.options[currentQuestion.answer]}
+            </p>
+          ) : (
+            <div>
+              <p className="text-caption font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                {currentQuestion.category}
+              </p>
+              <p className="text-body-lg font-bold text-fg leading-relaxed">
+                {currentQuestion.text}
+              </p>
             </div>
-          </div>
+          )}
+
+          {/* Flip hint */}
+          <p className="mt-6 text-caption text-muted-foreground">
+            {isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
+          </p>
         </div>
+      </button>
+
+      {/* Action buttons */}
+      <div className="flex items-center justify-center gap-4">
+        {/* Star button */}
+        <button
+          onClick={handleToggleStar}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border-2 border-border bg-white transition-colors hover:border-primary"
+          aria-label={starred ? 'Unstar' : 'Star'}
+        >
+          <Star
+            className={`h-5 w-5 ${
+              starred
+                ? 'fill-warning text-warning'
+                : 'text-muted-foreground'
+            }`}
+          />
+        </button>
+
+        {/* TTS button */}
+        <button
+          onClick={handleSpeak}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border-2 border-border bg-white transition-colors hover:border-primary"
+          aria-label={speaking ? 'Stop' : 'Speak'}
+        >
+          {speaking ? (
+            <VolumeX className="h-5 w-5 text-fg" />
+          ) : (
+            <Volume2 className="h-5 w-5 text-fg" />
+          )}
+        </button>
       </div>
 
-      {/* Navigation Controls */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
+      {/* Navigation */}
+      <div className="flex items-center justify-center gap-4 w-full max-w-sm">
         <button
-          onClick={() => { setIndex((v) => Math.max(0, v - 1)); setShow(false); }}
-          disabled={index === 0}
-          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
+          onClick={goToPrevious}
+          disabled={currentIndex === 0}
+          className="inline-flex items-center gap-2 rounded-xl border-2 border-border bg-white px-5 py-2.5 text-body-sm font-semibold text-fg transition-colors hover:border-primary disabled:cursor-not-allowed disabled:opacity-30"
         >
-          <ArrowLeft className="h-5 w-5" />
+          <ChevronLeft className="h-4 w-4" />
           {t('previous')}
         </button>
 
         <button
-          onClick={() => toggleStar(c.id)}
-          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center rounded-xl border-2 border-amber-300 bg-white px-4 py-2.5 text-sm font-semibold text-amber-700 active:bg-amber-100 hover:bg-amber-50 touch-action-manipulation"
-        >
-          {starredIds.has(c.id) ? '★ Starred' : '☆ Star'}
-        </button>
-
-        <button
-          onClick={() => { setIndex((v) => Math.min(visibleCards.length - 1, v + 1)); setShow(false); }}
-          disabled={index === visibleCards.length - 1}
-          className="w-full sm:w-auto min-h-[44px] flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-6 py-3 font-semibold text-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation"
+          onClick={goToNext}
+          disabled={currentIndex >= questions.length - 1}
+          className="inline-flex items-center gap-2 rounded-xl border-2 border-border bg-white px-5 py-2.5 text-body-sm font-semibold text-fg transition-colors hover:border-primary disabled:cursor-not-allowed disabled:opacity-30"
         >
           {t('next')}
-          <ArrowRight className="h-5 w-5" />
+          <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 
-      {/* Keyboard Tip */}
-      <p className="mt-4 text-center text-xs text-slate-500">{t('tip')}</p>
+      {/* Keyboard tip */}
+      <p className="text-caption text-muted-foreground text-center">
+        {t('tip')}
+      </p>
     </div>
   );
 }

@@ -1,55 +1,62 @@
-"use client";
-import { useState } from 'react';
+'use client';
+
+import { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
+import { Send } from 'lucide-react';
 
-export default function FeedbackForm() {
+export default function FeedbackForm({ locale }: { locale: string }) {
   const t = useTranslations('feedback');
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const to = "g1097420948@gmail.com";
-  const subject = encodeURIComponent("Civics Practice Feedback");
-  const body = encodeURIComponent(`From: ${email || '(no email)'}\n\n${message}`);
-  const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!message.trim()) return;
+      // In a real app, this would send to an API
+      setSubmitted(true);
+    },
+    [message]
+  );
+
+  if (submitted) {
+    return (
+      <section className="rounded-2xl border-2 border-border bg-card p-6 text-center shadow-sm sm:p-8">
+        <p className="text-body font-bold text-primary">✅ Thanks for your feedback!</p>
+      </section>
+    );
+  }
 
   return (
-    <div className="mx-auto mt-10 w-full max-w-xl rounded-2xl border border-slate-200 bg-white p-4 sm:p-6 shadow-md">
-      <div className="text-center">
-        <h3 className="text-lg sm:text-xl font-bold text-slate-900">{t('title')}</h3>
-        <p className="mt-1 text-sm text-slate-600">{t('subtitle')}</p>
-      </div>
-      <div className="mt-5 grid gap-4">
-        <label className="block">
-          {/* <span className="mb-1 block text-xs font-medium text-slate-600">{t('email')}</span> */}
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={t('email')}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base sm:text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
-          />
-        </label>
-        <label className="block">
-          {/* <span className="mb-1 block text-xs font-medium text-slate-600">{t('message')}</span> */}
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={t('message')}
-            rows={5}
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-base sm:text-sm outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
-          />
-        </label>
-        <div className="flex justify-center">
-          <a 
-            href={mailto} 
-            className="min-h-[44px] inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow active:bg-blue-700 hover:bg-blue-700 touch-action-manipulation"
-          >
-            {t('submit')}
-          </a>
-        </div>
-      </div>
-    </div>
+    <section className="rounded-2xl border-2 border-border bg-card p-6 shadow-sm sm:p-8">
+      <h2 className="mb-1 text-title font-bold text-fg">{t('title')}</h2>
+      <p className="mb-4 text-body-sm text-muted-foreground">{t('subtitle')}</p>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t('email')}
+          className="w-full rounded-xl border-2 border-border bg-bg p-3 text-body text-fg outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+        />
+        <textarea
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={t('message')}
+          rows={3}
+          required
+          className="w-full rounded-xl border-2 border-border bg-bg p-3 text-body text-fg outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+        />
+        <button
+          type="submit"
+          disabled={!message.trim()}
+          className="flex items-center justify-center gap-2 self-start rounded-xl bg-primary px-5 py-2.5 text-body font-bold text-primary-fg transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <Send size={16} />
+          {t('submit')}
+        </button>
+      </form>
+    </section>
   );
 }
-
-

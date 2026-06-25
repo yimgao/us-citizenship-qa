@@ -1,195 +1,91 @@
-"use client";
-import LanguageSwitcher from '@/components/layout/LanguageSwitcher';
-import { BookOpen, FileText, Menu, Link as LinkIcon, GraduationCap } from 'lucide-react';
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+'use client';
 
-export default function Navbar({ locale }: { locale: 'en'|'es'|'zh' }) {
+import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Menu, X } from 'lucide-react';
+import LanguageSwitcher from './LanguageSwitcher';
+
+const NAV_LINKS = [
+  { key: 'home', href: '/' },
+  { key: 'quiz', href: '/quiz' },
+  { key: 'flashcards', href: '/flashcards' },
+  { key: 'grammar', href: '/grammar' },
+  { key: 'glossary', href: '/glossary' },
+  { key: 'case-status', href: '/case-status' },
+  { key: 'resources', href: '/resources' },
+] as const;
+
+export default function Navbar() {
   const t = useTranslations('navbar');
   const pathname = usePathname();
-  const isQuiz = pathname?.includes('/quiz');
-  const isFlashcards = pathname?.includes('/flashcards');
-  const isGlossary = pathname?.includes('/glossary');
-  const isGrammar = pathname?.includes('/grammar');
   const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  const firstFocusable = useRef<HTMLAnchorElement | null>(null);
-  useEffect(() => {
-    const body = document.body;
-    if (open) {
-      const prev = body.style.overflow;
-      body.style.overflow = 'hidden';
-      return () => { body.style.overflow = prev; };
-    }
-  }, [open]);
-  useEffect(() => {
-    if (open) firstFocusable.current?.focus();
-  }, [open]);
+  const locale = pathname.split('/')[1] || 'en';
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === `/${locale}`;
+    return pathname.startsWith(`/${locale}${href}`);
+  };
 
   return (
-    <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm safe-area-inset-x" style={{ paddingTop: 'max(0px, env(safe-area-inset-top))' }}>
-      <div className="relative mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-4">
-        {/* Centered title on mobile */}
-        <a href={`/${locale}`} className="absolute left-1/2 -translate-x-1/2 text-center text-lg font-bold tracking-tight text-slate-900 hover:text-blue-600 transition-colors md:static md:translate-x-0 md:text-xl">
-          {t('title')}
-        </a>
-        <nav className="hidden items-center gap-4 md:flex">
-          <a 
-            href={`/${locale}`} 
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-blue-600"
-          >
-            {t('home')}
-          </a>
-          <a 
-            href={`/${locale}/quiz`} 
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isQuiz
-                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
-                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
-            }`}
-          >
-            <FileText className="h-4 w-4" />
-            {t('quiz')}
-          </a>
-          <a 
-            href={`/${locale}/flashcards`} 
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isFlashcards
-                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
-                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
-            }`}
-          >
-            <BookOpen className="h-4 w-4" />
-            {t('flashcards')}
-          </a>
-          <a 
-            href={`/${locale}/glossary`} 
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isGlossary
-                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
-                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
-            }`}
-          >
-            <BookOpen className="h-4 w-4" />
-            {t('glossary')}
-          </a>
-          <a 
-            href={`/${locale}/grammar`} 
-            className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-              isGrammar
-                ? 'bg-blue-100 text-blue-700 font-semibold border-b-2 border-blue-600'
-                : 'text-slate-700 hover:bg-slate-100 hover:text-blue-600'
-            }`}
-          >
-            <GraduationCap className="h-4 w-4" />
-            {t('grammar')}
-          </a>
-          <a 
-            href={`/${locale}/resources`} 
-            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 hover:text-blue-600"
-          >
-            <LinkIcon className="h-4 w-4" />
-            {t('resources')}
-          </a>
-          <LanguageSwitcher currentLocale={locale} />
-        </nav>
-        {/* Mobile hamburger */}
-        <button 
-          aria-label="Menu" 
-          aria-controls="mobile-menu" 
-          aria-expanded={open} 
-          onClick={() => setOpen(v => !v)} 
-          className="ml-auto inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-lg p-2 text-slate-700 active:bg-slate-200 hover:bg-slate-100 md:hidden touch-action-manipulation"
-        >
-          <Menu className="h-5 w-5" />
-        </button>
-        {open && (
-          <>
-            {/* Backdrop */}
-            <div
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-10 md:hidden"
-              onClick={() => setOpen(false)}
-              aria-hidden="true"
-            />
-            {/* Menu */}
-            <div
-              id="mobile-menu"
-              role="menu"
-              ref={menuRef}
-              className="fixed right-4 top-16 w-[calc(100%-2rem)] sm:w-64 rounded-xl border bg-white p-2 shadow-xl z-20 md:hidden animate-in slide-in-from-top-2 duration-200"
-              onKeyDown={(e) => {
-                if (e.key === 'Escape') {
-                  setOpen(false);
-                }
-                if (e.key === 'Tab' && menuRef.current) {
-                  const focusables = menuRef.current.querySelectorAll<HTMLElement>('a,button,[tabindex]:not([tabindex="-1"])');
-                  if (focusables.length === 0) return;
-                  const first = focusables[0];
-                  const last = focusables[focusables.length - 1];
-                  if (!e.shiftKey && document.activeElement === last) {
-                    e.preventDefault();
-                    (first as HTMLElement).focus();
-                  } else if (e.shiftKey && document.activeElement === first) {
-                    e.preventDefault();
-                    (last as HTMLElement).focus();
-                  }
-                }
-              }}
+    <header className="sticky top-0 z-40 border-b-2 border-primary bg-white">
+      <div className="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-4 sm:px-6">
+        <Link href={`/${locale}`} className="flex items-center gap-2 font-bold text-fg">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-fg">
+            C
+          </span>
+          <span className="hidden text-sm sm:inline">{t('title')}</span>
+        </Link>
+
+        <nav className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.key}
+              href={`/${locale}${link.href}`}
+              className={`rounded-xl px-3 py-1.5 text-sm font-bold transition-colors ${
+                isActive(link.href)
+                  ? 'bg-primary-bg text-primary'
+                  : 'text-fg hover:bg-bg-alt'
+              }`}
             >
-              <a 
-                href={`/${locale}`} 
-                className="min-h-[44px] flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation" 
-                onClick={() => setOpen(false)}
-              >
-                {t('home')}
-              </a>
-              <a 
-                ref={firstFocusable} 
-                href={`/${locale}/quiz`} 
-                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isQuiz ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
-                onClick={() => setOpen(false)}
-              >
-                <FileText className="h-4 w-4" /> {t('quiz')}
-              </a>
-              <a 
-                href={`/${locale}/flashcards`} 
-                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isFlashcards ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
-                onClick={() => setOpen(false)}
-              >
-                <BookOpen className="h-4 w-4" /> {t('flashcards')}
-              </a>
-              <a 
-                href={`/${locale}/glossary`} 
-                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isGlossary ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
-                onClick={() => setOpen(false)}
-              >
-                <BookOpen className="h-4 w-4" /> {t('glossary')}
-              </a>
-              <a 
-                href={`/${locale}/grammar`} 
-                className={`min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm ${isGrammar ? 'bg-blue-50 text-blue-700' : 'active:bg-slate-100 hover:bg-slate-50'} touch-action-manipulation`} 
-                onClick={() => setOpen(false)}
-              >
-                <GraduationCap className="h-4 w-4" /> {t('grammar')}
-              </a>
-              <a 
-                href={`/${locale}/resources`} 
-                className="min-h-[44px] mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm active:bg-slate-100 hover:bg-slate-50 touch-action-manipulation" 
-                onClick={() => setOpen(false)}
-              >
-                <LinkIcon className="h-4 w-4" /> {t('resources')}
-              </a>
-              <div className="mt-1 border-t pt-2">
-                <LanguageSwitcher currentLocale={locale} />
-              </div>
-            </div>
-          </>
-        )}
-        {/* focus handled via useEffect above */}
+              {t(link.key)}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher />
+          <button
+            onClick={() => setOpen(!open)}
+            className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-border text-fg md:hidden"
+            aria-label={open ? 'Close' : 'Menu'}
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
+
+      {open && (
+        <nav className="border-t-2 border-border bg-white md:hidden">
+          <div className="flex flex-col gap-1 px-4 pb-4 pt-2">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.key}
+                href={`/${locale}${link.href}`}
+                onClick={() => setOpen(false)}
+                className={`rounded-xl px-3 py-2.5 text-sm font-bold transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-primary-bg text-primary'
+                    : 'text-fg hover:bg-bg-alt'
+                }`}
+              >
+                {t(link.key)}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
-
-

@@ -4,11 +4,10 @@ import routing from './next-intl.config';
 
 const middleware = createMiddleware(routing);
 
-export function proxy(request: NextRequest) {
-	return middleware(request);
+export default function (request: NextRequest) {
+  return middleware(request);
 }
 
 export const config = {
-	matcher: ['/((?!api|_next|.*\\..*).*)']
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
 };
-
