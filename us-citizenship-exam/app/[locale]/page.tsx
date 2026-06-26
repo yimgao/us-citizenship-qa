@@ -48,6 +48,20 @@ export default async function HomePage({
         }}
       />
       <FeatureGrid locale={locale} features={features} title={t('featureTitle')} description={t('featureDesc')} />
+
+      {/* CTA Section */}
+      <section className="mb-8 rounded-2xl bg-accent p-8 text-center sm:p-12">
+        <h2 className="text-display font-bold text-primary-fg">Ready to start?</h2>
+        <p className="mt-2 text-body-lg text-primary-fg/80">
+          No account needed. Completely free. Start learning in 10 seconds.
+        </p>
+        <a
+          href={`/${locale}/quiz`}
+          className="mt-6 inline-flex h-12 items-center gap-2 rounded-2xl bg-white px-8 text-base font-bold text-accent shadow-sm transition-all hover:brightness-95 active:scale-[0.97]"
+        >
+          {t('startQuiz')}
+        </a>
+      </section>
     </div>
   );
 }

@@ -63,7 +63,8 @@
     "noQuestions": "No questions available.",
     "reviewMissedCount": "You missed {count} question(s). Review them now?",
     "reviewMissedButton": "Review Missed",
-    "reviewMissedPill": "Review Missed"
+    "reviewMissedPill": "Review Missed",
+    "categoryBreakdown": "Category Breakdown"
   },
   "flashcards": {
     "title": "Flashcards",
@@ -113,7 +114,17 @@
     "speak": "Speak",
     "stopSpeaking": "Stop",
     "tip": "Tip: Press Space to flip, ←/→ to navigate",
-    "noItems": "No glossary items available."
+    "noItems": "No glossary items available.",
+    "search": "Search",
+    "searchPlaceholder": "Search terms and definitions...",
+    "noResults": "No results found",
+    "browse": "Browse",
+    "quiz": "Quiz",
+    "quizQuestion": "What is the translation of",
+    "quizScore": "You got {correct} out of {total} correct!",
+    "quizComplete": "Quiz Complete!",
+    "tryAgain": "Try Again",
+    "backToBrowse": "Back to Browse"
   },
   "grammar": {
     "title": "Grammar Practice",

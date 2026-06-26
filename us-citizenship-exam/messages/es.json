@@ -63,7 +63,8 @@
     "noQuestions": "No hay preguntas disponibles.",
     "reviewMissedCount": "Fallaste {count} pregunta(s). ¿Repasarlas ahora?",
     "reviewMissedButton": "Repasar Falladas",
-    "reviewMissedPill": "Repasar Falladas"
+    "reviewMissedPill": "Repasar Falladas",
+    "categoryBreakdown": "Desglose por Categoría"
   },
   "flashcards": {
     "title": "Tarjetas de Estudio",
@@ -113,7 +114,17 @@
     "speak": "Leer",
     "stopSpeaking": "Detener",
     "tip": "Consejo: Espacio para voltear, ←/→ para navegar",
-    "noItems": "No hay elementos del glosario disponibles."
+    "noItems": "No hay elementos del glosario disponibles.",
+    "search": "Buscar",
+    "searchPlaceholder": "Buscar términos y definiciones...",
+    "noResults": "Sin resultados",
+    "browse": "Explorar",
+    "quiz": "Quiz",
+    "quizQuestion": "¿Cuál es la traducción de",
+    "quizScore": "¡Obtuviste {correct} de {total} correctas!",
+    "quizComplete": "¡Quiz Completado!",
+    "tryAgain": "Intentar de Nuevo",
+    "backToBrowse": "Volver a Explorar"
   },
   "grammar": {
     "title": "Práctica de Gramática",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Home, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
-import type { Question, Locale } from '@/lib/questions';
+import { CATEGORY_BY_LOCALE, type Question, type Locale } from '@/lib/questions';
 
 type QuizMode = 'practice' | 'test';
 
@@ -289,6 +289,90 @@ export default function QuizRunner({ questions, mode, locale, reviewMissed }: Qu
             />
           </div>
         </div>
+
+        {/* Category Analysis */}
+        {(() => {
+          const categoryToKey: Record<string, 'gov' | 'history' | 'civics'> = {};
+          const fullMap = CATEGORY_BY_LOCALE[locale];
+          categoryToKey[fullMap.gov] = 'gov';
+          categoryToKey[fullMap.history] = 'history';
+          categoryToKey[fullMap.civics] = 'civics';
+
+          const catData: Record<string, { correct: number; total: number; label: string }> = {
+            gov: { correct: 0, total: 0, label: t('categoryGov') },
+            history: { correct: 0, total: 0, label: t('categoryHistory') },
+            civics: { correct: 0, total: 0, label: t('categoryCivics') },
+          };
+
+          for (const q of activeQuestions) {
+            const key = categoryToKey[q.category];
+            if (!key) continue;
+            catData[key].total++;
+            const answer = selectedAnswers[q.id];
+            if (answer !== undefined && String(q.answer) === answer) {
+              catData[key].correct++;
+            }
+          }
+
+          const entries = Object.entries(catData)
+            .filter(([_, data]) => data.total > 0)
+            .map(([key, data]) => ({
+            key,
+            ...data,
+            percent: Math.round((data.correct / data.total) * 100),
+          }));
+
+          if (entries.length === 0) return null;
+
+          const sorted = [...entries].sort((a, b) => a.percent - b.percent);
+          const weakest = sorted[0];
+
+          return (
+            <div className="mb-8 text-left">
+              <h3 className="text-body-sm font-semibold text-fg mb-3">
+                {t('categoryBreakdown')}
+              </h3>
+              <div className="space-y-3">
+                {entries.map(({ key, label, correct, total, percent }) => {
+                  const isWeakest = key === weakest.key && weakest.percent < 100;
+                  return (
+                    <div
+                      key={key}
+                      className={`rounded-xl border-2 p-3 ${
+                        isWeakest
+                          ? 'border-warning bg-warning-bg'
+                          : 'border-border bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-body-sm font-semibold text-fg">{label}</span>
+                          {isWeakest && (
+                            <span className="text-caption font-bold text-warning">Weak Area</span>
+                          )}
+                        </div>
+                        <span className="text-body-sm font-bold text-fg">{percent}%</span>
+                      </div>
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-bg-alt">
+                        <div
+                          className={`h-full rounded-full transition-all duration-700 ${
+                            isWeakest ? 'bg-warning' : 'bg-primary'
+                          }`}
+                          style={{ width: `${percent}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {weakest && weakest.percent < 100 && (
+                <p className="text-body-sm text-fg mt-3 text-center">
+                  Focus on {weakest.label} — you got {weakest.percent}% correct
+                </p>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Review list */}
         <div className="mb-8 text-left">

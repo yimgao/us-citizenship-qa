@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://us-citizenship-qa.vercel.app',
   generateRobotsTxt: true,
   exclude: ['/server-sitemap.xml'],
 };

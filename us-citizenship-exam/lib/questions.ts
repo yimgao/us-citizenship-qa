@@ -8,7 +8,7 @@ export type Question = {
   answer: number;
 };
 
-const CATEGORY_BY_LOCALE: Record<Locale, Record<'gov'|'history'|'civics', string>> = {
+export const CATEGORY_BY_LOCALE: Record<Locale, Record<'gov'|'history'|'civics', string>> = {
   en: {
     gov: 'American Government',
     history: 'American History',
