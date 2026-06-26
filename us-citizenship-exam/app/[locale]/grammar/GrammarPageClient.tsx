@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { BookOpen, PenLine, ChevronDown } from 'lucide-react';
 import GrammarViewer from '@/components/grammar/GrammarViewer';
@@ -75,6 +75,11 @@ export default function GrammarPageClient({
     },
     [loadContent]
   );
+
+  // Load content on initial mount
+  useEffect(() => {
+    loadContent(null);
+  }, [loadContent]);
 
   return (
     <div className="flex w-full max-w-2xl flex-col items-center gap-6">

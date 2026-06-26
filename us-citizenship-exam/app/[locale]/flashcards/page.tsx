@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/questions';
 import { loadQuestions } from '@/lib/questions';
 import FlashcardViewer from '@/components/flashcards/FlashcardViewer';
-import DueCountBadge from '@/components/flashcards/DueCountBadge';
 
 const CATEGORIES = ['all', 'gov', 'history', 'civics'] as const;
 
