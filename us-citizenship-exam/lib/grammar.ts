@@ -51,27 +51,6 @@ export type GrammarData = {
   topics: GrammarTopic[];
 };
 
-async function importOptional<T>(path: string): Promise<T | null> {
-  try {
-    const mod: unknown = await import(/* @vite-ignore */ path);
-    if (mod && typeof mod === 'object' && 'default' in (mod as Record<string, unknown>)) {
-      const d = (mod as { default?: unknown }).default;
-      return (d as T) ?? null;
-    }
-  } catch {}
-  if (path.endsWith('.json')) {
-    const alt = path.replace(/\.json$/, '.ts');
-    try {
-      const mod: unknown = await import(/* @vite-ignore */ alt);
-      if (mod && typeof mod === 'object' && 'default' in (mod as Record<string, unknown>)) {
-        const d = (mod as { default?: unknown }).default;
-        return (d as T) ?? null;
-      }
-    } catch {}
-  }
-  return null;
-}
-
 async function loadAllGrammarData(locale: Locale): Promise<GrammarData> {
   const mod = await import(`@/data/grammar/${locale}/grammar.json`);
   return (mod.default ?? mod) as GrammarData;

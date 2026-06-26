@@ -98,43 +98,8 @@ export async function loadQuestionsPaged(
 }
 
 async function loadAllQuestions(locale: Locale): Promise<Question[]> {
-  // Prefer per-category files if they exist to enable smaller loads in the future
-  try {
-    const [gov, history, civics] = await Promise.all([
-      importOptional<Question[]>(`@/data/questions/${locale}/gov.json`),
-      importOptional<Question[]>(`@/data/questions/${locale}/history.json`),
-      importOptional<Question[]>(`@/data/questions/${locale}/civics.json`)
-    ]);
-    if (gov && history && civics) {
-      return [...gov, ...history, ...civics];
-    }
-  } catch {}
-  // Fallback to single data.json
   const mod = await import(`@/data/questions/${locale}/data.json`);
   return (mod.default ?? []) as Question[];
-}
-
-async function importOptional<T>(path: string): Promise<T | null> {
-  // Try exact path first
-  try {
-    const mod: unknown = await import(/* @vite-ignore */ path);
-    if (mod && typeof mod === 'object' && 'default' in (mod as Record<string, unknown>)) {
-      const d = (mod as { default?: unknown }).default;
-      return (d as T) ?? null;
-    }
-  } catch {}
-  // If JSON not found, try corresponding TS module (gov.ts etc.)
-  if (path.endsWith('.json')) {
-    const alt = path.replace(/\.json$/, '.ts');
-    try {
-      const mod: unknown = await import(/* @vite-ignore */ alt);
-      if (mod && typeof mod === 'object' && 'default' in (mod as Record<string, unknown>)) {
-        const d = (mod as { default?: unknown }).default;
-        return (d as T) ?? null;
-      }
-    } catch {}
-  }
-  return null;
 }
 
 
