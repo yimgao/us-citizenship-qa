@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Home } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Home, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
 import type { Question, Locale } from '@/lib/questions';
@@ -14,12 +14,17 @@ interface QuizRunnerProps {
   questions: Question[];
   mode: QuizMode;
   locale: Locale;
+  reviewMissed?: boolean;
 }
+
+const TIMER_DURATION = 600; // 10 minutes in seconds
+const WARNING_THRESHOLD = 120; // 2 minutes
 
 const STORAGE_KEY_PREFIX = 'quiz_answers_';
 const STORAGE_KEY_CURRENT = 'quiz_current_index';
+const MISSED_QUESTIONS_KEY = 'missed-questions';
 
-export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps) {
+export default function QuizRunner({ questions, mode, locale, reviewMissed }: QuizRunnerProps) {
   const t = useTranslations('quiz');
   const router = useRouter();
 
@@ -30,6 +35,20 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
     () => `${STORAGE_KEY_PREFIX}${locale}_${mode}_${questions.map(q => q.id).join('_').slice(0, 64)}`,
     [locale, mode, questions],
   );
+
+  // Filter questions for review missed mode
+  const activeQuestions = useMemo(() => {
+    if (!reviewMissed) return questions;
+    try {
+      const missedIds = JSON.parse(
+        localStorage.getItem(MISSED_QUESTIONS_KEY) ?? '[]',
+      ) as string[];
+      if (missedIds.length === 0) return questions;
+      return questions.filter((q) => missedIds.includes(q.id));
+    } catch {
+      return questions;
+    }
+  }, [questions, reviewMissed]);
 
   // Current question index
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
@@ -70,6 +89,9 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
   // For test mode: track when quiz is complete
   const [quizComplete, setQuizComplete] = useState(false);
 
+  // Timer for test mode
+  const [timeRemaining, setTimeRemaining] = useState(TIMER_DURATION);
+
   // Save answers to localStorage whenever they change
   useEffect(() => {
     try {
@@ -84,21 +106,21 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
     } catch {}
   }, [currentIndex]);
 
-  const currentQuestion = questions[currentIndex];
-  const totalQuestions = questions.length;
+  const currentQuestion = activeQuestions[currentIndex];
+  const totalQuestions = activeQuestions.length;
   const answeredCount = Object.keys(selectedAnswers).length;
 
   // Calculate score
   const calculateScore = useCallback(() => {
     let correct = 0;
-    for (const q of questions) {
+    for (const q of activeQuestions) {
       const answer = selectedAnswers[q.id];
       if (answer !== undefined && String(q.answer) === answer) {
         correct++;
       }
     }
     return correct;
-  }, [questions, selectedAnswers]);
+  }, [activeQuestions, selectedAnswers]);
 
   // Handle selecting an option
   const handleSelectOption = (optionIndex: number) => {
@@ -138,14 +160,39 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
     setQuizComplete(true);
     // Save missed questions to store
     const missedIds: string[] = [];
-    for (const q of questions) {
+    for (const q of activeQuestions) {
       const answer = selectedAnswers[q.id];
       if (answer === undefined || String(q.answer) !== answer) {
         missedIds.push(q.id);
       }
     }
     useQuizStore.getState().setIncorrect(missedIds);
+    // Also save to localStorage for the review missed pill
+    try {
+      localStorage.setItem(MISSED_QUESTIONS_KEY, JSON.stringify(missedIds));
+    } catch {}
   };
+
+  // Timer ref + effect for auto-submit (must be after handleSubmitTest to avoid forward ref)
+  const submitRef = useRef(handleSubmitTest);
+  submitRef.current = handleSubmitTest;
+
+  useEffect(() => {
+    if (mode !== 'test' || quizComplete) return;
+
+    const interval = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          submitRef.current();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [mode, quizComplete]);
 
   // Handle try again
   const handleTryAgain = () => {
@@ -153,6 +200,7 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
     setAnsweredQuestions(new Set());
     setCurrentIndex(0);
     setQuizComplete(false);
+    setTimeRemaining(TIMER_DURATION);
     resetStore();
     try {
       localStorage.removeItem(storageKey);
@@ -172,6 +220,30 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
   const isCurrentCorrect = currentQuestion && currentAnswer !== undefined
     ? String(currentQuestion.answer) === currentAnswer
     : null;
+
+  // Format time as MM:SS
+  const formatTime = (seconds: number): string => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
+  // Timer bar percentage
+  const timerPercent = (timeRemaining / TIMER_DURATION) * 100;
+  const isTimerWarning = timeRemaining <= WARNING_THRESHOLD;
+
+  // Count missed questions for review section
+  const missedCount = useMemo(() => {
+    if (!quizComplete || mode !== 'test') return 0;
+    let count = 0;
+    for (const q of activeQuestions) {
+      const answer = selectedAnswers[q.id];
+      if (answer === undefined || String(q.answer) !== answer) {
+        count++;
+      }
+    }
+    return count;
+  }, [quizComplete, mode, activeQuestions, selectedAnswers]);
 
   // --- Score Screen (test mode) ---
   if (quizComplete && mode === 'test') {
@@ -224,7 +296,7 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
             {t('viewResults')}
           </h3>
           <div className="space-y-2 max-h-64 overflow-y-auto">
-            {questions.map((q, idx) => {
+            {activeQuestions.map((q, idx) => {
               const answer = selectedAnswers[q.id];
               const correct = answer !== undefined && String(q.answer) === answer;
               return (
@@ -265,6 +337,24 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
           </div>
         </div>
 
+        {/* Review Missed section */}
+        {missedCount > 0 && !reviewMissed && (
+          <div className="mb-8 rounded-2xl border-2 border-warning bg-warning-bg p-5">
+            <div className="flex flex-col items-center gap-3">
+              <p className="text-body-sm font-semibold text-warning">
+                {t('reviewMissedCount', { count: missedCount })}
+              </p>
+              <Link
+                href={`/quiz?mode=practice&category=all&review=true`}
+                className="inline-flex items-center gap-2 rounded-xl bg-warning px-6 py-3 text-body-sm font-bold text-white transition-colors hover:brightness-110"
+              >
+                <RotateCcw className="h-4 w-4" />
+                {t('reviewMissedButton')}
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* Action buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
@@ -288,32 +378,55 @@ export default function QuizRunner({ questions, mode, locale }: QuizRunnerProps)
 
   return (
     <div className="space-y-6">
-      {/* Progress bar */}
-      <div>
-        <div className="mb-2 flex items-center justify-between text-body-sm text-muted-foreground">
-          <span>
-            {t('questionCount', { current: currentIndex + 1, total: totalQuestions })}
-          </span>
-          <span className="font-medium text-fg">
-            {mode === 'test'
-              ? `${answeredCount}/${totalQuestions}`
-              : `${Math.round((answeredCount / totalQuestions) * 100)}%`
-            }
-          </span>
+      {/* Timer bar (test mode only) */}
+      {mode === 'test' && (
+        <div>
+          <div className="mb-2 flex items-center justify-between text-body-sm">
+            <div className="flex items-center gap-2">
+              <Clock className={`h-4 w-4 ${isTimerWarning ? 'text-warning' : 'text-muted-foreground'}`} />
+              <span className={`font-semibold ${isTimerWarning ? 'text-warning' : 'text-fg'}`}>
+                {formatTime(timeRemaining)}
+              </span>
+            </div>
+            <span className="font-medium text-muted-foreground">
+              {mode === 'test'
+                ? `${answeredCount}/${totalQuestions}`
+                : `${Math.round((answeredCount / totalQuestions) * 100)}%`
+              }
+            </span>
+          </div>
+          <div className="h-2 w-full overflow-hidden rounded-full bg-bg-alt">
+            <div
+              className={`h-full rounded-full transition-all duration-1000 ease-linear ${
+                isTimerWarning ? 'bg-warning' : 'bg-primary'
+              }`}
+              style={{ width: `${timerPercent}%` }}
+            />
+          </div>
         </div>
-        <div className="h-3 w-full overflow-hidden rounded-full bg-bg-alt">
-          <div
-            className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
-            style={{
-              width: `${
-                mode === 'test'
-                  ? (answeredCount / totalQuestions) * 100
-                  : (currentIndex + 1) / totalQuestions * 100
-              }%`,
-            }}
-          />
+      )}
+
+      {/* Progress bar (hidden in test mode since timer bar shows above) */}
+      {mode !== 'test' && (
+        <div>
+          <div className="mb-2 flex items-center justify-between text-body-sm text-muted-foreground">
+            <span>
+              {t('questionCount', { current: currentIndex + 1, total: totalQuestions })}
+            </span>
+            <span className="font-medium text-fg">
+              {Math.round((answeredCount / totalQuestions) * 100)}%
+            </span>
+          </div>
+          <div className="h-3 w-full overflow-hidden rounded-full bg-bg-alt">
+            <div
+              className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+              style={{
+                width: `${(currentIndex + 1) / totalQuestions * 100}%`,
+              }}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Question card */}
       <div className="border-2 border-border rounded-2xl bg-white p-6">

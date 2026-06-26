@@ -8,6 +8,8 @@
     "statsLearners": "Active Learners",
     "statsQuestions": "Practice Questions",
     "statsLanguages": "Languages",
+    "featureTitle": "Pick your study mode",
+    "featureDesc": "Four ways to prepare for the civics test. Mix and match.",
     "title": "Naturalization Practice Hub",
     "subtitle": "Practice for the U.S. civics test with multiple languages.",
     "question": "Do you want to practice? Which method works best for you?",
@@ -58,7 +60,10 @@
     "score": "You got {correct} out of {total} correct!",
     "tryAgain": "Try Again",
     "backHome": "Back to Home",
-    "noQuestions": "No questions available."
+    "noQuestions": "No questions available.",
+    "reviewMissedCount": "You missed {count} question(s). Review them now?",
+    "reviewMissedButton": "Review Missed",
+    "reviewMissedPill": "Review Missed"
   },
   "flashcards": {
     "title": "Flashcards",
@@ -75,7 +80,12 @@
     "next": "Next",
     "tip": "Tip: Press Space to flip, ←/→ to navigate",
     "all": "All",
-    "noCards": "No flashcards available."
+    "noCards": "No flashcards available.",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "filterByDifficulty": "Filter by review status:",
+    "dueForReview": "Due for Review"
   },
   "resources": {
     "title": "Listening & Study Resources",

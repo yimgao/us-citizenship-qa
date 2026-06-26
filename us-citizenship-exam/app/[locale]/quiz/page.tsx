@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Locale } from '@/lib/questions';
 import { loadQuestions } from '@/lib/questions';
 import QuizRunner from '@/components/quiz/QuizRunner';
+import ReviewMissedPill from '@/components/quiz/ReviewMissedPill';
 
 const CATEGORIES = ['all', 'gov', 'history', 'civics'] as const;
 const MODES = ['practice', 'test'] as const;
@@ -12,19 +13,21 @@ export default async function QuizPage({
   searchParams,
 }: {
   params: Promise<{ locale: Locale }>;
-  searchParams: Promise<{ mode?: string; category?: string }>;
+  searchParams: Promise<{ mode?: string; category?: string; review?: string }>;
 }) {
   const { locale } = await params;
   const sp = await searchParams;
   const activeMode = sp.mode ?? 'practice';
   const activeCategory = sp.category ?? 'all';
+  const isReview = sp.review === 'true';
 
   const t = await getTranslations({ locale, namespace: 'quiz' });
 
+  // In review mode, load ALL questions so QuizRunner can filter client-side
   const questions = await loadQuestions(
     locale,
     activeCategory as 'all' | 'gov' | 'history' | 'civics',
-    activeMode === 'test' ? 'test' : 'trial',
+    isReview ? 'all' : activeMode === 'test' ? 'test' : 'trial',
   );
 
   return (
@@ -41,7 +44,7 @@ export default async function QuizPage({
         </p>
         <div className="flex flex-wrap gap-3">
           {MODES.map((mode) => {
-            const isActive = activeMode === mode;
+            const isActive = activeMode === mode && !isReview;
             return (
               <Link
                 key={mode}
@@ -62,14 +65,14 @@ export default async function QuizPage({
         </p>
       </div>
 
-      {/* Category pills */}
+      {/* Category pills + Review Missed pill */}
       <div>
         <p className="text-body-sm font-medium text-muted-foreground mb-3">
           {t('selectCategory')}
         </p>
         <div className="flex flex-wrap gap-3">
           {CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat;
+            const isActive = activeCategory === cat && !isReview;
             return (
               <Link
                 key={cat}
@@ -90,6 +93,8 @@ export default async function QuizPage({
               </Link>
             );
           })}
+          {/* Review Missed pill — only shows when there are missed questions in localStorage */}
+          <ReviewMissedPill activeMode={activeMode} activeCategory={activeCategory} />
         </div>
       </div>
 
@@ -99,6 +104,7 @@ export default async function QuizPage({
           questions={questions}
           mode={activeMode as 'practice' | 'test'}
           locale={locale}
+          reviewMissed={isReview}
         />
       ) : (
         <div className="rounded-2xl border-2 border-border bg-white p-8 text-center">

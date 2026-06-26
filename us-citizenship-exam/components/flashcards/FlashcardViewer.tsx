@@ -2,10 +2,19 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Star, Volume2, VolumeX } from 'lucide-react';
+import { useSwipeable } from 'react-swipeable';
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
 import { useTTS } from '@/lib/useTTS';
 import type { Question, Locale } from '@/lib/questions';
+
+type Difficulty = 'easy' | 'medium' | 'hard';
+
+interface DifficultyRecord {
+  cardId: string;
+  difficulty: Difficulty;
+  timestamp: number;
+}
 
 interface FlashcardViewerProps {
   questions: Question[];
@@ -52,6 +61,36 @@ export default function FlashcardViewer({
       setCurrentIndex((prev) => prev + 1);
     }
   }, [currentIndex, questions.length]);
+
+  // Difficulty handlers
+  const handleDifficulty = useCallback(
+    (difficulty: Difficulty) => {
+      if (!currentQuestion) return;
+      try {
+        const records: DifficultyRecord[] = JSON.parse(
+          localStorage.getItem('flashcard-difficulty') ?? '[]'
+        );
+        records.push({
+          cardId: currentQuestion.id,
+          difficulty,
+          timestamp: Date.now(),
+        });
+        localStorage.setItem('flashcard-difficulty', JSON.stringify(records));
+      } catch {
+        // localStorage not available
+      }
+      goToNext();
+    },
+    [currentQuestion, goToNext]
+  );
+
+  // Swipe gestures
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => goToNext(),
+    onSwipedRight: () => goToPrevious(),
+    delta: 50,
+    trackMouse: true,
+  });
 
   // Star toggle
   const handleToggleStar = useCallback(() => {
@@ -120,10 +159,11 @@ export default function FlashcardViewer({
       </p>
 
       {/* Flashcard */}
-      <button
-        onClick={handleFlip}
-        className="w-full max-w-2xl cursor-pointer rounded-2xl border-2 border-border bg-white p-8 text-left transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[280px]"
-        aria-label={isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
+      <div {...swipeHandlers} className="w-full max-w-2xl">
+        <button
+          onClick={handleFlip}
+          className="w-full cursor-pointer rounded-2xl border-2 border-border bg-white p-8 text-left transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[280px]"
+          aria-label={isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
       >
         <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
           {/* Label */}
@@ -153,6 +193,31 @@ export default function FlashcardViewer({
           </p>
         </div>
       </button>
+
+      {/* Difficulty buttons (only when flipped) */}
+      {isFlipped && (
+        <div className="flex items-center justify-center gap-3 w-full max-w-2xl">
+          <button
+            onClick={() => handleDifficulty('easy')}
+            className="rounded-xl bg-primary px-5 py-2.5 text-body-sm font-semibold text-primary-fg transition-colors hover:brightness-105 active:scale-[0.97]"
+          >
+            😀 {t('easy')}
+          </button>
+          <button
+            onClick={() => handleDifficulty('medium')}
+            className="rounded-xl bg-warning px-5 py-2.5 text-body-sm font-semibold text-white transition-colors hover:brightness-105 active:scale-[0.97]"
+          >
+            🤔 {t('medium')}
+          </button>
+          <button
+            onClick={() => handleDifficulty('hard')}
+            className="rounded-xl bg-danger px-5 py-2.5 text-body-sm font-semibold text-white transition-colors hover:brightness-105 active:scale-[0.97]"
+          >
+            😰 {t('hard')}
+          </button>
+        </div>
+      )}
+      </div>
 
       {/* Action buttons */}
       <div className="flex items-center justify-center gap-4">

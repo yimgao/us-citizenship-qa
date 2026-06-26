@@ -47,7 +47,7 @@ export default async function HomePage({
           statsLanguages: t('statsLanguages'),
         }}
       />
-      <FeatureGrid locale={locale} features={features} />
+      <FeatureGrid locale={locale} features={features} title={t('featureTitle')} description={t('featureDesc')} />
     </div>
   );
 }

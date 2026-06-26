@@ -6,9 +6,11 @@
     "startQuiz": "Comenzar Examen",
     "learnMore": "Estudiar con Tarjetas",
     "statsLearners": "Estudiantes Activos",
-    "statsQuestions": "Preguntas de Pr\u00e1ctica",
+    "statsQuestions": "Preguntas de Práctica",
     "statsLanguages": "Idiomas",
-    "title": "Centro de Pr\u00e1ctica de Naturalizaci\u00f3n",
+    "featureTitle": "Elige tu modo de estudio",
+    "featureDesc": "Cuatro formas de prepararse para el examen de civismo. Mezcla y combina.",
+    "title": "Centro de Práctica de Naturalización",
     "subtitle": "Practica para el examen c\u00edvico de EE. UU. en varios idiomas.",
     "question": "\u00bfQuieres practicar? \u00bfQu\u00e9 m\u00e9todo funciona mejor para ti?",
     "quizTitle": "Modo Quiz",
@@ -58,7 +60,10 @@
     "score": "¡Has acertado {correct} de {total}!",
     "tryAgain": "Intentar de nuevo",
     "backHome": "Volver al inicio",
-    "noQuestions": "No hay preguntas disponibles."
+    "noQuestions": "No hay preguntas disponibles.",
+    "reviewMissedCount": "Fallaste {count} pregunta(s). ¿Repasarlas ahora?",
+    "reviewMissedButton": "Repasar Falladas",
+    "reviewMissedPill": "Repasar Falladas"
   },
   "flashcards": {
     "title": "Tarjetas de Estudio",
@@ -75,7 +80,12 @@
     "next": "Siguiente",
     "tip": "Consejo: Espacio para voltear, ←/→ para navegar",
     "all": "Todas",
-    "noCards": "No hay tarjetas disponibles."
+    "noCards": "No hay tarjetas disponibles.",
+    "easy": "Fácil",
+    "medium": "Media",
+    "hard": "Difícil",
+    "filterByDifficulty": "Filtrar por estado de revisión:",
+    "dueForReview": "Pendiente de revisión"
   },
   "resources": {
     "title": "Recursos de escucha y estudio",

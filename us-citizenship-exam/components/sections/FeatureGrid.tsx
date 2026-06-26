@@ -16,15 +16,15 @@ interface Feature {
 interface FeatureGridProps {
   locale: string;
   features: Feature[];
+  title: string;
+  description: string;
 }
 
-export default function FeatureGrid({ locale, features }: FeatureGridProps) {
+export default function FeatureGrid({ locale, features, title, description }: FeatureGridProps) {
   return (
     <section className="py-8 sm:py-12">
-      <h2 className="text-display font-bold text-fg">Pick your study mode</h2>
-      <p className="mt-1 text-body-lg text-muted-foreground">
-        Four ways to prepare for the civics test. Mix and match.
-      </p>
+      <h2 className="text-display font-bold text-fg">{title}</h2>
+      <p className="mt-1 text-body-lg text-muted-foreground">{description}</p>
       <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {features.map((f) => {
           const Icon = ICONS[f.icon];

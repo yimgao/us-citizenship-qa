@@ -2,9 +2,11 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import type { Locale } from '@/lib/questions';
 import { loadQuestionsPaged } from '@/lib/questions';
-import FlashcardViewer from '@/components/flashcards/FlashcardViewer';
+import DifficultyFilterWrapper from '@/components/flashcards/DifficultyFilterWrapper';
+import DueCountBadge from '@/components/flashcards/DueCountBadge';
 
 const CATEGORIES = ['all', 'gov', 'history', 'civics'] as const;
+const DIFFICULTY_FILTERS = ['all', 'due'] as const;
 
 const PAGE_SIZE = 20;
 
@@ -13,11 +15,12 @@ export default async function FlashcardsPage({
   searchParams,
 }: {
   params: Promise<{ locale: Locale }>;
-  searchParams: Promise<{ category?: string; page?: string }>;
+  searchParams: Promise<{ category?: string; page?: string; difficulty?: string }>;
 }) {
   const { locale } = await params;
   const sp = await searchParams;
   const activeCategory = (sp.category ?? 'all') as 'all' | 'gov' | 'history' | 'civics';
+  const activeDifficulty = (sp.difficulty ?? 'all') as 'all' | 'due';
   const currentPage = Math.max(1, parseInt(sp.page ?? '1', 10) || 1);
 
   const t = await getTranslations({ locale, namespace: 'flashcards' });
@@ -49,7 +52,7 @@ export default async function FlashcardsPage({
             return (
               <Link
                 key={cat}
-                href={`/flashcards?category=${cat}`}
+                href={`/flashcards?category=${cat}${activeDifficulty !== 'all' ? `&difficulty=${activeDifficulty}` : ''}`}
                 className={
                   isActive
                     ? 'rounded-xl bg-primary px-5 py-2.5 text-body-sm font-semibold text-primary-fg transition-colors'
@@ -69,13 +72,40 @@ export default async function FlashcardsPage({
         </div>
       </div>
 
+      {/* Difficulty filter pills */}
+      <div>
+        <p className="text-body-sm font-medium text-muted-foreground mb-3">
+          {t('filterByDifficulty')}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {DIFFICULTY_FILTERS.map((f) => {
+            const isActive = activeDifficulty === f;
+            return (
+              <Link
+                key={f}
+                href={`/flashcards?category=${activeCategory}${f !== 'all' ? `&difficulty=${f}` : ''}`}
+                className={
+                  isActive
+                    ? 'inline-flex items-center rounded-xl bg-primary px-5 py-2.5 text-body-sm font-semibold text-primary-fg transition-colors'
+                    : 'inline-flex items-center rounded-xl border-2 border-border bg-white px-5 py-2.5 text-body-sm font-semibold text-fg transition-colors hover:border-primary'
+                }
+              >
+                {f === 'all' ? t('all') : t('dueForReview')}
+                {f === 'due' && !isActive && <DueCountBadge />}
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Flashcards */}
       {questions.length > 0 ? (
         <>
-          <FlashcardViewer
+          <DifficultyFilterWrapper
             questions={questions}
             locale={locale}
             totalCount={total}
+            difficultyFilter={activeDifficulty}
           />
 
           {/* Pagination */}

@@ -8,6 +8,8 @@
     "statsLearners": "活跃学习者",
     "statsQuestions": "练习题数",
     "statsLanguages": "语言",
+    "featureTitle": "选择学习模式",
+    "featureDesc": "四种方式帮你准备公民考试，可以混合使用。",
     "title": "入籍考试练习中心",
     "subtitle": "使用多种语言练习美国公民考试公民知识题。",
     "question": "想要练习吗？哪种方法最适合您？",
@@ -58,7 +60,10 @@
     "score": "您答对了 {correct} / {total} 题！",
     "tryAgain": "再试一次",
     "backHome": "返回首页",
-    "noQuestions": "暂无题目。"
+    "noQuestions": "暂无题目。",
+    "reviewMissedCount": "您答错了 {count} 题。现在复习吗？",
+    "reviewMissedButton": "复习错题",
+    "reviewMissedPill": "复习错题"
   },
   "flashcards": {
     "title": "复习卡片",
@@ -75,7 +80,12 @@
     "next": "下一张",
     "tip": "提示：空格翻转，←/→ 导航",
     "all": "全部",
-    "noCards": "暂无闪卡。"
+    "noCards": "暂无闪卡。",
+    "easy": "简单",
+    "medium": "中等",
+    "hard": "困难",
+    "filterByDifficulty": "按复习状态筛选：",
+    "dueForReview": "待复习"
   },
   "resources": {
     "title": "听力与学习资源",
