@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Home, Clock } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
 import { CATEGORY_BY_LOCALE, type Question, type Locale } from '@/lib/questions';
@@ -28,6 +29,8 @@ const MISSED_QUESTIONS_KEY = 'missed-questions';
 export default function QuizRunner({ questions, mode, locale, reviewMissed }: QuizRunnerProps) {
   const t = useTranslations('quiz');
   const router = useRouter();
+  const prefersReducedMotion = useReducedMotion();
+  const springAnim = prefersReducedMotion ? {} : { type: 'spring' as const, stiffness: 400, damping: 25 };
 
   const { setAnswer, answersByQuestionId, setAllAnswers, reset: resetStore } = useQuizStore();
   const { incrementDaily } = useDailyProgress();
@@ -551,11 +554,13 @@ export default function QuizRunner({ questions, mode, locale, reviewMissed }: Qu
             const letter = String.fromCharCode(65 + idx); // A, B, C, D
 
             return (
-              <button
+              <motion.button
                 key={idx}
                 onClick={() => handleSelectOption(idx)}
                 disabled={currentAnswered && mode === 'practice'}
                 className={optionClasses}
+                whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
+                transition={springAnim}
               >
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-body-sm font-bold ${
@@ -580,7 +585,7 @@ export default function QuizRunner({ questions, mode, locale, reviewMissed }: Qu
                   }
                 </span>
                 <span className="flex-1">{option}</span>
-              </button>
+              </motion.button>
             );
           })}
         </div>

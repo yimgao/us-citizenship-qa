@@ -2,6 +2,7 @@
 
 import { FileText, BookOpen, GraduationCap, Bookmark, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const ICONS = { FileText, BookOpen, GraduationCap, Bookmark } as const;
 
@@ -20,7 +21,11 @@ interface FeatureGridProps {
   description: string;
 }
 
+const spring = { type: 'spring' as const, stiffness: 400, damping: 25 };
+
 export default function FeatureGrid({ locale, features, title, description }: FeatureGridProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section className="py-8 sm:py-12">
       <h2 className="text-display font-bold text-fg">{title}</h2>
@@ -29,23 +34,28 @@ export default function FeatureGrid({ locale, features, title, description }: Fe
         {features.map((f) => {
           const Icon = ICONS[f.icon];
           return (
-            <Link
+            <motion.div
               key={f.href}
-              href={`/${locale}${f.href}`}
-              className="group flex items-start gap-4 rounded-2xl border-2 border-border bg-white p-5 transition-all hover:border-primary hover:shadow-md active:scale-[0.98]"
+              whileHover={prefersReducedMotion ? undefined : { y: -4, boxShadow: '0 8px 25px rgba(0,0,0,0.12)' }}
+              transition={spring}
             >
-              <div
-                className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-white"
-                style={{ backgroundColor: f.color }}
+              <Link
+                href={`/${locale}${f.href}`}
+                className="group flex items-start gap-4 rounded-2xl border-2 border-border bg-white p-5 transition-all hover:border-primary hover:shadow-md active:scale-[0.98]"
               >
-                <Icon size={22} />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-title font-bold text-fg">{f.title}</h3>
-                <p className="mt-0.5 text-sm text-muted-foreground">{f.description}</p>
-              </div>
-              <ArrowRight size={18} className="mt-3 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
-            </Link>
+                <div
+                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl text-white"
+                  style={{ backgroundColor: f.color }}
+                >
+                  <Icon size={22} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-title font-bold text-fg">{f.title}</h3>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{f.description}</p>
+                </div>
+                <ArrowRight size={18} className="mt-3 flex-shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
           );
         })}
       </div>

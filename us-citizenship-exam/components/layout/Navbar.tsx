@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Menu, X, Target } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Menu, X, Target, Share2 } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useDailyProgress } from '@/lib/hooks/useDailyProgress';
 
@@ -15,8 +16,11 @@ const NAV_LINKS = [
   { key: 'grammar', href: '/grammar' },
   { key: 'glossary', href: '/glossary' },
   { key: 'case-status', href: '/case-status' },
+  { key: 'study-guide', href: '/study-guide' },
   { key: 'resources', href: '/resources' },
 ] as const;
+
+const spring = { type: 'spring' as const, stiffness: 400, damping: 25 };
 
 export default function Navbar() {
   const t = useTranslations('navbar');
@@ -24,10 +28,35 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const locale = pathname.split('/')[1] || 'en';
   const { streak, daily, dailyGoal, isGoalMet, mounted } = useDailyProgress();
+  const prefersReducedMotion = useReducedMotion();
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === `/${locale}`;
     return pathname.startsWith(`/${locale}${href}`);
+  };
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    const shareData = {
+      title: 'Citizenship Prep',
+      text: 'Free U.S. citizenship practice at Citizenship Prep!',
+      url,
+    };
+    if (typeof navigator !== 'undefined' && 'share' in navigator) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch {
+        // User cancelled or share API failed — fallback to clipboard
+      }
+    }
+    // Fallback: copy URL to clipboard
+    try {
+      await navigator.clipboard.writeText(url);
+      // Brief visual feedback could be added here
+    } catch {
+      // Clipboard not available
+    }
   };
 
   return (
@@ -42,17 +71,22 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
-            <Link
+            <motion.div
               key={link.key}
-              href={`/${locale}${link.href}`}
-              className={`rounded-xl px-3 py-1.5 text-sm font-bold transition-colors ${
-                isActive(link.href)
-                  ? 'bg-primary-bg text-primary'
-                  : 'text-fg hover:bg-bg-alt'
-              }`}
+              whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
+              transition={spring}
             >
-              {t(link.key)}
-            </Link>
+              <Link
+                href={`/${locale}${link.href}`}
+                className={`rounded-xl px-3 py-1.5 text-sm font-bold transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-primary-bg text-primary'
+                    : 'text-fg hover:bg-bg-alt'
+                }`}
+              >
+                {t(link.key)}
+              </Link>
+            </motion.div>
           ))}
         </nav>
 
@@ -87,6 +121,17 @@ export default function Navbar() {
               <Target className={`h-3.5 w-3.5 ${isGoalMet ? 'text-primary' : 'text-muted-foreground'}`} />
             </div>
           )}
+
+          {/* Share button */}
+          <motion.button
+            onClick={handleShare}
+            className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-border text-fg transition-colors hover:border-primary hover:text-primary"
+            aria-label={t('share')}
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
+            transition={spring}
+          >
+            <Share2 size={16} />
+          </motion.button>
 
           <LanguageSwitcher />
           <button

@@ -31,7 +31,9 @@
     "glossary": "Glossary",
     "grammar": "Grammar",
     "case-status": "Case Status",
-    "resources": "Resources"
+    "study-guide": "Study Guide",
+    "resources": "Resources",
+    "share": "Share"
   },
   "footer": { "text": "Free U.S. citizenship practice. Quizzes, flashcards, grammar, and glossary.", "feedback": "Feedback", "links": "Links", "builtWith": "Built With" },
   "quiz": {
@@ -171,6 +173,33 @@
     "reorderInstructions": "Arrange the words in the correct order:",
     "typeOrderedSentence": "Type the sentence in correct order",
     "correctionInstructions": "Correct the sentence:"
+  },
+  "case-status": {
+    "checkStatus": "Case Status Check",
+    "enterReceipt": "Check your USCIS case status using your receipt number.",
+    "placeholder": "e.g. MSC2190000000",
+    "checkButton": "Check Status",
+    "error": "Error",
+    "aboutService": "About this service",
+    "officialLink": "official USCIS website",
+    "backHome": "Back to Home",
+    "approved": "Approved",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "unknown": "Unknown",
+    "receiptNumber": "Receipt #{number}",
+    "statusResult": "Status Result"
+  },
+  "study-guide": {
+    "title": "Study Guide",
+    "subtitle": "All 100 USCIS civics questions and answers for the U.S. naturalization test.",
+    "print": "Print",
+    "printDesc": "Print or save as PDF for offline study",
+    "government": "American Government",
+    "history": "American History",
+    "civics": "Integrated Civics",
+    "questionLabel": "Question {number}",
+    "answerLabel": "Answer"
   }
 }
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Star, Volume2, VolumeX } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
@@ -165,13 +166,19 @@ export default function FlashcardViewer({
       </p>
 
       {/* Flashcard */}
-      <div {...swipeHandlers} className="w-full max-w-2xl">
-        <button
+      <div {...swipeHandlers} className="w-full max-w-2xl" style={{ perspective: '1000px' }}>
+        <motion.div
           onClick={handleFlip}
-          className="w-full cursor-pointer rounded-2xl border-2 border-border bg-white p-8 text-left transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[280px]"
+          className="w-full cursor-pointer rounded-2xl border-2 border-border bg-white p-8 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[280px]"
+          style={{ backfaceVisibility: 'hidden' as const, transformStyle: 'preserve-3d' as const }}
           aria-label={isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
+          animate={{ rotateY: isFlipped ? 180 : 0 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+          tabIndex={0}
+          role="button"
+          onKeyDown={(e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); handleFlip(); } }}
       >
-        <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
+        <div className="flex flex-col items-center justify-center min-h-[200px] text-center" style={{ backfaceVisibility: 'hidden' as const }}>
           {/* Label */}
           <span className="mb-4 inline-block rounded-full bg-primary-bg px-3 py-1 text-caption font-semibold text-primary uppercase tracking-wide">
             {isFlipped ? t('answer') : t('question')}
@@ -179,11 +186,11 @@ export default function FlashcardViewer({
 
           {/* Content */}
           {isFlipped ? (
-            <p className="text-body-lg font-bold text-fg leading-relaxed">
+            <p className="text-body-lg font-bold text-fg leading-relaxed" style={{ backfaceVisibility: 'hidden' as const }}>
               {currentQuestion.options[currentQuestion.answer]}
             </p>
           ) : (
-            <div>
+            <div style={{ backfaceVisibility: 'hidden' as const }}>
               <p className="text-caption font-semibold text-muted-foreground uppercase tracking-wide mb-2">
                 {currentQuestion.category}
               </p>
@@ -194,11 +201,11 @@ export default function FlashcardViewer({
           )}
 
           {/* Flip hint */}
-          <p className="mt-6 text-caption text-muted-foreground">
+          <p className="mt-6 text-caption text-muted-foreground" style={{ backfaceVisibility: 'hidden' as const }}>
             {isFlipped ? t('clickToFlipBack') : t('clickToFlip')}
           </p>
         </div>
-      </button>
+      </motion.div>
 
       {/* Difficulty buttons (only when flipped) */}
       {isFlipped && (

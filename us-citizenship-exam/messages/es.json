@@ -31,7 +31,9 @@
     "glossary": "Glosario",
     "grammar": "Gramática",
     "case-status": "Estado del Caso",
-    "resources": "Recursos"
+    "study-guide": "Guía de Estudio",
+    "resources": "Recursos",
+    "share": "Compartir"
   },
   "footer": { "text": "Práctica gratuita de ciudadanía estadounidense. Cuestionarios, tarjetas, gramática y glosario.", "feedback": "Comentarios", "links": "Enlaces", "builtWith": "Hecho Con" },
   "quiz": {
@@ -171,6 +173,33 @@
     "reorderInstructions": "Organiza las palabras en el orden correcto:",
     "typeOrderedSentence": "Escribe la oración en orden correcto",
     "correctionInstructions": "Corrige la oración:"
+  },
+  "case-status": {
+    "checkStatus": "Verificar Estado del Caso",
+    "enterReceipt": "Verifica el estado de tu caso USCIS usando tu número de recibo.",
+    "placeholder": "ej. MSC2190000000",
+    "checkButton": "Verificar Estado",
+    "error": "Error",
+    "aboutService": "Acerca de este servicio",
+    "officialLink": "sitio web oficial de USCIS",
+    "backHome": "Volver al Inicio",
+    "approved": "Aprobado",
+    "pending": "Pendiente",
+    "rejected": "Rechazado",
+    "unknown": "Desconocido",
+    "receiptNumber": "Recibo #{number}",
+    "statusResult": "Resultado del Estado"
+  },
+  "study-guide": {
+    "title": "Guía de Estudio",
+    "subtitle": "Las 100 preguntas y respuestas de educación cívica de USCIS para el examen de naturalización de EE. UU.",
+    "print": "Imprimir",
+    "printDesc": "Imprimir o guardar como PDF para estudiar sin conexión",
+    "government": "Gobierno Americano",
+    "history": "Historia Americana",
+    "civics": "Educación Cívica Integrada",
+    "questionLabel": "Pregunta {number}",
+    "answerLabel": "Respuesta"
   }
 }
 

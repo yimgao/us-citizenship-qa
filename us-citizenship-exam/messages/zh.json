@@ -31,7 +31,9 @@
     "glossary": "名词解释",
     "grammar": "语法练习",
     "case-status": "案件状态",
-    "resources": "学习资源"
+    "study-guide": "学习指南",
+    "resources": "学习资源",
+    "share": "分享"
   },
   "footer": { "text": "免费的美国入籍考试练习。测验、闪卡、语法和词汇表。", "feedback": "意见反馈", "links": "链接", "builtWith": "技术栈" },
   "quiz": {
@@ -171,6 +173,33 @@
     "reorderInstructions": "将单词按正确顺序排列：",
     "typeOrderedSentence": "输入正确顺序的句子",
     "correctionInstructions": "改正句子："
+  },
+  "case-status": {
+    "checkStatus": "案件状态查询",
+    "enterReceipt": "使用收据号码查询您的 USCIS 案件状态。",
+    "placeholder": "例如 MSC2190000000",
+    "checkButton": "查询状态",
+    "error": "错误",
+    "aboutService": "关于本服务",
+    "officialLink": "USCIS 官方网站",
+    "backHome": "返回首页",
+    "approved": "已批准",
+    "pending": "处理中",
+    "rejected": "已拒绝",
+    "unknown": "未知",
+    "receiptNumber": "收据 #{number}",
+    "statusResult": "状态结果"
+  },
+  "study-guide": {
+    "title": "学习指南",
+    "subtitle": "美国入籍考试的全部 100 道公民知识题目及答案。",
+    "print": "打印",
+    "printDesc": "打印或保存为 PDF 以供离线学习",
+    "government": "美国政府",
+    "history": "美国历史",
+    "civics": "综合公民",
+    "questionLabel": "第 {number} 题",
+    "answerLabel": "答案"
   }
 }
 
