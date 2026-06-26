@@ -70,6 +70,10 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {/* PWA support */}
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
       <body className={`${GeistSans.className} ${GeistMono.variable} flex min-h-dvh flex-col bg-bg text-fg antialiased`}>
         <NextIntlClientProvider messages={messages}>

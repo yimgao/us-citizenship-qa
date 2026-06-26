@@ -4,8 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Target } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useDailyProgress } from '@/lib/hooks/useDailyProgress';
 
 const NAV_LINKS = [
   { key: 'home', href: '/' },
@@ -22,6 +23,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const locale = pathname.split('/')[1] || 'en';
+  const { streak, daily, dailyGoal, isGoalMet, mounted } = useDailyProgress();
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === `/${locale}`;
@@ -55,6 +57,37 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Streak counter */}
+          {mounted && (
+            <div
+              className="flex items-center gap-1 rounded-xl bg-warning-bg px-2.5 py-1 text-body-sm font-bold text-warning"
+              title="Daily streak"
+            >
+              <span>🔥</span>
+              <span>{streak.count}</span>
+            </div>
+          )}
+
+          {/* Daily progress */}
+          {mounted && (
+            <div className="flex items-center gap-1.5 rounded-xl bg-primary-bg px-2.5 py-1.5 text-body-sm" title="Daily goal progress">
+              <div className="flex items-center gap-1">
+                <div className="h-1.5 w-16 overflow-hidden rounded-full bg-primary/20">
+                  <div
+                    className={`h-full rounded-full transition-all duration-300 ${
+                      isGoalMet ? 'bg-primary' : 'bg-primary/60'
+                    }`}
+                    style={{ width: `${Math.min(100, (daily.count / dailyGoal) * 100)}%` }}
+                  />
+                </div>
+                <span className="text-caption font-semibold text-primary">
+                  {daily.count}/{dailyGoal}
+                </span>
+              </div>
+              <Target className={`h-3.5 w-3.5 ${isGoalMet ? 'text-primary' : 'text-muted-foreground'}`} />
+            </div>
+          )}
+
           <LanguageSwitcher />
           <button
             onClick={() => setOpen(!open)}

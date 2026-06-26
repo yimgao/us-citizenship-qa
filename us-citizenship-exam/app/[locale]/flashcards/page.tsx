@@ -144,8 +144,14 @@ export default async function FlashcardsPage({
           )}
         </>
       ) : (
-        <div className="rounded-2xl border-2 border-border bg-white p-8 text-center">
-          <p className="text-body text-muted-foreground">{t('noCards')}</p>
+        <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-border bg-white p-12 text-center">
+          <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-bg-alt">
+            <span className="text-3xl">🃏</span>
+          </div>
+          <h3 className="text-body-lg font-bold text-fg mb-1">{t('noCards')}</h3>
+          <p className="text-body-sm text-muted-foreground max-w-xs">
+            {t('noCardsDesc') ?? 'No cards match your current filter. Try a different category.'}
+          </p>
         </div>
       )}
     </div>

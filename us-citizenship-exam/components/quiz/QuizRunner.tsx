@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Check, X, RotateCcw, Home, Clock } from 'luc
 import { useTranslations } from 'next-intl';
 import { useQuizStore } from '@/lib/store';
 import { CATEGORY_BY_LOCALE, type Question, type Locale } from '@/lib/questions';
+import { useDailyProgress } from '@/lib/hooks/useDailyProgress';
 
 type QuizMode = 'practice' | 'test';
 
@@ -29,6 +30,7 @@ export default function QuizRunner({ questions, mode, locale, reviewMissed }: Qu
   const router = useRouter();
 
   const { setAnswer, answersByQuestionId, setAllAnswers, reset: resetStore } = useQuizStore();
+  const { incrementDaily } = useDailyProgress();
 
   // Persist answers to localStorage
   const storageKey = useMemo(
@@ -134,6 +136,7 @@ export default function QuizRunner({ questions, mode, locale, reviewMissed }: Qu
       [q.id]: optionStr,
     }));
     setAnswer(q.id, optionStr);
+    incrementDaily();
 
     if (mode === 'practice') {
       // Instant feedback: mark as answered

@@ -156,7 +156,15 @@ export default function GrammarPageClient({
         rules.length > 0 ? (
           <GrammarViewer rules={rules} locale={locale} />
         ) : (
-          <p className="py-12 text-body text-muted-foreground">{translations.noRules}</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-bg-alt">
+              <span className="text-3xl">📖</span>
+            </div>
+            <h3 className="text-body-lg font-bold text-fg mb-1">{translations.noRules}</h3>
+            <p className="text-body-sm text-muted-foreground max-w-xs">
+              {translations.noRulesDesc ?? 'No grammar rules found for this topic.'}
+            </p>
+          </div>
         )
       )}
 
@@ -164,7 +172,15 @@ export default function GrammarPageClient({
         exercises.length > 0 ? (
           <GrammarPractice exercises={exercises} locale={locale} />
         ) : (
-          <p className="py-12 text-body text-muted-foreground">{translations.noExercises}</p>
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-bg-alt">
+              <span className="text-3xl">✍️</span>
+            </div>
+            <h3 className="text-body-lg font-bold text-fg mb-1">{translations.noExercises}</h3>
+            <p className="text-body-sm text-muted-foreground max-w-xs">
+              {translations.noExercisesDesc ?? 'No exercises available for this topic yet.'}
+            </p>
+          </div>
         )
       )}
     </div>

@@ -208,8 +208,14 @@ export default function GrammarPractice({
 
   if (exercises.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
-        <p className="text-body text-muted-foreground">{t('noExercises')}</p>
+      <div className="flex flex-col items-center justify-center py-16">
+        <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-bg-alt">
+          <span className="text-3xl">✍️</span>
+        </div>
+        <h3 className="text-body-lg font-bold text-fg mb-1">{t('noExercises')}</h3>
+        <p className="text-body-sm text-muted-foreground max-w-xs">
+          {t('noExercisesDesc') ?? 'No exercises available for this topic yet.'}
+        </p>
       </div>
     );
   }
